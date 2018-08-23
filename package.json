@@ -6,6 +6,8 @@
   "author": "Kit Jonathan Te <kjonathante@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.3"
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "mysql": "^2.16.0"
   }
 }
