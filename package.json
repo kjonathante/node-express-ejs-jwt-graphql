@@ -1,0 +1,11 @@
+{
+  "name": "PRJ2-Express-Mysql",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:kjonathante/PRJ2-Express-Mysql.git",
+  "author": "Kit Jonathan Te <kjonathante@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
