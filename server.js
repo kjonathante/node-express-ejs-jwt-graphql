@@ -1,31 +1,27 @@
 var express = require('express')
 var mysql = require('mysql')
 
-var config = require('./app/db/db.conf')
+//var config = require('./app/conf/conf')
+var db = require('./app/db/db.js')
 
 var app = express()
 
-var conn = mysql.createConnection({
-  user: config.dbUser,
-  password: config.dbPassword,
-  database: config.dbName,
-  host: config.dbHost,
-  port: config.dbPort,
-})
+db.connect()
 
 app.get('/', function(req, res) {
   res.send('Hello')
 })
 
 app.get('/db', function(req, res) {
-  conn.query({
-    sql: 'SELECT * FROM items'
+  
+  db.pool().query({
+    sql: 'SELECT * FROM users'
   }, function(error, results, fields){
     if (error) throw error
 
     var str = ''
     for(var val of results) {
-      str += val.item + '</br>'
+      str += val.id + '</br>'
     }
     res.send(str)
   })
