@@ -1,9 +1,13 @@
+var path = require('path')
 var express = require('express')
 
 var db = require('./app/db/db.js')
 var routes = require('./app/routes/routes.js')
 
 var app = express()
+
+app.set('view engine', 'ejs')
+app.set('views', path.join(__dirname, './app/views'))
 
 db.connect()
 

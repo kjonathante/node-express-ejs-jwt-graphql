@@ -8,5 +8,5 @@ exports.getAll = async function(req, res, next) {
     res.send('Ops')
     throw error
   }
-  res.send(results)
+  res.render('pages/users',results[0]) 
 } 
