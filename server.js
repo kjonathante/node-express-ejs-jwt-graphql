@@ -1,34 +1,18 @@
+var path = require('path')
 var express = require('express')
-var mysql = require('mysql')
 
-var config = require('./app/db/db.conf')
+var db = require('./app/db/db.js')
+var routes = require('./app/routes/routes.js')
 
 var app = express()
 
-var conn = mysql.createConnection({
-  user: config.dbUser,
-  password: config.dbPassword,
-  database: config.dbName,
-  host: config.dbHost,
-  port: config.dbPort,
-})
+app.set('view engine', 'ejs')
+app.set('views', path.join(__dirname, './app/views/pages'))
 
-app.get('/', function(req, res) {
-  res.send('Hello')
-})
+db.connect()
 
-app.get('/db', function(req, res) {
-  conn.query({
-    sql: 'SELECT * FROM items'
-  }, function(error, results, fields){
-    if (error) throw error
+app.use(express.static(path.join(__dirname, 'app/public')))
 
-    var str = ''
-    for(var val of results) {
-      str += val.item + '</br>'
-    }
-    res.send(str)
-  })
-})
+app.use('/', routes)
 
 app.listen(3000)

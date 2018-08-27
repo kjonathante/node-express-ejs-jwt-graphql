@@ -1,0 +1,11 @@
+query GitHubers($username: String!) {
+  user(login: $username) {
+    repositories (first: 100) {
+      nodes {
+        id
+        name
+        url
+      }
+    }
+  }
+}

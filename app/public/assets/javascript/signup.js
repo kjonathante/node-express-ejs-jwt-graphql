@@ -10,9 +10,9 @@ $(document).ready(function(){
     var forms = document.getElementsByClassName('needs-validation');
     Array.prototype.filter.call(forms, function(form) {
         form.addEventListener('submit', function(event) {
-            var first = $('#validationCustom01').val();
-            var last = $('#validationCustom02').val();
-            var user = $('#validationCustomUsername').val();
+            // var first = $('#validationCustom01').val();
+            // var last = $('#validationCustom02').val();
+            // var user = $('#validationCustomUsername').val();
             var email = $('#validationCustom03').val();
             var pass = $('#inputPassword').val();
             var conf = $('#confirmPassword').val();

@@ -3,19 +3,20 @@
 <head>
 	<% include ../partials/head %>
 </head>
-<body class="container">
+<body>
 
 	<header>
 		<% include ../partials/header %>
 	</header>
 
 	<main>
+        <!-- Page body -->
         <div class="container">
-            <form method="POST" action="" class="needs-validation" novalidate="">
+            <form method="POST" action="/signup" class="needs-validation" novalidate="">
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
                     <label for="validationCustom01">First name</label>
-                    <input type="text" class="form-control" id="validationCustom01" placeholder="Doc" required="">
+                    <input type="text" name="first" class="form-control" id="validationCustom01" placeholder="Doc" required="">
                     <div class="valid-feedback">
                         Looks good!
                     </div>
@@ -25,7 +26,7 @@
                     </div>
                     <div class="col-md-4 mb-3">
                     <label for="validationCustom02">Last name</label>
-                    <input type="text" class="form-control" id="validationCustom02" placeholder="Brown" required="">
+                    <input type="text" name="last" class="form-control" id="validationCustom02" placeholder="Brown" required="">
                     <div class="valid-feedback">
                         Great!
                     </div>
@@ -39,7 +40,7 @@
                         <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
                         </div>
-                        <input type="text" class="form-control" id="validationCustomUsername" placeholder="fluxmaster" aria-describedby="inputGroupPrepend" required="">
+                        <input type="text" name="username" class="form-control" id="validationCustomUsername" placeholder="fluxmaster" aria-describedby="inputGroupPrepend" required="" autocomplete="username">
                         <div class="valid-feedback">
                             Awesome username!
                         </div>
@@ -52,7 +53,7 @@
                 <div class="form-row">
                     <div class="col-md-6 mb-3">
                     <label for="validationCustom03">Email</label>
-                    <input type="text" class="form-control" id="validationCustom03" placeholder="noroads@delorean.com" required="">
+                    <input type="text" name="email" class="form-control" id="validationCustom03" placeholder="noroads@delorean.com" required="">
                     <div class="valid-feedback">
                         Affirmitive!
                     </div>
@@ -62,7 +63,7 @@
                     </div>
                     <div class="col-md-3 mb-3" id="pass">
                     <label for="inputPassword">Password</label>
-                    <input type="password" class="form-control" id="inputPassword" placeholder="i<3einstein" required="">
+                    <input type="password" name="password" class="form-control" id="inputPassword" placeholder="i<3einstein" required="" autocomplete="new-password">
                     <div class="valid-feedback">
                         10-4!
                     </div>
@@ -72,7 +73,7 @@
                     </div>
                     <div class="col-md-3 mb-3" id="conf">
                     <label for="inputPassword">Confirm password</label>
-                    <input type="password" class="form-control" id="confirmPassword" placeholder="i<3einstein" required="">
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="i<3einstein" required="" autocomplete="new-password">
                     <div class="valid-feedback">
                         Copy that!
                     </div>
