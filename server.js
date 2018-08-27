@@ -11,6 +11,8 @@ app.set('views', path.join(__dirname, './app/views'))
 
 db.connect()
 
+app.use(express.static(path.join(__dirname, 'app/public')))
+
 app.use('/', routes)
 
 app.listen(3000)
