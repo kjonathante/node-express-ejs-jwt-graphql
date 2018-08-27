@@ -10,7 +10,7 @@
               
       <!-- <div class="collapse navbar-collapse"></div> -->
 
-        <form class="form-inline">
+        <form method="GET" action="/search" class="form-inline">
             <input class="form-control mr-sm-2" id="search-bar" type="search" placeholder="Search for a User" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search-btn">Search</button>
         </form>
@@ -20,14 +20,26 @@
             Log In
         </button>
         <div class="dropdown-menu dropdown-menu-right">
-            <form class="px-4 py-3" method="POST" action="/signin">
+            <form method="POST" action="/signin" class="px-4 py-3 needs-validation" novalidate="">
             <div class="form-group">
             <label for="dropdownFormUsername">Username</label>
             <input type="text" name="username" class="form-control" id="dropdownFormUsername" placeholder="CaptainDeliciousPants" aria-describedby="inputGroupPrepend" required="" autocomplete="username">
+            <div class="valid-feedback">
+                Awesome username!
+            </div>
+            <div class="invalid-feedback">
+                You must choose a username.
+            </div>
             </div>
             <div class="form-group">
             <label for="dropdownFormPassword">Password</label>
-            <input type="password" name="password" class="form-control" id="dropdownFormPassword" placeholder="Password" autocomplete="current-password">
+            <input type="password" name="password" class="form-control" id="dropdownFormPassword" placeholder="Password" required="" autocomplete="current-password">
+            <div class="valid-feedback">
+                10-4!
+            </div>
+            <div class="invalid-feedback">
+                Please provide a password.
+            </div>
             </div>
             <div class="form-check">
             <input type="checkbox" class="form-check-input" id="dropdownCheck">

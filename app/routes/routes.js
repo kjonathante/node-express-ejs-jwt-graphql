@@ -10,18 +10,23 @@ var userController = require('../controllers/user.controller.js')
 var githubController = require('../controllers/github.controller.js')
 
 router.get('/', function(req, res) {
-  // res.send('Hello')
   res.render('index')
 });
 
 router.get('/signup', function(req, res) {
-  // res.send('Hello')
   res.render('signup')
 });
 
+router.get('/profile', function(req, res) {
+  res.render('profile')
+});
+
 router.get('/edit-profile', function(req, res) {
-  // res.send('Hello')
   res.render('edit-profile')
+});
+
+router.get('/search', function(req, res) {
+  res.render('search')
 });
 
 router.get('/db', userController.getAll)
@@ -30,6 +35,7 @@ router.get('/github/repos/:username', githubController.getRepos)
 
 router.post('/signin', urlencodedParser, function(req, res){
   console.log(req.body);
+  res.redirect('/profile');
 });
 
 router.post('/signup', urlencodedParser, function(req, res){
