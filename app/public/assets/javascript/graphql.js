@@ -10,7 +10,7 @@ $("#test_form").submit( function() {
       console.log(data)
     }, 
     function(jqXHR, textStatus, errorThrown){
-      console.log(textStatus)
+      console.log(textStatus, errorThrown)
     }
   )
 })
