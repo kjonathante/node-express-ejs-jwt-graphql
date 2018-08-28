@@ -6,9 +6,11 @@
   "author": "Kit Jonathan Te <kjonathante@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^6.0.0",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
+    "express-session": "^1.15.6",
     "mysql": "^2.16.0"
   }
 }
