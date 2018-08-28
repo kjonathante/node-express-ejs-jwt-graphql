@@ -1,13 +1,93 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+	<% include ../partials/head %>
 </head>
 <body>
-  <h1><%= data.first_name %></h1>
-  <h1><%= session %></h1>
+
+	<header>
+		<% include ../partials/header %>
+	</header>
+
+	<main>
+		<!-- Page body -->
+		<div class="container">
+			<form method="POST" action="/edit-profile" class="needs-validation" novalidate="">
+				<div class="form-row">
+					<div>
+						<label id="edit-profile-pic" for="pic-upload">
+							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXMzIQ5Mz7oAmyAr726z56qS5QO7gTK9AFVj2TM2-izgMfbqWfLA" alt="User Pic" class="rounded" id="user-pic">
+						</label>
+						<input type="file" name="pic" class="form-control" id="pic-upload" accept="image/*" required="">
+						<div class="valid-feedback">
+							Nice pic!
+						</div>
+						<div class="invalid-feedback">
+							Please select a profile picture.
+						</div>
+						<button class="btn btn-outline-secondary btn-block" id="update-btn" type="submit">Update</button>
+					</div>
+					<div class="container" id="edit-container">
+						<div class="" id="edit-first-name">
+							<label for="validationCustom01">First name</label>
+							<input type="text" name="first" class="form-control" id="validationCustom01" placeholder="Marty" required="">
+							<div class="valid-feedback">
+								Looks good!
+							</div>
+							<div class="invalid-feedback">
+								You must enter your first name.
+							</div>
+						</div>
+						<div class="" id="edit-last-name">
+						<label for="validationCustom02">Last name</label>
+							<input type="text" name="last" class="form-control" id="validationCustom02" placeholder="Mcfly" required="">
+							<div class="valid-feedback">
+								Great!
+							</div>
+							<div class="invalid-feedback">
+								You must enter your last name.
+							</div>
+						</div>
+						<div class="" id="edit-email">
+							<label for="validationCustom03">Email</label>
+							<input type="text" name="email" class="form-control" id="validationCustom03" placeholder="rock@roll.com" required="">
+							<div class="valid-feedback">
+								Affirmitive!
+							</div>
+							<div class="invalid-feedback">
+								Please provide a valid email.
+							</div>
+						</div>
+						<div class="" id="edit-github">
+							<label for="validationCustom03">GitHub</label>
+							<input type="text" name="github" class="form-control" id="validationCustom04" placeholder="MartyMcfly" required="">
+							<div class="valid-feedback">
+								Wicked!
+							</div>
+							<div class="invalid-feedback">
+								You must enter your GitHub username.
+							</div>
+						</div>
+						<div id="github-selection"></div>
+						<div class="" id="edit-github">
+							<label for="validationCustom03">LinkedIn</label>
+							<input type="text" name="linkedin" class="form-control" id="validationCustom05" placeholder="MartyMcfly" required="">
+							<div class="valid-feedback">
+								Radical!
+							</div>
+							<div class="invalid-feedback">
+								Please provide your LinkedIn username.
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</main>
+
+	<footer>
+		<% include ../partials/footer %>
+	</footer>
+	
 </body>
 </html>

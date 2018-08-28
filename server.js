@@ -7,9 +7,11 @@ var routes = require('./app/routes/routes.js')
 var app = express()
 
 app.set('view engine', 'ejs')
-app.set('views', path.join(__dirname, './app/views'))
+app.set('views', path.join(__dirname, './app/views/pages'))
 
 db.connect()
+
+app.use(express.static(path.join(__dirname, 'app/public')))
 
 app.use('/', routes)
 
