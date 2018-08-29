@@ -8,7 +8,8 @@ html, body, main {
     width: 100%;
 }
 #search-bar {
-    width: 92%;
+    width: 80%;
+    margin-left: 5%;
 }
 #load-gif {
     position: fixed;
@@ -34,9 +35,12 @@ object {
 .container {
     background-color: rgba(255, 228, 196, 0.7);
     width: 60%;
-    margin-top: 5%;
+    margin-top: 2%;
     border-radius: 10px;
     padding: 30px;
+}
+#signup-container {
+    margin-top: 5%;
 }
 #edit-container {
     background: none;
@@ -118,4 +122,28 @@ object {
     width: 100%;
     margin-top: 3%;
     padding: 5%;
+}
+#footer {
+    width: 100%;
+    bottom: 0;
+    background-color: rgba(248, 249, 250, 1);
+    position: fixed;
+}
+#copyright {
+    margin: 2px;
+}
+@media screen and (max-width: 1199px){
+    #edit-container {
+        width: 65%;
+    }
+}
+@media screen and (max-width: 1186px){
+    #edit-container {
+        width: 64%;
+    }
+}
+@media screen and (max-width: 1154px){
+    #edit-container {
+        width: 63%;
+    }
 }
