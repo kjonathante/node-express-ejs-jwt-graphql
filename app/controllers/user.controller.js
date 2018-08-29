@@ -29,23 +29,19 @@ var bcrypt = require('bcryptjs');
 //----------------------------------------------------------FUNCTIONS----------------------------------------------
 
 exports.homePage = async function(req, res) {
-  console.log(req.session.userInfo);
-  if (req.session.userInfo){
-    console.log('Hello',req.session); 
+
+  if (req.session.userInfo){ 
     res.render('index',req.session.userInfo);
     
   }else{
-    
       req.session.userInfo = {
       first_name: null,
       last_name: null,
       username: null,
       email_address: null
     };
-    console.log('Hellox',req.session); 
     res.render('index',req.session.userInfo);
-  }
-  
+  } 
 }
 
 exports.signUpPage = async function(req,res){
