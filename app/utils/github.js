@@ -95,7 +95,8 @@ var x = async function (filename, variables) {
     // console.dir(data, {depth: null})
 
   } catch( error ) {
-    console.log(error)
+    // console.log(error)
+    throw error
   }
 }
 
