@@ -29,8 +29,8 @@ var bcrypt = require('bcryptjs');
 //----------------------------------------------------------FUNCTIONS----------------------------------------------
 
 exports.homePage = async function(req, res) {
-  
-  if (req.session.userinfo){
+  console.log(req.session.userInfo);
+  if (req.session.userInfo){
     console.log('Hello',req.session); 
     res.render('index',req.session.userInfo);
     
