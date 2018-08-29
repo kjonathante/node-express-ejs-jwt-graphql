@@ -18,7 +18,7 @@
 						<label id="edit-profile-pic" for="pic-upload">
 							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXMzIQ5Mz7oAmyAr726z56qS5QO7gTK9AFVj2TM2-izgMfbqWfLA" alt="User Pic" class="rounded" id="user-pic">
 						</label>
-						<input type="file" name="pic" class="form-control" id="pic-upload" accept="image/*" required="">
+						<input type="file" name="photourl" class="form-control" id="pic-upload" accept="image/*" required="">
 						<div class="valid-feedback">
 							Nice pic!
 						</div>
@@ -30,7 +30,7 @@
 					<div class="container" id="edit-container">
 						<div class="" id="edit-first-name">
 							<label for="validationCustom01">First name</label>
-							<input type="text" name="first" class="form-control" id="validationCustom01" value="<%= first_name %>" placeholder="Marty" required="">
+							<input type="text" name="first_name" class="form-control" id="validationCustom01" value="<%= first_name %>" placeholder="Marty" required="">
 							<div class="valid-feedback">
 								Looks good!
 							</div>
@@ -40,7 +40,7 @@
 						</div>
 						<div class="" id="edit-last-name">
 						<label for="validationCustom02">Last name</label>
-							<input type="text" name="last" class="form-control" id="validationCustom02" value="<%= last_name %>" placeholder="Mcfly" required="">
+							<input type="text" name="last_name" class="form-control" id="validationCustom02" value="<%= last_name %>" placeholder="Mcfly" required="">
 							<div class="valid-feedback">
 								Great!
 							</div>
@@ -50,7 +50,7 @@
 						</div>
 						<div class="" id="edit-email">
 							<label for="validationCustom03">Email</label>
-							<input type="text" name="email" class="form-control" id="validationCustom03" value="<%= email_address %>" placeholder="rock@roll.com" required="">
+							<input type="text" name="email_address" class="form-control" id="validationCustom03" value="<%= email_address %>" placeholder="rock@roll.com" required="">
 							<div class="valid-feedback">
 								Affirmitive!
 							</div>
@@ -60,7 +60,7 @@
 						</div>
 						<div class="" id="edit-github">
 							<label for="validationCustom03">GitHub</label>
-							<input type="text" name="github" class="form-control" id="validationCustom04" placeholder="MartyMcfly" required="">
+							<input type="text" name="gitlink" class="form-control" id="validationCustom04" placeholder="MartyMcfly" required="">
 							<div class="valid-feedback">
 								Wicked!
 							</div>
@@ -71,7 +71,7 @@
 						<div id="github-selection"></div>
 						<div class="" id="edit-github">
 							<label for="validationCustom03">LinkedIn</label>
-							<input type="text" name="linkedin" class="form-control" id="validationCustom05" placeholder="MartyMcfly" required="">
+							<input type="text" name="linkdin" class="form-control" id="validationCustom05" placeholder="MartyMcfly" required="">
 							<div class="valid-feedback">
 								Radical!
 							</div>

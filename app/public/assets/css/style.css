@@ -25,11 +25,8 @@ html, body, main {
     margin-top: 5%;
     margin-bottom: -5%;
 }
-#browser {
-    height: 93%;
-}
 object {
-    height: 100%;
+    height: 89%;
     width: 100%;
 }
 .container {
@@ -41,6 +38,9 @@ object {
 }
 #signup-container {
     margin-top: 5%;
+}
+#confirm-short-text {
+    display: none;
 }
 #edit-container {
     background: none;
@@ -132,9 +132,55 @@ object {
 #copyright {
     margin: 2px;
 }
+/* @media screen and (max-height: 1366px){
+    object {
+        height: 94%;
+    }
+}
+@media screen and (max-height: 1145px){
+    object {
+        height: 93%;
+    }
+}
+@media screen and (max-height: 980px){
+    object {
+        height: 92%;
+    }
+}
+@media screen and (max-height: 860px){
+    object {
+        height: 90%;
+    }
+}
+@media screen and (max-height: 712px){
+    object {
+        height: 89%;
+    }
+}
+@media screen and (max-height: 645px){
+    object {
+        height: 87%;
+    }
+}
+@media screen and (max-height: 525px){
+    object {
+        height: 85%;
+    }
+} */
+
+/* Responsivness for regular height screens with different widths */
+@media screen and (max-width: 2560px){
+    #search-bar {
+        width: 85%;
+        margin-left: 5%;
+    }
+}
 @media screen and (max-width: 1199px){
     #edit-container {
         width: 65%;
+    }
+    #search-bar {
+        margin-left: 2%;
     }
 }
 @media screen and (max-width: 1186px){
@@ -145,5 +191,198 @@ object {
 @media screen and (max-width: 1154px){
     #edit-container {
         width: 63%;
+    }
+}
+@media screen and (max-width: 1029px){
+    #confirm-long-text {
+        display: none;
+    }
+    #confirm-short-text {
+        display: block;
+    }
+}
+@media screen and (max-width: 991px){
+    #edit-container {
+        width: 63%;
+    }
+    .navbar {
+        flex-wrap: nowrap;
+    }
+    #search-bar {
+        margin-left: 1%;
+    }
+}
+@media screen and (max-width: 930px){
+    #search-bar {
+        margin-left: 0;
+    }
+}
+@media screen and (max-width: 855px){
+    #search-bar {
+        width: 80%;
+        margin-left: 2%;
+    }
+}
+@media screen and (max-width: 790px){
+    #search-bar {
+        margin-left: 1%;
+    }
+}
+@media screen and (max-width: 767px){
+    html, body, main {
+        overflow: scroll;
+    }
+    .navbar {
+        position: fixed;
+        top: 0;
+        z-index: 1;
+        width: 100%;
+    }
+    #confirm-short-text {
+        display: none;
+    }
+    #confirm-long-text {
+        display: block;
+    }
+    #signup-btn {
+        width: 100%;
+    }
+    object {
+        height: 89%;
+        margin-top: 7%;
+    }
+    #signup-container {
+        margin-top: 12%;
+        margin-bottom: 8%;
+    }
+}
+@media screen and (max-width: 700px){
+    #search-bar {
+        margin-left: 0;
+    }
+    object {
+        margin-top: 8%;
+    }
+}
+@media screen and (max-width: 685px){
+    #search-bar {
+        width: 78%;
+    }
+}
+@media screen and (max-width: 650px){
+    #search-bar {
+        width: 75%;
+    }
+}
+@media screen and (max-width: 620px){
+    #search-bar {
+        width: 75%;
+    }
+    object {
+        margin-top: 9%;
+    }
+}
+@media screen and (max-width: 575px){
+    #search-bar {
+        width: 72%;
+    }
+    object {
+        height: 87%;
+        margin-top: 12%;
+    }
+    #signup-container {
+        margin-top: 16%;
+    }
+}
+@media screen and (max-width: 560px){
+    object {
+        height: 87%;
+        margin-top: 13%;
+    }
+}
+@media screen and (max-width: 534px){
+    #search-bar {
+        width: 70%;
+    }
+}
+@media screen and (max-width: 496px){
+    object {
+        margin-top: 14%;
+    }
+    #signup-container {
+        margin-top: 19%;
+        margin-bottom: 10%;
+    }
+}
+@media screen and (max-width: 482px){
+    #search-bar {
+        width: 65%;
+    }
+}
+@media screen and (max-width: 460px){
+    object {
+        margin-top: 15%;
+    }
+}
+@media screen and (max-width: 446px){
+    #search-bar {
+        width: 60%;
+    }
+}
+@media screen and (max-width: 430px){
+    object {
+        margin-top: 16%;
+    }
+}
+@media screen and (max-width: 419px){
+    object {
+        height: 81%;
+    }
+}
+@media screen and (max-width: 419px){
+    html, body, main {
+        overflow: scroll;
+    }
+    .navbar {
+        position: fixed;
+        top: 0;
+        z-index: 1;
+    }
+    #search-bar {
+        width: 85%;
+    }
+    #search-btn {
+        display: none;
+    }
+    object {
+        height: 89%;
+        margin-top: 13%;
+    }
+    #signup-container {
+        margin-top: 20%;
+        margin-bottom: 13%;
+    }
+}
+@media screen and (max-width: 375px){
+    object {
+        height: 89%;
+        margin-top: 15%;
+    }
+}
+@media screen and (max-width: 360px){
+    #signup-container {
+        margin-bottom: 12%;
+    }
+}
+@media screen and (max-width: 320px){
+    object {
+        height: 86%;
+        margin-top: 17%;
+    }
+}
+/* Responsivness for taller screens with different widths */
+@media screen and (max-width: 320px) and (max-height: 865px){
+    object {
+        height: 91%;
     }
 }
