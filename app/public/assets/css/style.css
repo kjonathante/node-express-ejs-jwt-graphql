@@ -25,11 +25,7 @@ html, body, main {
     margin-top: 5%;
     margin-bottom: -5%;
 }
-#browser {
-    height: 93%;
-}
 object {
-    height: 100%;
     width: 100%;
 }
 .container {
@@ -41,6 +37,9 @@ object {
 }
 #signup-container {
     margin-top: 5%;
+}
+#confirm-short-text {
+    display: none;
 }
 #edit-container {
     background: none;
@@ -66,10 +65,19 @@ object {
 #edit-profile-pic img {
     width: 225px;
 }
+#repo-btn {
+    padding: 0 1rem 0 1rem;
+    margin-bottom: 1px;
+}
+.form-check {
+    margin-left: 1%;
+}
 #update-btn {
-    margin-top: 10%;
-    float: left;
-    clear: both;
+    margin-top: 3%;
+}
+#update-btn:hover {
+    background-color: rgba(40, 167, 69, 1);
+    border-color: rgba(40, 167, 69, 1);
 }
 #edit-first-name {
     margin-left: 3%;
@@ -91,10 +99,10 @@ object {
 }
 #github-selection {
     background-color: rgba(255, 250, 250, 1);
-    height: 120px;
-    display: block;
+    height: 75px;
+    display: none;
     margin-left: 3%;
-    margin-top: 2%;
+    margin-top: 1%;
     overflow-y: auto;
     border-radius: 10px;
 }
@@ -131,19 +139,4 @@ object {
 }
 #copyright {
     margin: 2px;
-}
-@media screen and (max-width: 1199px){
-    #edit-container {
-        width: 65%;
-    }
-}
-@media screen and (max-width: 1186px){
-    #edit-container {
-        width: 64%;
-    }
-}
-@media screen and (max-width: 1154px){
-    #edit-container {
-        width: 63%;
-    }
 }

@@ -10,7 +10,7 @@
 	</header>
 
 	<main>
-		<!-- Page body -->:
+		<!-- Page body -->
 		<div class="container">
 			<form method="POST" action="/edit-profile" class="needs-validation" novalidate="">
 				<div class="form-row">
@@ -18,14 +18,13 @@
 						<label id="edit-profile-pic" for="pic-upload">
 							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXMzIQ5Mz7oAmyAr726z56qS5QO7gTK9AFVj2TM2-izgMfbqWfLA" alt="User Pic" class="rounded" id="user-pic">
 						</label>
-						<input type="file" name="pic" class="form-control" id="pic-upload" accept="image/*" required="">
+						<input type="file" name="photourl" class="form-control" id="pic-upload" accept="image/*" required="">
 						<div class="valid-feedback">
 							Nice pic!
 						</div>
 						<div class="invalid-feedback">
 							Please select a profile picture.
 						</div>
-						<button class="btn btn-outline-secondary btn-block" id="update-btn" type="submit">Update</button>
 					</div>
 					<div class="container" id="edit-container">
 						<div class="" id="edit-first-name">
@@ -59,19 +58,23 @@
 							</div>
 						</div>
 						<div class="" id="edit-github">
-							<label for="validationCustom03">GitHub</label>
+
+							<label for="validationCustom04">GitHub | <button class="btn btn-light" id="repo-btn" onclick="gitPull()">Pull Repos</button> </label>
+
 							<input type="text" name="gitlink" class="form-control" id="validationCustom04" placeholder="MartyMcfly" required="">
 							<div class="valid-feedback">
 								Wicked!
 							</div>
 							<div class="invalid-feedback">
-								You must enter your GitHub username.
+								You must pull your repos from GitHub.
 							</div>
 						</div>
 						<div id="github-selection"></div>
 						<div class="" id="edit-github">
-							<label for="validationCustom03">LinkedIn</label>
-							<input type="text" name="linkdin" class="form-control" id="validationCustom05" placeholder="MartyMcfly" required="">
+
+							<label for="validationCustom05">LinkedIn</label>
+							<input type="text" name="linkedin" class="form-control" id="validationCustom05" placeholder="MartyMcfly" required="">
+
 							<div class="valid-feedback">
 								Radical!
 							</div>
@@ -80,6 +83,7 @@
 							</div>
 						</div>
 					</div>
+					<button class="btn btn-secondary btn-block" id="update-btn" type="submit">Update</button>
 				</div>
 			</form>
 		</div>

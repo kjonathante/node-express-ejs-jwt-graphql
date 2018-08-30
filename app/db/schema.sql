@@ -12,7 +12,7 @@ CREATE TABLE users (
   username VARCHAR (255) NOT NULL UNIQUE,
   password_hash VARCHAR(255) NOT NULL,
   gitlink VARCHAR (255),
-  linkdin VARCHAR(255),
+  linkedin VARCHAR(255),
   photourl VARCHAR (255),
   PRIMARY KEY (id)
 );
