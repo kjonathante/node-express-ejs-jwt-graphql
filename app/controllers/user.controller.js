@@ -37,15 +37,15 @@ exports.signUp = function(req, res) {
 
         }else{
           delete req.body.password_hash;
-          db.pool().query('SELECT * FROM users WHERE username = ?', 
-            req.body.username,function (error, results, fields) {
+          db.pool().query('SELECT * FROM users WHERE email_address = ?', 
+            req.body.email_address,function (error, results, fields) {
               if (error){
                 console.log(error);
               }else{
                 //Create New User account and navigate user to the main profile page
-                req.session.userInfo = req.body;
+                req.session.userInfo = req.body; // might have some issue(kit)
                 req.session.userInfo.id = results[0].id;
-                res.render('edit-profile',req.session.userInfo);
+                res.render('pages/edit-profile',req.session.userInfo);
               }
             });
         }  
@@ -55,7 +55,7 @@ exports.signUp = function(req, res) {
 }
 
 exports.editProfilePage = function (req, res){
-  res.render('edit-profile',req.session.userInfo);
+  res.render('pages/edit-profile',req.session.userInfo);
 }
 
 exports.editProfile = function (req, res){
@@ -64,7 +64,7 @@ exports.editProfile = function (req, res){
       if (err){
         console.log(err);
       }else{
-        res.render('profile',req.session.userInfo);
+        res.render('pages/profile',req.session.userInfo);
       }
     });
 }
