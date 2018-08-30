@@ -39,7 +39,8 @@ exports.homePage = async function(req, res) {
       first_name: null,
       last_name: null,
       username: null,
-      email_address: null
+      email_address: null,
+      error: null
     };
     res.render('index',req.session.userInfo);
   } 
@@ -75,19 +76,23 @@ exports.signUp = function(req, res) {
         
         if (error){
 
-          //Username already exists - error message
-          console.log(error);
+          //Email already exists - error message
+          req.session.userInfo.error = error.code;
+          console.log(req.session.userInfo.error);
+          res.render('signup',req.session.userInfo);
 
         }else{
           delete req.body.password_hash;
           db.pool().query('SELECT * FROM users WHERE username = ?', 
             req.body.username,function (error, results, fields) {
               if (error){
-                console.log(error);
+                console.log('HELLO!!!!');
+                
               }else{
                 //Create New User account and navigate user to the main profile page
                 req.session.userInfo = req.body;
                 req.session.userInfo.id = results[0].id;
+                req.session.userInfo.error = null;
                 res.render('edit-profile',req.session.userInfo);
               }
             });
