@@ -72,7 +72,11 @@ exports.login = function( req, res, next ) {
           first_name: user.first_name,
           last_name: user.last_name,
         }
-        return res.redirect('/');
+
+        var redirectTo = req.session.redirectTo ? req.session.redirectTo : '/';
+        delete req.session.redirectTo
+        return res.redirect(redirectTo)
+        //return res.redirect('/');
       }
     })
   } else {
@@ -94,6 +98,26 @@ exports.logout = function( req, res, next ) {
       }
     })
   }
+}
+
+exports.authorize = function( req, res, next ) {
+  if (!req.session.userInfo) {
+    console.log( 'inside authorize => userInfo is undefined' )
+    req.session.redirectTo = req.path;
+    return res.redirect('/');
+    //return res.redirect('/login');
+  } 
+  
+  user.findByEmail( req.session.userInfo.email_address, function( error, results) {
+    if (error) {
+      req.session.redirectTo = req.path;
+      return res.redirect('/login');  
+    } else {
+      return next()
+    }
+  })
+
+
 }
 
 exports.editProfilePage = function (req, res){

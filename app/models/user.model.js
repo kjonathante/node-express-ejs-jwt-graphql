@@ -46,3 +46,24 @@ exports.authenticate = function( email_address, password, callback ) {
     }
   })
 }
+
+exports.findByEmail = function( email_address, callback ) {
+  db.pool().query({  
+    sql: 'SELECT id, first_name, last_name FROM users WHERE email_address = ?',
+    values: [email_address],
+  }, function( error, results, fields) {
+    if (error) {
+      return callback(error)
+    }
+
+    if (results.length == 0){
+      return callback(new Error('No such user') )
+    }else {
+      return callback(null, { 
+        id: results[0].id,
+        first_name: results[0].first_name,
+        last_name: results[0].last_name,
+      })
+    }
+  })
+}
