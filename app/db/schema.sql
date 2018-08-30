@@ -9,7 +9,6 @@ CREATE TABLE users (
   first_name VARCHAR(255) NOT NULL,
   last_name VARCHAR(255) NOT NULL,
   email_address VARCHAR (255) NOT NULL UNIQUE,
-  username VARCHAR (255) NOT NULL UNIQUE,
   password_hash VARCHAR(255) NOT NULL,
   gitlink VARCHAR (255),
   linkedin VARCHAR(255),
