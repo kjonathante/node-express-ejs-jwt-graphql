@@ -46,5 +46,5 @@ app.use(function (err, req, res, next) {
   // res.render can also be called here
 })
 
-//Server listening on port 3000
+// server listening on port 3000
 app.listen(3000)

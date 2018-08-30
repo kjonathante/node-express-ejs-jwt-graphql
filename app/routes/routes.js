@@ -47,7 +47,6 @@ router.get('/search', function(req, res) {
   res.render('search')
 });
 
-router.get('/db', userController.getAll)
 
 router.get('/github/repos/:username', githubController.getRepos)
 
