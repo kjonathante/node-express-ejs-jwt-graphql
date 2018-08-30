@@ -25,6 +25,10 @@ router.get('/signup', userController.signUpPage);
 
 router.post('/signup',userController.signUp);
 
+router.get('/edit-profile', userController.editProfilePage);
+
+router.post('/edit-profile', userController.editProfile);
+
 // router.get('/', function(req, res) {
 //   res.render('index')
 // });
@@ -37,9 +41,7 @@ router.get('/profile', function(req, res) {
   res.render('profile')
 });
 
-router.get('/edit-profile', function(req, res) {
-  res.render('edit-profile')
-});
+
 
 router.get('/search', function(req, res) {
   res.render('search')

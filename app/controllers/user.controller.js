@@ -28,6 +28,7 @@ var bcrypt = require('bcryptjs');
 
 //----------------------------------------------------------FUNCTIONS----------------------------------------------
 
+//Load the home page and initialize the userInfo session object
 exports.homePage = async function(req, res) {
 
   if (req.session.userInfo){ 
@@ -44,6 +45,7 @@ exports.homePage = async function(req, res) {
   } 
 }
 
+//Load the SignUp page
 exports.signUpPage = async function(req,res){
   res.render('signup',req.session.userInfo);
 }
@@ -59,8 +61,9 @@ exports.getAll = async function(req, res, next) {
   res.render('pages/index',results[0]) 
 } 
 
+//POST user information from the SignUp page
 exports.signUp = function(req, res) {
-  // console.log(req.session);
+
   bcrypt.genSalt(10, function(err, salt) {
 
     bcrypt.hash(req.body.password_hash, salt, function(err, p_hash) { 
@@ -71,24 +74,40 @@ exports.signUp = function(req, res) {
         req.body,function (error, results, fields) {
         
         if (error){
+
           //Username already exists - error message
           console.log(error);
-          // res.render('signup',error);
 
         }else{
-          //Create New User account and navigate user to the main profile page
-          // console.log(req.body.first_name);
           delete req.body.password_hash;
-          // req.session={};
-          req.session.userInfo = req.body;
-          console.log(req.session.userInfo);
-          // userSession.session = req.session.firstName;
-          // userSession.data = results[0];
-          res.render('edit-profile',req.session.userInfo);
-          // res.render('edit-profile',req.body);
-
+          db.pool().query('SELECT * FROM users WHERE username = ?', 
+            req.body.username,function (error, results, fields) {
+              if (error){
+                console.log(error);
+              }else{
+                //Create New User account and navigate user to the main profile page
+                req.session.userInfo = req.body;
+                req.session.userInfo.id = results[0].id;
+                res.render('edit-profile',req.session.userInfo);
+              }
+            });
         }  
       });
     });
   });
+}
+
+exports.editProfilePage = function (req, res){
+  res.render('edit-profile',req.session.userInfo);
+}
+
+exports.editProfile = function (req, res){
+  db.pool().query('UPDATE users SET gitlink = ?, linkdin = ?, photourl = ? WHERE id = ?',
+    [req.body.gitlink,req.body.linkdin,req.body.photourl], function (err,results,fields){
+      if (err){
+        console.log(err);
+      }else{
+        res.render('profile',req.session.userInfo);
+      }
+    });
 }
