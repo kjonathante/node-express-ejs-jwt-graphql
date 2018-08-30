@@ -1,66 +1,22 @@
 //--------------------------------------------------------EXPORTS & REQUIRES---------------------------------------
-// var express = require('express')
-// var app = express();
-// const bodyParser = require('body-parser');
-//Exporting user.model.js which runs all the DB functions.
-var user = require('../models/user.model.js')
-// const bodyParser = require('body-parser');
-
-// app.use(bodyParser.urlencoded({extended: true}));
-// app.use(bodyParser.json());
-
-const db = require('../db/db.js')
-
-//Including bcrypt for password encryption
+// including bcrypt for password encryption
 var bcrypt = require('bcryptjs');
 
-//Allow sessions
-// var session = require('express-session');
-
-
-//----------------------------------------------------------VARIABLES----------------------------------------------
-
-// var userSession={
-//   session: 'logged_out',
-//   data: null
-// };
-
+// exporting user.model.js which runs all the DB functions.
+var user = require('../models/user.model.js')
+var db = require('../db/db.js')
 
 //----------------------------------------------------------FUNCTIONS----------------------------------------------
 
-//Load the home page and initialize the userInfo session object
+// load the home page 
 exports.homePage = async function(req, res) {
-
-  if (req.session.userInfo){ 
-    res.render('index',req.session.userInfo);
-    
-  }else{
-      req.session.userInfo = {
-      first_name: null,
-      last_name: null,
-      username: null,
-      email_address: null,
-      error: null
-    };
-    res.render('index',req.session.userInfo);
-  } 
+  res.render('pages/index',req.session.userInfo)
 }
 
-//Load the SignUp page
+// load the signup page
 exports.signUpPage = async function(req,res){
-  res.render('signup',req.session.userInfo);
+  res.render('pages/signup',req.session.userInfo);
 }
-
-exports.getAll = async function(req, res, next) {
-  var results
-  try {
-    results = await user.getAll()
-  } catch (error) {
-    res.send('Ops')
-    throw error
-  }
-  res.render('pages/index',results[0]) 
-} 
 
 //POST user information from the SignUp page
 exports.signUp = function(req, res) {
@@ -83,17 +39,17 @@ exports.signUp = function(req, res) {
 
         }else{
           delete req.body.password_hash;
-          db.pool().query('SELECT * FROM users WHERE username = ?', 
-            req.body.username,function (error, results, fields) {
+          db.pool().query('SELECT * FROM users WHERE email_address = ?', 
+            req.body.email_address,function (error, results, fields) {
               if (error){
                 console.log('HELLO!!!!');
                 
               }else{
                 //Create New User account and navigate user to the main profile page
-                req.session.userInfo = req.body;
+                req.session.userInfo = req.body; // might have some issue(kit)
                 req.session.userInfo.id = results[0].id;
                 req.session.userInfo.error = null;
-                res.render('edit-profile',req.session.userInfo);
+                res.render('pages/edit-profile',req.session.userInfo);
               }
             });
         }  
@@ -102,8 +58,74 @@ exports.signUp = function(req, res) {
   });
 }
 
+exports.login = function( req, res, next ) {
+
+  if (req.body.email_address && req.body.password) {
+    user.authenticate(req.body.email_address, req.body.password, function (error, user) {
+      if (error || !user) {
+        var err = new Error('Wrong email or password.');
+        err.status = 401;
+        return next(err);
+      } else {
+        console.log('inside user.controller.login', user)
+        console.log('inside user.controller.login', req.path)
+        req.session.userId = user.id // alternate method
+        req.session.userInfo = {  
+          id: user.id,
+          email_address: req.body.email_address,
+          first_name: user.first_name,
+          last_name: user.last_name,
+        }
+
+        var redirectTo = req.session.redirectTo ? req.session.redirectTo : '/';
+        delete req.session.redirectTo
+        return res.redirect(redirectTo)
+        //return res.redirect('/');
+      }
+    })
+  } else {
+    var err = new Error('All fields required.');
+    err.status = 400;
+    return next(err);
+  }
+
+}
+
+exports.logout = function( req, res, next ) {
+  if (req.session) {
+    // delete session object
+    req.session.destroy( function (err) {
+      if (err) {
+        return next(err)
+      } else {
+        return res.redirect('/')
+      }
+    })
+  }
+}
+
+exports.authorize = function( req, res, next ) {
+  if (!req.session.userInfo) {
+    console.log( 'inside authorize => userInfo is undefined' )
+    req.session.redirectTo = req.path;
+    return res.redirect('/');
+    //return res.redirect('/login');
+  } 
+  
+  user.findByEmail( req.session.userInfo.email_address, function( error, results) {
+    if (error) {
+      req.session.redirectTo = req.path;
+      return res.redirect('/login');  
+    } else {
+      return next()
+    }
+  })
+
+
+}
+
 exports.editProfilePage = function (req, res){
-  res.render('edit-profile',req.session.userInfo);
+  res.render('pages/edit-profile',req.session.userInfo);
 }
 
 exports.editProfile = function (req, res){
@@ -112,7 +134,7 @@ exports.editProfile = function (req, res){
       if (err){
         console.log(err);
       }else{
-        res.render('profile',req.session.userInfo);
+        res.render('pages/profile',req.session.userInfo);
       }
     });
 }

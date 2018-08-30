@@ -25,7 +25,11 @@ router.get('/signup', userController.signUpPage);
 
 router.post('/signup',userController.signUp);
 
-router.get('/edit-profile', userController.editProfilePage);
+router.post('/login', userController.login)
+
+router.get('/logout', userController.logout)
+
+router.get('/edit-profile', userController.authorize, userController.editProfilePage);
 
 router.post('/edit-profile', userController.editProfile);
 
@@ -47,7 +51,6 @@ router.get('/search', function(req, res) {
   res.render('search')
 });
 
-router.get('/db', userController.getAll)
 
 router.get('/github/repos/:username', githubController.getRepos)
 

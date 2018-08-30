@@ -9,7 +9,6 @@ CREATE TABLE users (
   first_name VARCHAR(255) NOT NULL,
   last_name VARCHAR(255) NOT NULL,
   email_address VARCHAR (255) NOT NULL UNIQUE,
-  username VARCHAR (255) NOT NULL UNIQUE,
   password_hash VARCHAR(255) NOT NULL,
   gitlink VARCHAR (255),
   linkedin VARCHAR(255),
@@ -28,7 +27,6 @@ CREATE TABLE gitrepos (
 
 
 INSERT  INTO users (first_name, last_name, email_address, 
-  username, password_hash, gitlink, linkedin,
-  photourl)
-VALUES ("Kit","Te","kjonthante@gmail.com","kit","kit",
+  password_hash, gitlink, linkedin,photourl)
+VALUES ("Kit","Te","kjonthante@gmail.com","kit",
   "gitlink","linkdinlink","photo");

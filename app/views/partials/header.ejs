@@ -15,18 +15,18 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search-btn">Search</button>
         </form>
         
-        <% if(username){ %>
-            <div>Hi, <%= username %></div>
+        <% if (!(typeof email_address == 'undefined')) { %>
+            <div>Hi, <%= first_name %></div>
         <% }else{ %>
         <div class="btn-group">
             <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Log In
             </button>
             <div class="dropdown-menu dropdown-menu-right">
-                <form method="POST" action="/signin" class="px-4 py-3 needs-validation" novalidate="">
+                <form method="POST" action="/login" class="px-4 py-3 needs-validation" novalidate="">
                     <div class="form-group">
                     <label for="dropdownFormUsername">Username</label>
-                    <input type="text" name="username" class="form-control" id="dropdownFormUsername" placeholder="CaptainDeliciousPants" aria-describedby="inputGroupPrepend" required="" autocomplete="username">
+                    <input type="text" name="email_address" class="form-control" id="dropdownFormUsername" placeholder="CaptainDeliciousPants" aria-describedby="inputGroupPrepend" required="" autocomplete="username">
                     <div class="valid-feedback">
                         Awesome username!
                     </div>
