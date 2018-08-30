@@ -1,65 +1,22 @@
 //--------------------------------------------------------EXPORTS & REQUIRES---------------------------------------
-// var express = require('express')
-// var app = express();
-// const bodyParser = require('body-parser');
-//Exporting user.model.js which runs all the DB functions.
-var user = require('../models/user.model.js')
-// const bodyParser = require('body-parser');
-
-// app.use(bodyParser.urlencoded({extended: true}));
-// app.use(bodyParser.json());
-
-const db = require('../db/db.js')
-
-//Including bcrypt for password encryption
+// including bcrypt for password encryption
 var bcrypt = require('bcryptjs');
 
-//Allow sessions
-// var session = require('express-session');
-
-
-//----------------------------------------------------------VARIABLES----------------------------------------------
-
-// var userSession={
-//   session: 'logged_out',
-//   data: null
-// };
-
+// exporting user.model.js which runs all the DB functions.
+var user = require('../models/user.model.js')
+var db = require('../db/db.js')
 
 //----------------------------------------------------------FUNCTIONS----------------------------------------------
 
-//Load the home page and initialize the userInfo session object
+// load the home page 
 exports.homePage = async function(req, res) {
-
-  if (req.session.userInfo){ 
-    res.render('index',req.session.userInfo);
-    
-  }else{
-      req.session.userInfo = {
-      first_name: null,
-      last_name: null,
-      username: null,
-      email_address: null
-    };
-    res.render('index',req.session.userInfo);
-  } 
+  res.render('pages/index',req.session.userInfo)
 }
 
-//Load the SignUp page
+// load the signup page
 exports.signUpPage = async function(req,res){
-  res.render('signup',req.session.userInfo);
+  res.render('pages/signup',req.session.userInfo);
 }
-
-exports.getAll = async function(req, res, next) {
-  var results
-  try {
-    results = await user.getAll()
-  } catch (error) {
-    res.send('Ops')
-    throw error
-  }
-  res.render('pages/index',results[0]) 
-} 
 
 //POST user information from the SignUp page
 exports.signUp = function(req, res) {
