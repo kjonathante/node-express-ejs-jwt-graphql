@@ -27,6 +27,8 @@ router.post('/signup',userController.signUp);
 
 router.post('/login', userController.login)
 
+router.get('/logout', userController.logout)
+
 router.get('/edit-profile', userController.editProfilePage);
 
 router.post('/edit-profile', userController.editProfile);

@@ -83,6 +83,19 @@ exports.login = function( req, res, next ) {
 
 }
 
+exports.logout = function( req, res, next ) {
+  if (req.session) {
+    // delete session object
+    req.session.destroy( function (err) {
+      if (err) {
+        return next(err)
+      } else {
+        return res.redirect('/')
+      }
+    })
+  }
+}
+
 exports.editProfilePage = function (req, res){
   res.render('pages/edit-profile',req.session.userInfo);
 }
