@@ -54,6 +54,35 @@ exports.signUp = function(req, res) {
   });
 }
 
+exports.login = function( req, res, next ) {
+
+  if (req.body.email_address && req.body.password) {
+    user.authenticate(req.body.email_address, req.body.password, function (error, user) {
+      if (error || !user) {
+        var err = new Error('Wrong email or password.');
+        err.status = 401;
+        return next(err);
+      } else {
+        console.log('inside user.controller.login', user)
+        console.log('inside user.controller.login', req.path)
+        req.session.userId = user.id // alternate method
+        req.session.userInfo = {  
+          id: user.id,
+          email_address: req.body.email_address,
+          first_name: user.first_name,
+          last_name: user.last_name,
+        }
+        return res.redirect('/');
+      }
+    })
+  } else {
+    var err = new Error('All fields required.');
+    err.status = 400;
+    return next(err);
+  }
+
+}
+
 exports.editProfilePage = function (req, res){
   res.render('pages/edit-profile',req.session.userInfo);
 }
