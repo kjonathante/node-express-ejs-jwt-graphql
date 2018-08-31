@@ -47,7 +47,7 @@ exports.signUp = function(req, res) {
                 
               }else{
                 //Create New User account and navigate user to the main profile page
-                req.session.user.userInfo = req.body; // might have some issue(kit)
+                req.session.user = { userInfo: req.body }
                 req.session.user.userInfo.id = results[0].id;
                 // req.session.useruserInfo.error = null;
                 res.render('pages/edit-profile',req.session.user);
@@ -70,12 +70,14 @@ exports.login = function( req, res, next ) {
       } else {
         console.log('inside user.controller.login', user)
         console.log('inside user.controller.login', req.path)
-        req.session.userId = user.id // alternate method
-        req.session.userInfo = {  
-          id: user.id,
-          email_address: req.body.email_address,
-          first_name: user.first_name,
-          last_name: user.last_name,
+
+        req.session.user = { 
+          userInfo : {  
+            id: user.id,
+            email_address: req.body.email_address,
+            first_name: user.first_name,
+            last_name: user.last_name,
+          }
         }
 
         var redirectTo = req.session.redirectTo ? req.session.redirectTo : '/';
@@ -106,14 +108,14 @@ exports.logout = function( req, res, next ) {
 }
 
 exports.authorize = function( req, res, next ) {
-  if (!req.session.userInfo) {
+  if (!req.session.user || !req.session.user.userInfo) {
     console.log( 'inside authorize => userInfo is undefined' )
     req.session.redirectTo = req.path;
     return res.redirect('/');
     //return res.redirect('/login');
   } 
   
-  user.findByEmail( req.session.userInfo.email_address, function( error, results) {
+  user.findByEmail( req.session.user.userInfo.email_address, function( error, results) {
     if (error) {
       req.session.redirectTo = req.path;
       return res.redirect('/login');  
@@ -126,7 +128,7 @@ exports.authorize = function( req, res, next ) {
 }
 
 exports.editProfilePage = function (req, res, next){
-  user.findById( req.session.userInfo.id, function(error,results) {
+  user.findById( req.session.user.userInfo.id, function(error,results) {
     if (error) {
       return next(error)
     } else {
