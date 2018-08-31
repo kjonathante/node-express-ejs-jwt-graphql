@@ -2,14 +2,22 @@ html, body, main {
     height: 100%;
     width: 100%;
     background-image: url(../imgs/wormz.png);
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 .form-inline {
-    width: 100%;
+    width: fit-content;
+    flex: 1;
 }
 #search-bar {
-    width: 80%;
-    margin-left: 5%;
+    flex: 1;
+    margin-left: 3%
+}
+#search-btn {
+    margin-right: 5%;
+}
+#profile-link {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 1);
 }
 #load-gif {
     position: fixed;
@@ -47,6 +55,7 @@ object {
     margin: 0;
     padding: 0;
     margin-left: 1%;
+    flex: 1;
 }
 /* #edit-container label {
     margin: 0;
