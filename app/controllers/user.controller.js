@@ -10,12 +10,12 @@ var db = require('../db/db.js')
 
 // load the home page 
 exports.homePage = async function(req, res) {
-  res.render('pages/index',req.session.userInfo)
+  res.render('pages/index',req.session.user)
 }
 
 // load the signup page
 exports.signUpPage = async function(req,res){
-  res.render('pages/signup',req.session.userInfo);
+  res.render('pages/signup',req.session.user);
 }
 
 //POST user information from the SignUp page
@@ -33,9 +33,10 @@ exports.signUp = function(req, res) {
         if (error){
 
           //Email already exists - error message
-          req.session.userInfo.error = error.code;
-          console.log(req.session.userInfo.error);
-          res.render('signup',req.session.userInfo);
+          req.session.user = {error: error.code};
+          // req.session.user.error = error.code;
+          console.log(req.session.user.error);
+          res.render('pages/signup',req.session.user);
 
         }else{
           delete req.body.password_hash;
@@ -46,10 +47,10 @@ exports.signUp = function(req, res) {
                 
               }else{
                 //Create New User account and navigate user to the main profile page
-                req.session.userInfo = req.body; // might have some issue(kit)
-                req.session.userInfo.id = results[0].id;
-                req.session.userInfo.error = null;
-                res.render('pages/edit-profile',req.session.userInfo);
+                req.session.user.userInfo = req.body; // might have some issue(kit)
+                req.session.user.userInfo.id = results[0].id;
+                // req.session.useruserInfo.error = null;
+                res.render('pages/edit-profile',req.session.user);
               }
             });
         }  
