@@ -120,8 +120,14 @@ exports.authorize = function( req, res, next ) {
 
 }
 
-exports.editProfilePage = function (req, res){
-  res.render('pages/edit-profile',req.session.userInfo);
+exports.editProfilePage = function (req, res, next){
+  user.findById( req.session.userInfo.id, function(error,results) {
+    if (error) {
+      return next(error)
+    } else {
+      return res.render('pages/edit-profile', { userInfo: results } );
+    }
+  })
 }
 
 exports.editProfile = function (req, res){
