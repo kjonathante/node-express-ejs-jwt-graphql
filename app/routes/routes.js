@@ -43,9 +43,7 @@ router.get('/search', userController.search);
 //   res.render('signup')
 // });
 
-router.get('/profile', function(req, res) {
-  res.render('profile')
-});
+router.get('/profile/:id', userController.profile)
 
 
 

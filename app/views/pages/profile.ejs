@@ -15,10 +15,23 @@
             <div class="form-row">
                 <div>
                     <label id="profile-pic">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXMzIQ5Mz7oAmyAr726z56qS5QO7gTK9AFVj2TM2-izgMfbqWfLA" alt="User Pic" class="rounded" id="user-pic">
+                        <img src=<%= ((typeof userInfo != 'undefined') && (typeof userInfo.photourl != 'undefined')) ? '/images/'+userInfo.photourl : '' %> alt="User Pic" class="rounded" id="user-pic" width="200">
                     </label>
                 </div>
-                <div class="container" id="profile-info-container"></div>
+                <div class="container" id="profile-info-container">
+					<% if (typeof userInfo != 'undefined') {%>
+						<p><%= userInfo.first_name %></p>
+						<p><%= userInfo.last_name %></p>
+						<p><%= userInfo.email_address %></p>
+						<p><%= userInfo.gitlink %></p>
+						<p><%= userInfo.linkedin %></p>
+
+						<% for(var val of userInfo.git_repos){%>
+							<p><%=val.git_repo%></p>
+						<%}%>
+
+					<%}%>
+				</div>
                 <div class="container" id="message-board-container"></div>
                 <div class="container" id="message-input-container"></div>
             </div>
