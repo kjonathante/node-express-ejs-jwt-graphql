@@ -2,20 +2,20 @@
                                                     /* Responsivness for various widths */
 /* -------------------------------------------------------------------------------------------------------------------------------------- */
 @media screen and (max-width: 2560px){
-    #search-bar {
+    /* #search-bar {
         width: 85%;
-        margin-left: 5%;
-    }
+        margin-left: 3%;
+    } */
 }
 @media screen and (max-width: 1199px){
     #edit-container {
         width: 65%;
     }
-    #search-bar {
+    /* #search-bar {
         margin-left: 2%;
-    }
+    } */
 }
-@media screen and (max-width: 1186px){
+/* @media screen and (max-width: 1186px){
     #edit-container {
         width: 64%;
     }
@@ -24,7 +24,7 @@
     #edit-container {
         width: 63%;
     }
-}
+} */
 @media screen and (max-width: 1029px){
     #confirm-long-text {
         display: none;
@@ -40,25 +40,25 @@
     .navbar {
         flex-wrap: nowrap;
     }
-    #search-bar {
+    /* #search-bar {
         margin-left: 1%;
-    }
+    } */
 }
 @media screen and (max-width: 930px){
-    #search-bar {
+    /* #search-bar {
         margin-left: 0;
-    }
+    } */
 }
 @media screen and (max-width: 855px){
-    #search-bar {
+    /* #search-bar {
         width: 80%;
         margin-left: 2%;
-    }
+    } */
 }
 @media screen and (max-width: 790px){
-    #search-bar {
+    /* #search-bar {
         margin-left: 1%;
-    }
+    } */
 }
 @media screen and (max-width: 767px){
     html, body, main {
@@ -92,34 +92,38 @@
     }
 }
 @media screen and (max-width: 700px){
-    #search-bar {
+    /* #search-bar {
         margin-left: 0;
-    }
+    } */
     object {
         margin-top: 8%;
     }
 }
 @media screen and (max-width: 685px){
-    #search-bar {
+    /* #search-bar {
         width: 78%;
-    }
+    } */
 }
 @media screen and (max-width: 650px){
-    #search-bar {
+    /* #search-bar {
         width: 75%;
+    } */
+    #edit-profile-pic img {
+        width: 100%;
     }
 }
 @media screen and (max-width: 620px){
-    #search-bar {
-        width: 75%;
-    }
+    /* #search-bar {
+        width: 73%;
+    } */
     object {
         margin-top: 9%;
     }
 }
 @media screen and (max-width: 575px){
     #search-bar {
-        width: 72%;
+        /* width: 72%; */
+        margin-right: 2%;
     }
     object {
         margin-top: 12%;
@@ -134,9 +138,9 @@
     }
 }
 @media screen and (max-width: 534px){
-    #search-bar {
+    /* #search-bar {
         width: 70%;
-    }
+    } */
 }
 @media screen and (max-width: 496px){
     object {
@@ -148,19 +152,26 @@
     }
 }
 @media screen and (max-width: 482px){
-    #search-bar {
+    /* #search-bar {
         width: 65%;
-    }
+    } */
 }
 @media screen and (max-width: 460px){
     object {
         margin-top: 15%;
     }
+    .container {
+        margin-top: 20%;
+        margin-bottom: 12%;
+    }
+    #edit-profile-pic img {
+        width: 100%;
+    }
 }
 @media screen and (max-width: 446px){
-    #search-bar {
+    /* #search-bar {
         width: 60%;
-    }
+    } */
 }
 @media screen and (max-width: 430px){
     object {
@@ -177,7 +188,8 @@
         z-index: 1;
     }
     #search-bar {
-        width: 85%;
+        /* width: 85%; */
+        margin-right: 10%;
     }
     #search-btn {
         display: none;
