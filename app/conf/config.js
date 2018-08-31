@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+
 var CONFIG = {}
 
 CONFIG.dbHost      = process.env.DB_HOST
@@ -9,3 +10,4 @@ CONFIG.dbUser      = process.env.DB_USER
 CONFIG.dbPassword  = process.env.DB_PASSWORD
 
 module.exports = CONFIG;
+
