@@ -100,3 +100,20 @@ exports.update = function(id, data, callback) {
     }
   )
 }
+
+exports.findByName = function( firstName,lastName, callback ) {
+  db.pool().query({  
+    sql: 'SELECT id, first_name, last_name FROM users WHERE (first_name = ? AND last_name = ?) OR (first+name = ?) OR (last_name = ?) GROUP BY id',
+    values: [firstName,lastName,firstName,lastName],
+  }, function( error, results, fields) {
+    if (error) {
+      return callback(error)
+    }
+
+    if (results.length == 0){
+      return callback(new Error('No such user') )
+    }else {
+      return callback(null, results[0])
+    }
+  })
+}

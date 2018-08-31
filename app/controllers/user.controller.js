@@ -174,7 +174,7 @@ exports.editProfile = function (req, res){
 
   let photoFile = req.files.photourl;
   // console.log('PHOTOFILE: '+req.files.photourl);
-  let fileName = req.session.user.userInfo.id+"_"+req.session.user.userInfo.first_name+"_"+req.session.user.userInfo.last_name+"."+ext[1];
+  let fileName = req.session.user.userInfo.id+"_"+req.session.user.userInfo.first_name+"_"+req.session.user.userInfo.last_name+"."+ext[ext.length-1];
   photoFile.mv(path.join(__dirname,'../public/images/')+fileName, function(err) {
     if (err)
       return res.status(500).send(err);
@@ -189,4 +189,30 @@ exports.editProfile = function (req, res){
         res.render('pages/profile',req.session.user);
       }
     });
+}
+
+
+exports.search = function(req,res){
+  // console.log(req.query);
+
+  if(!(/\s/g.test(req.query.searchTerm)) && (/@/g.test(req.query.searchTerm))){
+    console.log('this is an email address');
+    //do email DB search
+    user.findByEmail(req.query.searchTerm,function(error, results){
+      if (error){
+        console.log(error);
+        return (error);
+      }else{
+        console.log(results.id, results.first_name, results.last_name, req.query.searchTerm);
+        return res.render('pages/search',{
+          results: [{id:results.id,first_name:results.first_name,last_name:results.last_name}],
+          searchTerm: req.query.searchTerm
+        });
+      }
+    })
+  }else{
+    // do first and last name db search
+    console.log('this is not an email');
+    user.findByName()
+  }
 }
