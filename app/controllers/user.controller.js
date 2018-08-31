@@ -1,11 +1,21 @@
 //--------------------------------------------------------EXPORTS & REQUIRES---------------------------------------
 // including bcrypt for password encryption
 var bcrypt = require('bcryptjs');
+var nodemailer = require('nodemailer');
 
 // exporting user.model.js which runs all the DB functions.
 var user = require('../models/user.model.js')
 var db = require('../db/db.js')
+var config = require('../conf/config.js');
 var path = require('path')
+
+email = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'ucodebook@gmail.com',
+    pass: 'codeBook1#3'
+  }
+});
 
 //----------------------------------------------------------FUNCTIONS----------------------------------------------
 
@@ -21,7 +31,7 @@ exports.signUpPage = async function(req,res){
 
 //POST user information from the SignUp page
 exports.signUp = function(req, res) {
-
+  console.log(config);
   bcrypt.genSalt(10, function(err, salt) {
 
     bcrypt.hash(req.body.password_hash, salt, function(err, p_hash) { 
@@ -47,10 +57,27 @@ exports.signUp = function(req, res) {
                 console.log('HELLO!!!!');
                 
               }else{
-                //Create New User account and navigate user to the main profile page
+                //Create New User account, send email and navigate user to the main profile page
                 req.session.user = { userInfo: req.body }
                 req.session.user.userInfo.id = results[0].id;
-                // req.session.useruserInfo.error = null;
+
+                console.log(results[0].email_adderess);
+                //send confirmation email
+
+                let mailOptions = {
+                  from: 'ucodebook@gmail.com',
+                  to: results[0].email_address,
+                  subject: 'Sending Email using Node.js',
+                  text: 'Hi, '+results[0].first_name+'\nThat was easy!. Your account is created.'
+                };
+                email.sendMail(mailOptions, function(error, info){
+                  if (error) {
+                    console.log(error);
+                  } else {
+                    console.log('Email sent: ' + info.response);
+                  }
+                });
+
                 res.render('pages/edit-profile',req.session.user);
               }
             });
