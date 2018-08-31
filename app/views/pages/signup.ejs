@@ -12,6 +12,11 @@
 	<main>
         <!-- Page body -->
         <div class="container" id="signup-container">
+            <% if (typeof error == 'undefined'){
+
+            }else if (error == 'ER_DUP_ENTRY'){ %>
+            <div>The email address is already registered. Please use a different email.</div>
+            <% } %>
             <form method="POST" action="/signup" class="needs-validation" novalidate="">
                 <div class="form-row">
                     <div class="col-md-4 mb-3">

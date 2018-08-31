@@ -2,7 +2,7 @@ html, body, main {
     height: 100%;
     width: 100%;
     background-image: url(../imgs/wormz.png);
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 .form-inline {
     width: 100%;

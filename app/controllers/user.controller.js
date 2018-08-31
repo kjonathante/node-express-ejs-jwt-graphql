@@ -10,12 +10,12 @@ var db = require('../db/db.js')
 
 // load the home page 
 exports.homePage = async function(req, res) {
-  res.render('pages/index',req.session.userInfo)
+  res.render('pages/index',req.session.user)
 }
 
 // load the signup page
 exports.signUpPage = async function(req,res){
-  res.render('pages/signup',req.session.userInfo);
+  res.render('pages/signup',req.session.user);
 }
 
 //POST user information from the SignUp page
@@ -32,20 +32,25 @@ exports.signUp = function(req, res) {
         
         if (error){
 
-          //Username already exists - error message
-          console.log(error);
+          //Email already exists - error message
+          req.session.user = {error: error.code};
+          // req.session.user.error = error.code;
+          console.log(req.session.user.error);
+          res.render('pages/signup',req.session.user);
 
         }else{
           delete req.body.password_hash;
           db.pool().query('SELECT * FROM users WHERE email_address = ?', 
             req.body.email_address,function (error, results, fields) {
               if (error){
-                console.log(error);
+                console.log('HELLO!!!!');
+                
               }else{
                 //Create New User account and navigate user to the main profile page
-                req.session.userInfo = req.body; // might have some issue(kit)
-                req.session.userInfo.id = results[0].id;
-                res.render('pages/edit-profile',req.session.userInfo);
+                req.session.user.userInfo = req.body; // might have some issue(kit)
+                req.session.user.userInfo.id = results[0].id;
+                // req.session.useruserInfo.error = null;
+                res.render('pages/edit-profile',req.session.user);
               }
             });
         }  
