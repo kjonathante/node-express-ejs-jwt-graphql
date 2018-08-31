@@ -13,11 +13,11 @@ $(document).ready(function(){
             // var first = $('#validationCustom01').val();
             // var last = $('#validationCustom02').val();
             // var user = $('#validationCustomUsername').val();
-            var email = $('#validationCustom03').val();
+            var signUpEmail = $('#validationCustom03').val();
             var pass = $('#inputPassword').val();
             var conf = $('#confirmPassword').val();
-            // console.log(first,last,user,email,pass,conf);
-        if (email.indexOf('@') === -1 || email.indexOf('.com') === -1){
+            // console.log(first,last,user,signUpEmail,pass,conf);
+        if (signUpEmail.indexOf('@') === -1 || signUpEmail.indexOf('.com') === -1){
             event.preventDefault();
             event.stopPropagation();
             $('#validationCustom03').val('');
