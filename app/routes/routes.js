@@ -41,9 +41,7 @@ router.post('/edit-profile', userController.authorize, userController.editProfil
 //   res.render('signup')
 // });
 
-router.get('/profile', function(req, res) {
-  res.render('profile')
-});
+router.get('/profile/:id', userController.profile)
 
 
 
