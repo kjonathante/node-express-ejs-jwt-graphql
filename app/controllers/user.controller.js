@@ -47,7 +47,7 @@ exports.signUp = function(req, res) {
                 
               }else{
                 //Create New User account and navigate user to the main profile page
-                req.session.user.userInfo = req.body; // might have some issue(kit)
+                req.session.user = {userInfo: req.body}; // might have some issue(kit)
                 req.session.user.userInfo.id = results[0].id;
                 // req.session.useruserInfo.error = null;
                 res.render('pages/edit-profile',req.session.user);
@@ -70,12 +70,13 @@ exports.login = function( req, res, next ) {
       } else {
         console.log('inside user.controller.login', user)
         console.log('inside user.controller.login', req.path)
-        req.session.userId = user.id // alternate method
-        req.session.userInfo = {  
-          id: user.id,
-          email_address: req.body.email_address,
-          first_name: user.first_name,
-          last_name: user.last_name,
+        req.session.user = { 
+          userInfo : {  
+            id: user.id,
+            email_address: req.body.email_address,
+            first_name: user.first_name,
+            last_name: user.last_name,
+          }
         }
 
         var redirectTo = req.session.redirectTo ? req.session.redirectTo : '/';
@@ -106,7 +107,7 @@ exports.logout = function( req, res, next ) {
 }
 
 exports.authorize = function( req, res, next ) {
-  if (!req.session.userInfo) {
+  if (!req.session.user) {
     console.log( 'inside authorize => userInfo is undefined' )
     req.session.redirectTo = req.path;
     return res.redirect('/');
@@ -130,12 +131,25 @@ exports.editProfilePage = function (req, res){
 }
 
 exports.editProfile = function (req, res){
+  console.log(req.body);
+  if (!req.files){
+    return res.status(400).send('No files were uploaded.');
+  }
+  let photoFile = req.files.photourl;
+  console.log(photoFile);
+  // let fileName = req.session.user.userInfo.id+req.session.user.userInfo.first_name+req.session.user.userInfo.last_name+'';
+  // photoFile.mv('../images/', function(err) {
+  //   if (err)
+  //     return res.status(500).send(err);
+ 
+  //   res.send('File uploaded!');
+  // });
   db.pool().query('UPDATE users SET gitlink = ?, linkdin = ?, photourl = ? WHERE id = ?',
     [req.body.gitlink,req.body.linkdin,req.body.photourl], function (err,results,fields){
       if (err){
         console.log(err);
       }else{
-        res.render('pages/profile',req.session.userInfo);
+        res.render('pages/profile',req.session.user);
       }
     });
 }
