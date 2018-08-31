@@ -47,7 +47,7 @@ exports.signUp = function(req, res) {
                 
               }else{
                 //Create New User account and navigate user to the main profile page
-                req.session.user = {userInfo: req.body}; // might have some issue(kit)
+                req.session.user = { userInfo: req.body }
                 req.session.user.userInfo.id = results[0].id;
                 // req.session.useruserInfo.error = null;
                 res.render('pages/edit-profile',req.session.user);
@@ -107,14 +107,14 @@ exports.logout = function( req, res, next ) {
 }
 
 exports.authorize = function( req, res, next ) {
-  if (!req.session.user) {
+  if (!req.session.user || !req.session.user.userInfo) {
     console.log( 'inside authorize => userInfo is undefined' )
     req.session.redirectTo = req.path;
     return res.redirect('/');
     //return res.redirect('/login');
   } 
   
-  user.findByEmail( req.session.userInfo.email_address, function( error, results) {
+  user.findByEmail( req.session.user.userInfo.email_address, function( error, results) {
     if (error) {
       req.session.redirectTo = req.path;
       return res.redirect('/login');  
@@ -126,8 +126,14 @@ exports.authorize = function( req, res, next ) {
 
 }
 
-exports.editProfilePage = function (req, res){
-  res.render('pages/edit-profile',req.session.userInfo);
+exports.editProfilePage = function (req, res, next){
+  user.findById( req.session.user.userInfo.id, function(error,results) {
+    if (error) {
+      return next(error)
+    } else {
+      return res.render('pages/edit-profile', { userInfo: results } );
+    }
+  })
 }
 
 exports.editProfile = function (req, res){
