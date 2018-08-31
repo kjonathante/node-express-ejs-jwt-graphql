@@ -31,7 +31,7 @@ router.get('/logout', userController.logout)
 
 router.get('/edit-profile', userController.authorize, userController.editProfilePage);
 
-router.post('/edit-profile', userController.editProfile);
+router.post('/edit-profile', userController.authorize, userController.editProfile);
 
 // router.get('/', function(req, res) {
 //   res.render('index')

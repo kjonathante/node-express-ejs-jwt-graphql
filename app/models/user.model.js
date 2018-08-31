@@ -67,3 +67,36 @@ exports.findByEmail = function( email_address, callback ) {
     }
   })
 }
+
+exports.findById = function( id, callback ) {
+  db.pool().query({  
+    sql: 'SELECT id, first_name, last_name, email_address, gitlink, linkedin, photourl FROM users WHERE id = ?',
+    values: [id],
+  }, function( error, results, fields) {
+    if (error) {
+      return callback(error)
+    }
+
+    if (results.length == 0){
+      return callback(new Error('No such user') )
+    }else {
+      return callback(null, results[0])
+    }
+  })
+}
+
+exports.update = function(id, data, callback) {
+  db.pool().query(
+    {
+      sql: 'UPDATE users SET first_name=?, last_name=?, gitlink=?, linkedin=?, photourl=? WHERE id=?',
+      values: [data.first_name, data.last_name, data.gitlink, data.linkedin, data.photourl, id]
+    }, 
+    function (error, results, fields) {
+      if (error) {
+        return callback(error)
+      }
+
+      return callback()
+    }
+  )
+}
