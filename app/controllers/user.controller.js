@@ -242,7 +242,7 @@ exports.editProfile = function (req, res, next){
       })
     }
 
-    res.redirect('/')
+    res.redirect('/profile/' + id )
   })
 }
 
