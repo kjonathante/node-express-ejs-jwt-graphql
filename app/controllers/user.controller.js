@@ -245,3 +245,24 @@ exports.editProfile = function (req, res, next){
     res.redirect('/')
   })
 }
+
+exports.profile = function(req, res, next) {
+  console.log('Inside user.controller.profile ==> param.id: ', req.params.id)
+  user.findById( req.params.id, function(error,userInfo) {
+    if (error) {
+      return res.render('pages/profile')
+      // return next(error)
+    } else {
+      gitrepo.findByUserId( req.params.id, function(error,userGitRepos){
+        if (error) {
+          return next(error)
+        } else {
+          userInfo.git_repos = userGitRepos
+    
+          console.log('Inside user.controller.profile -> userInfo: ', userInfo)
+          return res.render('pages/profile', {userInfo: userInfo} );    
+        }
+      })
+    }
+  })
+}
