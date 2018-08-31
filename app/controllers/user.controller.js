@@ -5,6 +5,7 @@ var bcrypt = require('bcryptjs');
 // exporting user.model.js which runs all the DB functions.
 var user = require('../models/user.model.js')
 var db = require('../db/db.js')
+var path = require('path')
 
 //----------------------------------------------------------FUNCTIONS----------------------------------------------
 
@@ -137,21 +138,24 @@ exports.editProfilePage = function (req, res, next){
 }
 
 exports.editProfile = function (req, res){
-  console.log(req.body);
+  console.log(req.body,req.files);
   if (!req.files){
     return res.status(400).send('No files were uploaded.');
   }
+  let ext = req.files.photourl.name.split('.');
+  console.log(ext[1]);
+
   let photoFile = req.files.photourl;
-  console.log(photoFile);
-  // let fileName = req.session.user.userInfo.id+req.session.user.userInfo.first_name+req.session.user.userInfo.last_name+'';
-  // photoFile.mv('../images/', function(err) {
-  //   if (err)
-  //     return res.status(500).send(err);
+  // console.log('PHOTOFILE: '+req.files.photourl);
+  let fileName = req.session.user.userInfo.id+"_"+req.session.user.userInfo.first_name+"_"+req.session.user.userInfo.last_name+"."+ext[1];
+  photoFile.mv(path.join(__dirname,'../public/images/')+fileName, function(err) {
+    if (err)
+      return res.status(500).send(err);
  
-  //   res.send('File uploaded!');
-  // });
+    res.send('File uploaded!');
+  });
   db.pool().query('UPDATE users SET gitlink = ?, linkdin = ?, photourl = ? WHERE id = ?',
-    [req.body.gitlink,req.body.linkdin,req.body.photourl], function (err,results,fields){
+    [req.body.gitlink,req.body.linkdin,fileName], function (err,results,fields){
       if (err){
         console.log(err);
       }else{
