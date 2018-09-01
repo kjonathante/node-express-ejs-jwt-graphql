@@ -297,7 +297,7 @@ exports.search = function(req,res){
         console.log(error);
         return (error);
       }else{
-        console.log(results.id, results.first_name, results.last_name, req.query.searchTerm);
+        // console.log(results.id, results.first_name, results.last_name, req.query.searchTerm);
         return res.render('pages/search',{
           results: [{id:results.id,first_name:results.first_name,last_name:results.last_name}],
           searchTerm: req.query.searchTerm
