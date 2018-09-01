@@ -310,9 +310,10 @@ exports.search = function(req,res){
 
     user.findByName(req.query.searchTerm, function(error, results){
       if (error){
-        console.log(error);
-        return (error);
+        // console.log('this is logging: ',error);
+        return res.render('pages/search',{error,searchTerm: req.query.searchTerm});
       }else{
+        // console.log(error, results);
         return res.render('pages/search',{
           results: results,
           searchTerm: req.query.searchTerm
