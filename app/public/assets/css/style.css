@@ -5,6 +5,9 @@ html, body, main {
     overflow: hidden;
     background-size: cover
 }
+#profile-main {
+    overflow: scroll;
+}
 .form-inline {
     width: fit-content;
     flex: 1;
