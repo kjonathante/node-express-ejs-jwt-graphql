@@ -149,3 +149,6 @@ object {
 #copyright {
     margin: 2px;
 }
+.searchResultRow{
+    text-align: center;
+}

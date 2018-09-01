@@ -101,19 +101,46 @@ exports.update = function(id, data, callback) {
   )
 }
 
-exports.findByName = function( firstName,lastName, callback ) {
-  db.pool().query({  
-    sql: 'SELECT id, first_name, last_name FROM users WHERE (first_name = ? AND last_name = ?) OR (first+name = ?) OR (last_name = ?) GROUP BY id',
-    values: [firstName,lastName,firstName,lastName],
-  }, function( error, results, fields) {
-    if (error) {
-      return callback(error)
-    }
+exports.findByName = function( search, callback ) {
+  if(search.indexOf(' ') < 0){
 
-    if (results.length == 0){
-      return callback(new Error('No such user') )
-    }else {
-      return callback(null, results[0])
-    }
-  })
+    db.pool().query({  
+      sql: 'SELECT id, first_name, last_name FROM users WHERE (first_name = ?) OR (last_name = ?) OR (gitlink = ?) GROUP BY id',
+      values: [search,search,search],
+    }, function( error, results, fields) {
+      if (error) {
+        return callback(error)
+      }
+  
+      if (results.length == 0){
+        return callback(new Error('No such user') )
+      }else {
+        // console.log('one word search: '+ results);
+        console.log('\none word search: '+ results[0].id, results[0].first_name);
+        return callback(null, results);
+      }
+    });
+
+  }else{
+    var firstName = search.split(' ')[0];
+    var lastName = search.split(' ')[1];
+    db.pool().query({  
+      sql: 'SELECT id, first_name, last_name FROM users WHERE (first_name = ? AND last_name = ?) OR (first_name = ?) OR (last_name = ?) OR (gitlink = ?) OR (gitlink = ?) OR (first_name = ?) OR (last_name = ?) GROUP BY id',
+      values: [firstName,lastName,firstName,lastName,firstName,lastName,lastName,firstName],
+    }, function( error, results, fields) {
+      if (error) {
+        return callback(error)
+      }
+  
+      if (results.length == 0){
+        return callback(new Error('No such user') )
+      }else {
+        return callback(null, results);
+      }
+    });
+
+  }
+
+
+  
 }

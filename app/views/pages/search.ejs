@@ -15,7 +15,7 @@
             <h1 class="text-center">Results for "<%= searchTerm %>"</h1>
             <div id="results">
 				<% for(key in results){ %>
-					<a href='/profile/<%= results[key].id %>'><%= results[key].first_name+' '+results[key].last_name %></a>	
+					<div class="searchResultRow"><a class="searchResultLink" href='/profile/<%= results[key].id %>'><%= results[key].first_name+' '+results[key].last_name %></a></div>	
 				<% } %>
 			</div>
         </div>

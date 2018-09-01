@@ -269,7 +269,6 @@ exports.profile = function(req, res, next) {
 
 
 exports.search = function(req,res){
-  // console.log(req.query);
 
   if(!(/\s/g.test(req.query.searchTerm)) && (/@/g.test(req.query.searchTerm))){
     console.log('this is an email address');
@@ -285,10 +284,21 @@ exports.search = function(req,res){
           searchTerm: req.query.searchTerm
         });
       }
-    })
+    });
   }else{
     // do first and last name db search
     console.log('this is not an email');
-    user.findByName()
+
+    user.findByName(req.query.searchTerm, function(error, results){
+      if (error){
+        console.log(error);
+        return (error);
+      }else{
+        return res.render('pages/search',{
+          results: results,
+          searchTerm: req.query.searchTerm
+        });
+      }
+    });
   }
 }
