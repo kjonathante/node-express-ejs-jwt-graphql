@@ -236,13 +236,19 @@ exports.editProfile = function (req, res, next){
       return res.render( 'pages/edit-profile', {error: error, userInfo: userInfo} )
     }
     // save req.body.git_repo
+    var data=[]
     for( var val of req.body.git_repo ) {
-      gitrepo.insert(id, val, function(err, result) {
-        if (err) return next(err)
-      })
+      data.push( [ val, id ] )
     }
 
-    res.redirect('/profile/' + id )
+    console.log(data)
+
+    gitrepo.insertBulk(data, function(err, result) {
+      if (err) {
+        return next(err)
+      }
+      res.redirect('/profile/' + id )
+    })
   })
 }
 
