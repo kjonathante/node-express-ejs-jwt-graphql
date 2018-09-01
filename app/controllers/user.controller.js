@@ -10,6 +10,7 @@ var nodemailer = require('nodemailer');
 var user = require('../models/user.model.js')
 var gitrepo = require('../models/gitrepo.model.js')
 var db = require('../db/db.js')
+var puppet = require('../utils/puppet.js')
 
 var config = require('../conf/config.js');
 email = nodemailer.createTransport({
@@ -236,13 +237,31 @@ exports.editProfile = function (req, res, next){
       return res.render( 'pages/edit-profile', {error: error, userInfo: userInfo} )
     }
     // save req.body.git_repo
-    for( var val of req.body.git_repo ) {
-      gitrepo.insert(id, val, function(err, result) {
-        if (err) return next(err)
-      })
-    }
+    var data=[]
+    // for( var val of req.body.git_repo ) {
+    //   data.push( [ val, id ] )
+    // }
 
-    res.redirect('/profile/' + id )
+    req.body.git_repo.forEach( function(val){
+
+      var index = val.lastIndexOf('/') + 1
+      var repoName = val.slice(index)
+      var url = `https://${req.body.gitlink}.github.io/${repoName}`
+      var location = `${req.session.user.userInfo.id}_${repoName}`
+      puppet.screenshot( url, location )
+
+      data.push( [ val, id+'_'+repoName+'.png', id ] )
+  
+    })
+    console.log(data)
+
+
+    gitrepo.insertBulk(data, function(err, result) {
+      if (err) {
+        return next(err)
+      }
+      res.redirect('/profile/' + id )
+    })
   })
 }
 
