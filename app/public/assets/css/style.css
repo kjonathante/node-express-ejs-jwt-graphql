@@ -1,8 +1,9 @@
 html, body, main {
     height: 100%;
     width: 100%;
-    background-image: url(../imgs/wormz.png);
+    background-image: url(../imgs/istock_background_1920.jpg);
     overflow: hidden;
+    background-size: cover
 }
 .form-inline {
     width: fit-content;
@@ -37,7 +38,8 @@ object {
     width: 100%;
 }
 .container {
-    background-color: rgba(255, 228, 196, 0.7);
+    background-color: rgba(250, 250, 250, 0.747);
+    /* background-color: rgba(255, 228, 196, 0.7); */
     width: 60%;
     margin-top: 2%;
     border-radius: 10px;

@@ -11,15 +11,15 @@
       <!-- <div class="collapse navbar-collapse"></div> -->
 
         <form method="GET" action="/search" class="form-inline">
-            <input class="form-control mr-sm-2" id="search-bar" name="searchTerm" type="search" placeholder="Search for a User" aria-label="Search">
+            <input class="form-control mr-sm-2" id="search-bar" name="searchTerm" type="search" placeholder="Search for a User with name, email or Git ID" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search-btn">Search</button>
         </form>
         
         <% if (typeof userInfo != 'undefined') { %>
             <div class="d-flex">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-info"><a id="profile-link" href="/profile">Hi, <%= userInfo.first_name %></a></button>
-                    <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent">
+                    <button type="button" class="btn btn-info"><a id="profile-link" href="/profile/<%= userInfo.id %>">Hi, <%= userInfo.first_name %></a></button>
+                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent">
                     <span class="sr-only">Toggle Dropdown</span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuReference">
