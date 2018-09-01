@@ -4,6 +4,9 @@ html, body, main {
     background-image: url(../imgs/wormz.png);
     overflow: hidden;
 }
+#profile-main {
+    overflow: scroll;
+}
 .form-inline {
     width: fit-content;
     flex: 1;
