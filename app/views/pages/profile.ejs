@@ -28,6 +28,7 @@
 
 						<% for(var val of userInfo.git_repos){%>
 							<p><%=val.git_repo%></p>
+							<img src=<%='/images/'+val.screenshot_url%> alt="screenshot" width="200">
 						<%}%>
 
 					<%}%>

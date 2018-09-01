@@ -19,6 +19,7 @@ CREATE TABLE users (
 CREATE TABLE gitrepos (
   id INT NOT NULL AUTO_INCREMENT,
   git_repo VARCHAR(255),
+  screenshot_url VARCHAR(255),
   user_id INT NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (user_id) REFERENCES users(id)
