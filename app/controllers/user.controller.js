@@ -221,7 +221,7 @@ exports.editProfile = function (req, res, next){
       if (err) {
         return next(err)
       }
-    })
+    });
   }
 
   var userInfo = {
@@ -284,4 +284,40 @@ exports.profile = function(req, res, next) {
       })
     }
   })
+}
+
+
+exports.search = function(req,res){
+
+  if(!(/\s/g.test(req.query.searchTerm)) && (/@/g.test(req.query.searchTerm))){
+    console.log('this is an email address');
+    //do email DB search
+    user.findByEmail(req.query.searchTerm,function(error, results){
+      if (error){
+        console.log(error);
+        return (error);
+      }else{
+        // console.log(results.id, results.first_name, results.last_name, req.query.searchTerm);
+        return res.render('pages/search',{
+          results: [{id:results.id,first_name:results.first_name,last_name:results.last_name}],
+          searchTerm: req.query.searchTerm
+        });
+      }
+    });
+  }else{
+    // do first and last name db search
+    console.log('this is not an email');
+
+    user.findByName(req.query.searchTerm, function(error, results){
+      if (error){
+        console.log(error);
+        return (error);
+      }else{
+        return res.render('pages/search',{
+          results: results,
+          searchTerm: req.query.searchTerm
+        });
+      }
+    });
+  }
 }

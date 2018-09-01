@@ -33,6 +33,8 @@ router.get('/edit-profile', userController.authorize, userController.editProfile
 
 router.post('/edit-profile', userController.authorize, userController.editProfile);
 
+router.get('/search', userController.search);
+
 // router.get('/', function(req, res) {
 //   res.render('index')
 // });

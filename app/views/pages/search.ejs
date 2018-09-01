@@ -12,10 +12,14 @@
 	<main>
 		<!-- Page body -->
         <div class="container">
-            <h1 class="text-center">Results for " SEARCH "</h1>
-            <div id="results"></div>
+            <h1 class="text-center">Results for "<%= searchTerm %>"</h1>
+            <div id="results">
+				<% for(key in results){ %>
+					<div class="searchResultRow"><a class="searchResultLink" href='/profile/<%= results[key].id %>'><%= results[key].first_name+' '+results[key].last_name %></a></div>	
+				<% } %>
+			</div>
         </div>
-	</main>
+	</main>>
 
 	<footer>
 		<% include ../partials/footer %>
