@@ -110,7 +110,7 @@ exports.login = function( req, res, next ) {
             last_name: user.last_name,
           }
         }
-
+        req.session.redirectTo = '/profile/'+user.id;
         var redirectTo = req.session.redirectTo ? req.session.redirectTo : '/';
         delete req.session.redirectTo
         return res.redirect(redirectTo)
