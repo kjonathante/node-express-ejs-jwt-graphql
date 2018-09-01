@@ -236,32 +236,44 @@ exports.editProfile = function (req, res, next){
     if (error) {
       return res.render( 'pages/edit-profile', {error: error, userInfo: userInfo} )
     }
+
     // save req.body.git_repo
-    var data=[]
-    // for( var val of req.body.git_repo ) {
-    //   data.push( [ val, id ] )
-    // }
-
-    req.body.git_repo.forEach( function(val){
-
-      var index = val.lastIndexOf('/') + 1
-      var repoName = val.slice(index)
-      var url = `https://${req.body.gitlink}.github.io/${repoName}`
-      var location = `${req.session.user.userInfo.id}_${repoName}`
-      puppet.screenshot( url, location )
-
-      data.push( [ val, id+'_'+repoName+'.png', id ] )
-  
-    })
-    console.log(data)
-
-
-    gitrepo.insertBulk(data, function(err, result) {
-      if (err) {
-        return next(err)
+    if (!req.body.git_repo) {
+      // undefine, null or ''
+      return res.redirect('/profile/' + id )
+    } else {
+    
+      if (typeof req.body.git_repo == 'string') {
+        // only one repo selected
+        req.body.git_repo = [ req.body.git_repo ]
       }
-      res.redirect('/profile/' + id )
-    })
+
+      var data=[]
+      var puppetArr=[]
+      req.body.git_repo.forEach( function(val){
+        var index = val.lastIndexOf('/') + 1
+        var repoName = val.slice(index)
+        var url = `https://${req.body.gitlink}.github.io/${repoName}`
+        var filename = `${id}_${repoName}.png`
+
+        data.push( [ val, filename, id ] )
+        puppetArr.push( {filename: filename, url: url} )
+      })
+
+      console.log('Inside editProfile -->> data: ', data)
+      console.log('Inside editProfile -->> puppetArr: ', puppetArr)
+
+
+      gitrepo.insertBulk(data, function(err, result) {
+        if (err) {
+          return next(err)
+        }
+        
+        puppet.screenshot( puppetArr, function(){
+          res.redirect('/profile/' + id )
+        })
+      })
+    }
   })
 }
 
