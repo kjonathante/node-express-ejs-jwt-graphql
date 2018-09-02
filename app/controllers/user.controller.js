@@ -98,7 +98,7 @@ exports.login = function( req, res, next ) {
       if (error || !user) {
         var err = new Error('Wrong email or password.');
         err.status = 401;
-        return next(err);
+        return res.render('pages/login-wrong');
       } else {
         console.log('inside user.controller.login', user)
         console.log('inside user.controller.login', req.path)
@@ -120,7 +120,7 @@ exports.login = function( req, res, next ) {
   } else {
     var err = new Error('All fields required.');
     err.status = 400;
-    return next(err);
+    return res.render('pages/login-all');
   }
 
 }

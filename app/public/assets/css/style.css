@@ -1,9 +1,9 @@
 html, body, main {
     height: 100%;
     width: 100%;
-    background-image: url(../imgs/Blue-Wallpaper-For-Background-6.jpg);
+    background-image: url(../imgs/small_steps.png);
     overflow: hidden;
-    background-size: cover
+    /* background-size: cover; */
 }
 #profile-main {
     overflow: scroll;
@@ -18,6 +18,27 @@ html, body, main {
 }
 #search-btn {
     margin-right: 5%;
+}
+.alert {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+}
+#alert-wrong {
+    width: 747px;
+}
+#alert-all {
+    width: 605px;
+}
+#login-container {
+    width: 400px;
+}
+#login-form {
+    margin-left: -20px;
+    margin-right: -20px;
+}
+#login-btn {
+    margin-top: 8%
 }
 #profile-link {
     text-decoration: none;
@@ -41,12 +62,16 @@ object {
     width: 100%;
 }
 .container {
-    background-color: rgba(250, 250, 250, 0.7);
+    /* background-color: rgba(250, 250, 250, 0.7); */
     /* background-color: rgba(255, 228, 196, 0.7); */
+    background-color: rgba(148, 148, 148, 0.7);
     width: 60%;
     margin-top: 2%;
     border-radius: 10px;
     padding: 30px;
+}
+#profile-container {
+    width: 80%;
 }
 #signup-container {
     margin-top: 5%;
@@ -67,7 +92,7 @@ object {
 } */
 #edit-profile-pic {
     /* height: 100%; */
-    float: left;
+    /* float: left; */
 }
 #edit-profile-pic:hover {
     cursor: pointer;
@@ -76,7 +101,7 @@ object {
 #pic-upload {
     display: none;
 }
-#edit-profile-pic img {
+#placeholder-pic, #user-pic {
     width: 225px;
 }
 #repo-btn {
@@ -132,18 +157,40 @@ object {
     overflow-y: auto;
     border-radius: 10px;
 }
+#left-container {
+    width: 48%;
+}
 #profile-info-container {
     background-color: rgba(255, 250, 250, 1);
-    width: 67%;
+    height: fit-content;
+    height: 210px;
+    width: auto;
     margin: 0;
-    padding: 0;
-    margin-left: 4%;
+    padding: 16px;
+}
+#profile-pic {
+    float: left;
+}
+#user-info {
+    float: left;
+    margin-left: 1rem;
+}
+#user-repos {
+    height: 485px;
+    width: 50%;
+    margin-top: 0;
+    background-color: #15a2b8;
+    margin-left: 1rem;
+    overflow-y: auto;
 }
 #message-board-container {
     background-color: rgba(255, 250, 250, 1);
     width: 100%;
     margin-top: 3%;
-    padding: 8%;
+    /* padding: 8%; */
+    float: left;
+    clear: both;
+    height: 260px;
 }
 #message-input-container {
     background-color: rgba(255, 250, 250, 1);
