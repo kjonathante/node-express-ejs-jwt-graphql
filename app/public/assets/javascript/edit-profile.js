@@ -33,7 +33,7 @@ $('#repo-btn').on('click', function(){
     }).then(function(data, textStatus, errorThrown){
         var res = data.data;
         $('#repo-btn').attr('class', 'btn btn-success');
-        $('#repo-btn').text('Success!');
+        // $('#repo-btn').text('Success!');
         $('#pull-success').show();
         $('#github-selection').show();
         for (var i in res){
@@ -70,13 +70,13 @@ $('#repo-btn').on('click', function(){
             $('#github-selection').hide();
             $('#validationCustom04').val('');
             $('#repo-btn').attr('class', 'btn btn-danger');
-            $('#repo-btn').text('Error..');
+            // $('#repo-btn').text('Error..');
             $('#validationCustom04').attr('placeholder', 'That username does not exist');
         }else if(errorThrown === 'Not Found'){
             $('#pull-success').hide();
             $('#github-selection').hide();
             $('#validationCustom04').val('');
-            $('#repo-btn').text('Error..');
+            // $('#repo-btn').text('Error..');
             $('#repo-btn').attr('class', 'btn btn-danger');
             $('#validationCustom04').attr('placeholder', 'Please enter your username');
         }
