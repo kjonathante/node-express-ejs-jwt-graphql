@@ -25,10 +25,24 @@ email = nodemailer.createTransport({
 
 // load the home page 
 exports.homePage = async function(req, res) {
-  res.render('pages/index',req.session.user)
+  gitrepo.findRandomRepo(function(error, results){
+    if(error){
+      return res.render('pages/index',req.session.user);
+    }
+    var randomNum = Math.floor(Math.random()*results.length);
+    console.log(results[randomNum].url);
+    if(typeof req.session.user == 'undefined'){
+      console.log('came in here');
+      return res.render('pages/index',{url: results[randomNum].githubpage});
+    }else{
+      return res.render('pages/index',{url: results[randomNum].githubpage,
+                                        userInfo: req.session.user.userInfo});
+    }
+  });
+  // res.render('pages/index',req.session.user)
 }
 
-// load the signup page
+// load the signup 
 exports.signUpPage = async function(req,res){
   res.render('pages/signup',req.session.user);
 }

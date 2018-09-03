@@ -210,3 +210,6 @@ object {
 .list-group > a:hover{
     background-color: rgb(255, 193, 7);
 }
+.list-group > a{
+    text-align: center;
+}
