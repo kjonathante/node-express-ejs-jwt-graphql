@@ -25,6 +25,14 @@ CREATE TABLE gitrepos (
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
+CREATE TABLE messages (
+  id INT NOT NULL AUTO_INCREMENT,
+  user_message TEXT,
+  user_id INT NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
 
 
 INSERT  INTO users (first_name, last_name, email_address, 

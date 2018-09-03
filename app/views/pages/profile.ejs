@@ -27,9 +27,19 @@
 						<a href="<%= userInfo.linkedin %>">LinkedIn</a>
 					</div>
 				</div>
-					<div class="container" id="message-board-container"></div>
+					<div class="container" id="message-board-container">
+						<div id="read-message">
+
+						</div>
+						<div id="write-message">
+							<form method="GET" action="/search" class="form-inline">
+								<textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Post a message" rows="3"></textarea>
+								<button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="message-btn">Send</button>
+							</form>
+						</div>
+					</div>
 				</div>
-				<div class="container" id="user-repos">
+				<div class="container" id="user-repos"> 
 					<% for(var val of userInfo.git_repos){%>
 						<p><%=val.git_repo%></p>
 						<img src=<%='/images/'+val.screenshot_url%> alt="screenshot" width="200">
