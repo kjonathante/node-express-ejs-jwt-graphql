@@ -207,6 +207,6 @@ object {
 #copyright {
     margin: 2px;
 }
-.searchResultRow{
-    text-align: center;
+.list-group > a:hover{
+    background-color: rgb(255, 193, 7);
 }
