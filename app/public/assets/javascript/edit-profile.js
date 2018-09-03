@@ -45,11 +45,20 @@ $('#repo-btn').on('click', function(){
             input.attr('class', 'form-check-input');
             input.attr('type', 'checkbox');
             input.attr('name', 'git_repo');
-            input.attr('value', urls);
+            // input.attr('value', urls);
+            input.attr('value', res[i].id);
             var label = $('<label>');
             label.attr('class', 'form-check-label');
             label.text(repoNames);
-            div.append(input,label)
+
+            // --- kit's ---
+            var hiddenElement = $('<input>')
+            hiddenElement.attr('type','hidden')
+            hiddenElement.attr('name', 'github_repo_json')
+            hiddenElement.attr('value', JSON.stringify(res[i]))
+            // --- kit's end ---
+            div.append(input,label,hiddenElement)
+
             console.log(res[i]);
             $('#github-selection').append(div);
         }
