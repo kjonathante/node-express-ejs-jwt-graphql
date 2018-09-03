@@ -38,10 +38,12 @@ async function test() {
     page.click('#repo-btn')
   ])
 
+  await page.waitForSelector('#github-selection > div:nth-child(8) > input')
   await page.click('#github-selection > div:nth-child(8) > input')
+  
 
   var fileupload = await page.$('#pic-upload')
-  fileupload.uploadFile('/Users/kitjonathante/Downloads/Adriana\ Photos/SAM_3187.JPG')
+  fileupload.uploadFile('./profilepic.png')
   
   await Promise.all([
     page.waitForNavigation({ waitUntil: 'networkidle2' }),
