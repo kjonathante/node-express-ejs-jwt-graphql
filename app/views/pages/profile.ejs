@@ -20,11 +20,10 @@
 					</label>
 					<div id="user-info">
 					<% if (typeof userInfo != 'undefined') {%>
-						<p><%= userInfo.first_name %></p>
-						<p><%= userInfo.last_name %></p>
+						<p><%= userInfo.first_name %> <%= userInfo.last_name %></p>
 						<p><%= userInfo.email_address %></p>
-						<p><%= userInfo.gitlink %></p>
-						<a href="<%= userInfo.linkedin %>">LinkedIn</a>
+						<div id="github-link"><a href="https://github.com/<%= userInfo.gitlink %>" target="_blank">GitHub</a></div>
+						<a href="https://www.linkedin.com/in/<%= userInfo.linkedin %>" target="_blank">LinkedIn</a>
 					</div>
 				</div>
 					<div class="container" id="message-board-container"></div>

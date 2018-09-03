@@ -44,6 +44,15 @@
         margin-left: 1%;
     } */
 }
+@media screen and (max-width: 970px){
+    /* #search-bar {
+        width: 75%;
+    } */
+    #edit-profile-pic img {
+        height: auto;
+        width: 100%;
+    }
+}
 @media screen and (max-width: 930px){
     /* #search-bar {
         margin-left: 0;
@@ -152,14 +161,15 @@
     /* #search-bar {
         width: 75%;
     } */
-    #edit-profile-pic img {
+    /* #edit-profile-pic img {
+        height: auto;
         width: 100%;
-    }
+    } */
 }
 @media screen and (max-width: 620px){
-    /* #search-bar {
-        width: 73%;
-    } */
+    #search-bar {
+        width: 100%;
+    }
     object {
         margin-top: 9%;
     }

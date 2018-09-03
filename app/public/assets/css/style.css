@@ -1,7 +1,7 @@
 html, body, main {
     height: 100%;
     width: 100%;
-    background-image: url(../imgs/small_steps.png);
+    background-image: url(../imgs/topography.png);
     overflow: hidden;
     /* background-size: cover; */
 }
@@ -76,6 +76,10 @@ object {
 #signup-container {
     margin-top: 5%;
 }
+#email-taken {
+    margin-bottom: 1rem;
+    color: rgba(193, 0, 0, 1);
+}
 #confirm-short-text {
     display: none;
 }
@@ -91,18 +95,19 @@ object {
     margin: 0;
 } */
 #edit-profile-pic {
-    /* height: 100%; */
-    /* float: left; */
+    height: fit-content;
 }
 #edit-profile-pic:hover {
     cursor: pointer;
-    box-shadow: 5px 10px 20px rgba(136, 136, 136, 1), 5px 10px 20px rgba(255, 255, 255, 1);
+    /* box-shadow: 5px 10px 20px rgba(136, 136, 136, 1), 5px 10px 20px rgba(255, 255, 255, 1); */
+    box-shadow: 5px 10px 20px rgba(136, 136, 136, 1);
 }
 #pic-upload {
     display: none;
 }
 #placeholder-pic, #user-pic {
-    width: 225px;
+    height: 180px;
+    width: auto;
 }
 #repo-btn {
     padding: 0 1rem 0 1rem;
@@ -118,12 +123,7 @@ object {
     background-color: rgba(40, 167, 69, 1);
     border-color: rgba(40, 167, 69, 1);
 }
-#edit-first-name {
-    margin-left: 3%;
-    width: 47%;
-    float: left;
-}
-#edit-last-name {
+#edit-first-name, #edit-last-name {
     margin-left: 3%;
     width: 47%;
     float: left;
@@ -162,7 +162,7 @@ object {
 }
 #profile-info-container {
     background-color: rgba(255, 250, 250, 1);
-    height: fit-content;
+    /* height: fit-content; */
     height: 210px;
     width: auto;
     margin: 0;
@@ -173,7 +173,11 @@ object {
 }
 #user-info {
     float: left;
+    margin-top: 1rem;
     margin-left: 1rem;
+}
+#github-link {
+    margin-bottom: 1rem;
 }
 #user-repos {
     height: 485px;
