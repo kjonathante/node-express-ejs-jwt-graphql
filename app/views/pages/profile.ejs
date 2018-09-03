@@ -12,29 +12,34 @@
 	<main id="profile-main">
 		<!-- Page body -->
 		<div class="container" id="profile-container">
-            <div class="form-row">
-				<div id="left-container">
-                <div class="container" id="profile-info-container">
-					<label id="profile-pic">
-						<img src="<%= ((typeof userInfo != 'undefined') && (typeof userInfo.photourl != 'undefined')) ? '/images/'+userInfo.photourl : '' %>" alt="User Pic" class="rounded" id="user-pic" width="200">
-					</label>
-					<div id="user-info">
-					<% if (typeof userInfo != 'undefined') {%>
-						<p><%= userInfo.first_name %></p>
-						<p><%= userInfo.last_name %></p>
-						<p><%= userInfo.email_address %></p>
-						<p><%= userInfo.gitlink %></p>
-						<a href="<%= userInfo.linkedin %>">LinkedIn</a>
+      <div class="form-row">
+				<% if (typeof error != 'undefined') {%>
+					<p><%= error %></p>
+			 	<%}%>
+				<% if (typeof userInfo != 'undefined') {%>
+					<div id="left-container">
+						<div class="container" id="profile-info-container">
+							<label id="profile-pic">
+								<!-- <img src="<%= ((typeof userInfo != 'undefined') && (typeof userInfo.photourl != 'undefined')) ? '/images/'+userInfo.photourl : '' %>" alt="User Pic" class="rounded" id="user-pic" width="200"> -->
+								<img src="<%= '/images/'+userInfo.photourl %>" alt="User Pic" class="rounded" id="user-pic" width="200">
+							</label>
+							<div id="user-info">
+								<p><%= userInfo.first_name %></p>
+								<p><%= userInfo.last_name %></p>
+								<p><%= userInfo.email_address %></p>
+								<p><%= userInfo.gitlink %></p>
+								<p><%= userInfo.linkedin %></p>
+								<!-- <a href="<%= userInfo.linkedin %>">LinkedIn</a> -->
+							</div>
+						</div>
+						<div class="container" id="message-board-container"></div>
 					</div>
-				</div>
-					<div class="container" id="message-board-container"></div>
-				</div>
-				<div class="container" id="user-repos">
-					<% for(var val of userInfo.git_repos){%>
-						<p><%=val.git_repo%></p>
-						<img src=<%='/images/'+val.screenshot_url%> alt="screenshot" width="200">
-					<%}%>
-				</div>
+					<div class="container" id="user-repos">
+						<% for(var val of userInfo.git_repos){%>
+							<img src=<%='/images/'+val.screenshot%> alt="<%=val.name%>" width="200">
+							<p><%=val.name%></p>
+						<%}%>
+					</div>
 				<%}%>
 			</div>
 			<!-- <div class="container" id="message-board-container"></div> -->
