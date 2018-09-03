@@ -301,7 +301,7 @@ exports.profile = function(req, res, next) {
   console.log('Inside user.controller.profile ==> param.id: ', req.params.id)
   user.findById( req.params.id, function(error,userInfo) {
     if (error) {
-      return res.render('pages/profile')
+      return res.render('pages/profile', {error: error})
       // return next(error)
     } else {
       gitrepo.findByUserId( req.params.id, function(error,userGitRepos){
