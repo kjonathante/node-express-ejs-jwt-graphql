@@ -14,9 +14,10 @@
         <div class="container">
 			<% if (typeof error == 'undefined'){ %>
 				<h1 class="text-center">Results for "<%= searchTerm %>"</h1>
-				<div id="results">
+				<div class="list-group">
 					<% for(key in results){ %>
-						<div class="searchResultRow"><a class="searchResultLink" href='/profile/<%= results[key].id %>'><%= results[key].first_name+' '+results[key].last_name %></a></div>	
+						<a class="list-group-item list-group-item-action" href='/profile/<%= results[key].id %>'><%= results[key].first_name+' '+results[key].last_name %></a>
+						<!-- <div class="searchResultRow"></div>	 -->
 					<% } %>
 				</div>	
 			<% } else{ %>

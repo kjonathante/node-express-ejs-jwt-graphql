@@ -11,7 +11,12 @@
 
 	<main>
 		<!-- Page body -->
-			<object data="" type=""></object>
+			<object 
+				<% if(typeof url == 'undefined'){ %>
+					data="https://tayloraanenson.github.io/star-wars-rpg/"
+				<% } else{ %>
+					data="<%= url %>"
+				<% } %> type=""></object>
 	</main>
 
 	<footer>

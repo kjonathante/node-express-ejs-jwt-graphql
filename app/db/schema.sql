@@ -18,8 +18,13 @@ CREATE TABLE users (
 
 CREATE TABLE gitrepos (
   id INT NOT NULL AUTO_INCREMENT,
-  git_repo VARCHAR(255),
-  screenshot_url VARCHAR(255),
+  repo_id VARCHAR(255),
+  name VARCHAR(255),
+  url VARCHAR(255),
+  selected BOOLEAN,
+  githubpage VARCHAR(255),
+  screenshot VARCHAR(255),
+  ghpagestatus INT,
   user_id INT NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (user_id) REFERENCES users(id)
@@ -35,7 +40,3 @@ CREATE TABLE messages (
 
 
 
-INSERT  INTO users (first_name, last_name, email_address, 
-  password_hash, gitlink, linkedin,photourl)
-VALUES ("Kit","Te","kjonthante@gmail.com","kit",
-  "gitlink","linkdinlink","photo");

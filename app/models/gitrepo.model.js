@@ -2,7 +2,7 @@ const db = require('../db/db.js')
 
 exports.insertBulk = function( data, callback ) {
   db.pool().query({
-    sql: 'INSERT INTO gitrepos(git_repo, screenshot_url, user_id) VALUES ?',
+    sql: 'INSERT INTO gitrepos(repo_id, name, url, selected, githubpage, screenshot, user_id) VALUES ?',
     values: [data],
   },function(error,results,fields){
     if (error) {
@@ -15,7 +15,7 @@ exports.insertBulk = function( data, callback ) {
 
 exports.findByUserId = function( id, callback ) {
   db.pool().query({
-    sql: 'SELECT git_repo, screenshot_url FROM gitrepos WHERE user_id=?',
+    sql: 'SELECT name, screenshot FROM gitrepos WHERE user_id=?',
     values: [id],
   },function(error,results,fields){
     if (error) {
@@ -24,4 +24,14 @@ exports.findByUserId = function( id, callback ) {
       return callback(null, results)
     }
   })
+}
+
+exports.findRandomRepo = function(callback){
+  db.pool().query('SELECT * from gitrepos WHERE selected = 1', function(err, results,fields){
+    if (err) {
+      return callback(err)
+    } else {
+      return callback(null, results)
+    }
+  });
 }
