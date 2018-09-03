@@ -14,6 +14,7 @@
 		<div class="container" id="edit-profile-container">
 			<form method="POST" action="/edit-profile" class="needs-validation" encType="multipart/form-data" novalidate="">
 				<div class="form-row">
+					<div>
 						<label id="edit-profile-pic" for="pic-upload">
 							<img src="assets/imgs/placeholder-image10.jpg" alt="Placeholder Pic" class="rounded" id="placeholder-pic">
 							<img src="images/<%= userInfo.photourl %>" alt="User Pic" class="image-thumbnail rounded" id="user-pic">
@@ -25,6 +26,7 @@
 						<div class="invalid-feedback">
 							Please select a profile picture.
 						</div>
+					</div>
 					<div class="container" id="edit-container">
 						<div class="" id="edit-first-name">
 							<label for="validationCustom01">First name</label>

@@ -94,9 +94,9 @@ object {
 /* #edit-container label {
     margin: 0;
 } */
-#edit-profile-pic {
+/* #edit-profile-pic {
     height: fit-content;
-}
+} */
 #edit-profile-pic:hover {
     cursor: pointer;
     /* box-shadow: 5px 10px 20px rgba(136, 136, 136, 1), 5px 10px 20px rgba(255, 255, 255, 1); */
@@ -107,7 +107,7 @@ object {
 }
 #placeholder-pic, #user-pic {
     height: 180px;
-    width: auto;
+    /* width: auto; */
 }
 #repo-btn {
     padding: 0 1rem 0 1rem;
