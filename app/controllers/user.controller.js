@@ -71,8 +71,8 @@ exports.signUp = function(req, res) {
                 let mailOptions = {
                   from: 'ucodebook@gmail.com',
                   to: results[0].email_address,
-                  subject: 'Sending Email using Node.js',
-                  text: 'Hi, '+results[0].first_name+'\nThat was easy!. Your account is created.'
+                  subject: 'CodeBook Registration Confirmation',
+                  text: 'Hi, '+results[0].first_name+'\n\nThat was easy! Your account is created.\n\nSincerely,\nCodeBook Team'
                 };
                 email.sendMail(mailOptions, function(error, info){
                   if (error) {
