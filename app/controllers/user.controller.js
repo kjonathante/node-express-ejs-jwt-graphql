@@ -110,8 +110,8 @@ exports.login = function( req, res, next ) {
             last_name: user.last_name,
           }
         }
-        req.session.redirectTo = '/profile/'+user.id;
-        var redirectTo = req.session.redirectTo ? req.session.redirectTo : '/';
+        //req.session.redirectTo = '/profile/'+user.id;
+        var redirectTo = req.session.redirectTo ? req.session.redirectTo : '/profile/'+user.id;
         delete req.session.redirectTo
         return res.redirect(redirectTo)
         //return res.redirect('/');
@@ -180,40 +180,15 @@ exports.editProfilePage = function (req, res, next){
 }
 
 exports.editProfile = function (req, res, next){
-  console.log('Inside editProfile -->> req.body',req.body)
-  console.log('Inside editProfile -->> req.files',req.files);
+  // console.log('Inside editProfile -->> req.body',req.body)
+  // console.log('Inside editProfile -->> req.files',req.files);
 
-
-  // if (!req.files){
-  //   return res.status(400).send('No files were uploaded.');
-  // }
-  // let ext = req.files.photourl.name.split('.');
-  // console.log(ext[1]);
-
-  // let photoFile = req.files.photourl;
-  // let fileName = req.session.user.userInfo.id+"_"+req.session.user.userInfo.first_name+"_"+req.session.user.userInfo.last_name+"."+ext[1];
-  // photoFile.mv(path.join(__dirname,'../public/images/')+fileName, function(err) {
-  //   if (err)
-  //     return res.status(500).send(err);
- 
-  //   res.send('File uploaded!');
-  // });
-  // db.pool().query('UPDATE users SET gitlink = ?, linkdin = ?, photourl = ? WHERE id = ?',
-  //   [req.body.gitlink,req.body.linkdin,fileName], function (err,results,fields){
-  //     if (err){
-  //       console.log(err);
-  //     }else{
-  //       res.render('pages/profile',req.session.user);
-  //     }
-  // })
-
-  var fileName = ""
   var id = req.session.user.userInfo.id
 
-
+  var fileName = ""
   if (req.files) {
     var ext = req.files.photourl.mimetype.split('/')[1]
-    console.log('Inside editProfile -->> ext', ext)
+    //console.log('Inside editProfile -->> ext', ext)
 
     var photoFile = req.files.photourl
     fileName = req.session.user.userInfo.id+"_"+req.session.user.userInfo.first_name+"_"+req.session.user.userInfo.last_name+"."+ext;
@@ -237,43 +212,88 @@ exports.editProfile = function (req, res, next){
       return res.render( 'pages/edit-profile', {error: error, userInfo: userInfo} )
     }
 
-    // save req.body.git_repo
+    var selectedRepos
     if (!req.body.git_repo) {
       // undefine, null or ''
-      return res.redirect('/profile/' + id )
+      selectedRepos = []
+    } else if (typeof req.body.git_repo == 'string') {
+      selectedRepos = [req.body.git_repo]
     } else {
-    
-      if (typeof req.body.git_repo == 'string') {
-        // only one repo selected
-        req.body.git_repo = [ req.body.git_repo ]
+      selectedRepos = req.body.git_repo
+    }
+
+
+    var userRepos = req.body.github_repo_json.map( function( val ) {
+      var obj = JSON.parse( val )
+      var selected = false
+      var githubpage = `https://${req.body.gitlink}.github.io/${obj.name}`
+      var screenshot = `${id}_${obj.name}.png`
+
+      for( var repoId of selectedRepos ) {
+        console.log('Inside editProfile -->> obj.id, repoId :', obj.id, repoId)
+        if (obj.id == repoId) {
+          selected = true
+        }
+      }
+      //'INSERT INTO gitrepos(repo_id, name, url, selected, githubpage, screenshot, user_id)      
+      return [ obj.id, obj.name, obj.url, selected, githubpage, screenshot, id ]
+    })
+
+    console.log('Inside editProfile -->> userRepors', userRepos)
+    console.log('Inside editProfile -->> selectedRepos', selectedRepos)
+
+    gitrepo.insertBulk(userRepos, function(err, result) {
+      if (err) {
+        return next(err)
       }
 
-      var data=[]
-      var puppetArr=[]
-      req.body.git_repo.forEach( function(val){
-        var index = val.lastIndexOf('/') + 1
-        var repoName = val.slice(index)
-        var url = `https://${req.body.gitlink}.github.io/${repoName}`
-        var filename = `${id}_${repoName}.png`
-
-        data.push( [ val, filename, id ] )
-        puppetArr.push( {filename: filename, url: url} )
+      var puppetArr = userRepos.map( function(val) {
+        return {url: val[4], filename: val[5]} // githubpage
       })
+      console.log('Inside editProfile -->> puppetArr', puppetArr)
+      puppet.screenshot( puppetArr, function(){
+        res.redirect('/profile/' + id )
+      })
+    })
 
-      console.log('Inside editProfile -->> data: ', data)
-      console.log('Inside editProfile -->> puppetArr: ', puppetArr)
+
+    // save req.body.git_repo
+    // if (!req.body.git_repo) {
+    //   // undefine, null or ''
+    //   return res.redirect('/profile/' + id )
+    // } else {
+    
+    //   if (typeof req.body.git_repo == 'string') {
+    //     // only one repo selected
+    //     req.body.git_repo = [ req.body.git_repo ]
+    //   }
+
+    //   var data=[]
+    //   var puppetArr=[]
+    //   req.body.git_repo.forEach( function(val){
+    //     var index = val.lastIndexOf('/') + 1
+    //     var repoName = val.slice(index)
+    //     var url = `https://${req.body.gitlink}.github.io/${repoName}`
+    //     var filename = `${id}_${repoName}.png`
+
+    //     data.push( [ val, filename, id ] )
+    //     puppetArr.push( {filename: filename, url: url} )
+    //   })
+
+    //   console.log('Inside editProfile -->> data: ', data)
+    //   console.log('Inside editProfile -->> puppetArr: ', puppetArr)
 
 
-      gitrepo.insertBulk(data, function(err, result) {
-        if (err) {
-          return next(err)
-        }
+    //   gitrepo.insertBulk(data, function(err, result) {
+    //     if (err) {
+    //       return next(err)
+    //     }
         
-        puppet.screenshot( puppetArr, function(){
-          res.redirect('/profile/' + id )
-        })
-      })
-    }
+    //     puppet.screenshot( puppetArr, function(){
+    //       res.redirect('/profile/' + id )
+    //     })
+    //   })
+    // }
   })
 }
 
