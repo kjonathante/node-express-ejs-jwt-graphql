@@ -25,3 +25,13 @@ exports.findByUserId = function( id, callback ) {
     }
   })
 }
+
+exports.findRandomRepo = function(callback){
+  db.pool().query('SELECT * from gitrepos WHERE selected = 1', function(err, results,fields){
+    if (err) {
+      return callback(err)
+    } else {
+      return callback(null, results)
+    }
+  });
+}
