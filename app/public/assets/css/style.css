@@ -2,7 +2,7 @@ html, body, main {
     height: 100%;
     width: 100%;
     background-image: url(../imgs/small_steps.png);
-    overflow: hidden;
+    /* overflow: hidden; */
     /* background-size: cover; */
 }
 #profile-main {
@@ -212,4 +212,32 @@ object {
 }
 .list-group > a{
     text-align: center;
+}
+#read-message{
+    width: 100%;
+    height: 60%;
+    border: #cfd4da solid 1px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    overflow-y: auto;
+}
+#write-message, .form-inline{
+    width: 100%;
+}
+#textArea{
+    width: 87.97%;
+}
+#message-btn{
+    width: 10%;
+    height: 85px;
+    padding-left: 1px;
+    margin-left: 8px;
+}
+.form-control:focus{
+    border-color: #cccccc;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+#hiddenMessageInput{
+    display: none;
 }

@@ -123,3 +123,7 @@ exports.findByName = function( search, callback ) {
     });
   }  
 }
+
+exports.writeMessage = function(text,id, callbacl){
+  db.pool().query('')
+}

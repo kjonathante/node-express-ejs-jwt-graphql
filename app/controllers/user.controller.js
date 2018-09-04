@@ -368,3 +368,11 @@ exports.search = function(req,res){
     });
   }
 }
+
+exports.writeMessage = function(req, res){
+  console.log(req.body.user_message, req.params);
+  // user.writeMessage(req.body.message, function(error, results){
+  //   console.log("message written");
+    // res.render('/profile/'+req.session.user.userInfo.id);
+  // });
+}
