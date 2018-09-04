@@ -22,12 +22,12 @@
 						<!-- <input type="file" name="photourl" class="form-control" id="pic-upload" accept="image/*" required=""> -->
 						<input type="file" name="photourl" class="form-control" id="pic-upload" accept="image/*">
 						<input type="hidden" name="photourl2" value="<%= userInfo.photourl %>">
-						<div class="valid-feedback">
+						<!-- <div class="valid-feedback">
 							Nice pic!
 						</div>
 						<div class="invalid-feedback">
 							Please select a profile picture.
-						</div>
+						</div> -->
 					</div>
 					<div class="container" id="edit-container">
 						<div class="" id="edit-first-name">
@@ -76,13 +76,12 @@
 						<div class="" id="edit-github">
 							<label for="validationCustom05">LinkedIn Username</label>
 							<input type="text" name="linkedin" class="form-control" id="validationCustom05" value="<%= userInfo.linkedin %>" placeholder="...">
-
-							<div class="valid-feedback">
+							<!-- <div class="valid-feedback">
 								Radical!
 							</div>
 							<div class="invalid-feedback">
 								Please provide your LinkedIn username.
-							</div>
+							</div> -->
 						</div>
 					</div>
 					<button class="btn btn-secondary btn-block" id="update-btn" type="submit">Update</button>
