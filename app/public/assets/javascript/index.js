@@ -10,3 +10,9 @@ $('#browser').ready(function(){
 // console.log(ranPage);
 
 // $('object').attr('data',ranPage);
+
+// var backgrounds = ['../imgs/small_steps.png', '../imgs/subtle_white_mini_waves.png', '../imgs/swirl_pattern.png', '../imgs/upfeathers.png', '../imgs/congruent_outline.png', '../imgs/seamless_paper_texture.png', '../imgs/topography.png'];
+
+// var ranBackground = backgrounds[Math.floor(Math.random()*backgrounds.length)];
+
+// $('body').attr('background-image', 'url('+ranBackground+')');

@@ -16,10 +16,12 @@
 				<div class="form-row">
 					<div>
 						<label id="edit-profile-pic" for="pic-upload">
-							<img src="../../public/assets/imgs/image_placeholder.jpg" alt="Placeholder Pic" class="rounded" id="placeholder-pic">
-							<img src="images/<%= userInfo.photourl %>" alt="User Pic" class="image-thumbnail rounded" id="user-pic">
-						</label>
-						<input type="file" name="photourl" class="form-control" id="pic-upload" accept="image/*" required="">
+							<img src="/assets/imgs/placeholder-image10.jpg" alt="Placeholder Pic" class="rounded" id="placeholder-pic">
+							<img src="/images/<%= userInfo.photourl %>" alt="User Pic" class="image-thumbnail rounded" id="user-pic">
+ 						</label>
+						<!-- <input type="file" name="photourl" class="form-control" id="pic-upload" accept="image/*" required=""> -->
+						<input type="file" name="photourl" class="form-control" id="pic-upload" accept="image/*">
+						<input type="hidden" name="photourl2" value="<%= userInfo.photourl %>">
 						<div class="valid-feedback">
 							Nice pic!
 						</div>
@@ -61,7 +63,7 @@
 						<div class="" id="edit-github">
 							<label for="validationCustom04">GitHub Username | <button class="btn btn-light" id="repo-btn">Pull Repos</button> </label>
 
-							<input type="text" name="gitlink" class="form-control" id="validationCustom04" value="<%=  userInfo.gitlink %>" placeholder="MartyMcfly" required="">
+							<input type="text" name="gitlink" class="form-control" id="validationCustom04" value="<%=  userInfo.gitlink %>" placeholder="..." required="">
 							<div class="valid-feedback">
 								Wicked!
 							</div>
@@ -69,12 +71,11 @@
 								You must pull your repos from GitHub.
 							</div>
 						</div>
-						<div id="pull-success">Please select the repos you would like to show off</div>
+						<div id="pull-success">Please select the repos you would like to show off on the home page</div>
 						<div id="github-selection"></div>
 						<div class="" id="edit-github">
-
-							<label for="validationCustom05">LinkedIn URL</label>
-							<input type="text" name="linkedin" class="form-control" id="validationCustom05" value="<%= userInfo.linkedin %>" placeholder="MartyMcfly" required="">
+							<label for="validationCustom05">LinkedIn Username</label>
+							<input type="text" name="linkedin" class="form-control" id="validationCustom05" value="<%= userInfo.linkedin %>" placeholder="...">
 
 							<div class="valid-feedback">
 								Radical!

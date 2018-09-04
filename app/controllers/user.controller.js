@@ -194,13 +194,13 @@ exports.editProfilePage = function (req, res, next){
 }
 
 exports.editProfile = function (req, res, next){
-  // console.log('Inside editProfile -->> req.body',req.body)
-  // console.log('Inside editProfile -->> req.files',req.files);
+  console.log('Inside editProfile -->> req.body',req.body)
+  console.log('Inside editProfile -->> req.files',req.files);
 
   var id = req.session.user.userInfo.id
 
   var fileName = ""
-  if (req.files) {
+  if (req.files.photourl) {
     var ext = req.files.photourl.mimetype.split('/')[1]
     //console.log('Inside editProfile -->> ext', ext)
 
@@ -211,6 +211,8 @@ exports.editProfile = function (req, res, next){
         return next(err)
       }
     });
+  } else {
+    fileName = req.body.photourl2
   }
 
   var userInfo = {
@@ -237,7 +239,17 @@ exports.editProfile = function (req, res, next){
     }
 
 
-    var userRepos = req.body.github_repo_json.map( function( val ) {
+    var userRepos
+    if (!req.body.github_repo_json) {
+      // undefine, null or ''
+      userRepos = []
+    } else if (typeof req.body.github_repo_json == 'string') {
+      userRepos = [req.body.github_repo_json]
+    } else {
+      userRepos = req.body.github_repo_json
+    }
+    
+    var userData = userRepos.map( function( val ) {
       var obj = JSON.parse( val )
       var selected = false
       var githubpage = `https://${req.body.gitlink}.github.io/${obj.name}`
@@ -255,21 +267,26 @@ exports.editProfile = function (req, res, next){
 
     console.log('Inside editProfile -->> userRepors', userRepos)
     console.log('Inside editProfile -->> selectedRepos', selectedRepos)
+    console.log('Inside editProfile -->> userData', userData)
 
-    gitrepo.insertBulk(userRepos, function(err, result) {
+    if (userData.length < 1) {
+      return res.redirect('/profile/' + id )
+    }
+
+
+    gitrepo.insertBulk(userData, function(err, result) {
       if (err) {
         return next(err)
       }
 
-      var puppetArr = userRepos.map( function(val) {
+      var puppetArr = userData.map( function(val) {
         return {url: val[4], filename: val[5]} // githubpage
       })
       console.log('Inside editProfile -->> puppetArr', puppetArr)
       puppet.screenshot( puppetArr, function(){
-        res.redirect('/profile/' + id )
+        return res.redirect('/profile/' + id )
       })
     })
-
 
     // save req.body.git_repo
     // if (!req.body.git_repo) {
