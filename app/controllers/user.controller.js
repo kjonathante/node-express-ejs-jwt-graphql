@@ -388,7 +388,13 @@ exports.search = function(req,res){
 
 exports.writeMessage = function(req, res){
   console.log(req.body);
-  user.writeMessages(req.body.user_message,req.body.id, function(error, results){
+  var sender = 'Anonymous';
+  if(typeof req.session.user == 'undefined'){
+    sender = 'Anonymous'
+  }else{
+    sender = req.session.user.userInfo.first_name;
+  }
+  user.writeMessages(req.body.user_message,req.body.id, sender, function(error, results){
     if (error){
       throw(error);
     }

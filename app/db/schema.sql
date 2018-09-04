@@ -34,6 +34,8 @@ CREATE TABLE messages (
   id INT NOT NULL AUTO_INCREMENT,
   user_message TEXT,
   user_id INT NOT NULL,
+  sender VARCHAR(255) NOT NULL,
+  timeEntered TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id),
   FOREIGN KEY (user_id) REFERENCES users(id)
 );

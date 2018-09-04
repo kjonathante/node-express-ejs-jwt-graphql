@@ -124,11 +124,11 @@ exports.findByName = function( search, callback ) {
   }  
 }
 
-exports.writeMessages = function(text,id, callback){
+exports.writeMessages = function(text,id, sender, callback){
   console.log(text, id);
   db.pool().query({
-    sql: 'INSERT INTO messages (user_message, user_id) VALUES (?)',
-    values: [[text,id]],
+    sql: 'INSERT INTO messages (user_message, user_id, sender) VALUES (?)',
+    values: [[text,id, sender]],
   },function(error, results, fields){
     if (error) {
       return callback(error)
