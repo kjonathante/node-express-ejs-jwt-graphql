@@ -329,20 +329,28 @@ exports.editProfile = function (req, res, next){
 }
 
 exports.profile = function(req, res, next) {
-  console.log('Inside user.controller.profile ==> param.id: ', req.params.id)
-  user.findById( req.params.id, function(error,userInfo) {
+
+  var userInfo
+  if (req.session.user) {
+    console.log( 'Inside profile --> req.session.user: ', req.session.user)
+    userInfo = { 
+      id: req.session.user.userInfo.id,
+      first_name: req.session.user.userInfo.first_name
+    }
+  }
+  user.findById( req.params.id, function(error,results) {
     if (error) {
-      return res.render('pages/profile', {error: error})
+      return res.render('pages/profile', {error: error, userInfo: userInfo})
       // return next(error)
     } else {
       gitrepo.findByUserId( req.params.id, function(error,userGitRepos){
         if (error) {
           return next(error)
         } else {
-          userInfo.git_repos = userGitRepos
+          results.git_repos = userGitRepos
     
-          console.log('Inside user.controller.profile -> userInfo: ', userInfo)
-          return res.render('pages/profile', {userInfo: userInfo} );    
+          console.log('Inside user.controller.profile -> results: ', results)
+          return res.render('pages/profile', {userInfo: userInfo, results: results} );    
         }
       })
     }
