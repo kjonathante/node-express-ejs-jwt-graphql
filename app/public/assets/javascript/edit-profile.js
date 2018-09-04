@@ -14,9 +14,9 @@ $("#pic-upload").change(function(){
     readURL(this);
 });
 
-// Used to retain user selected picture
+//Used to retain user selected picture
 var userPic = $('#user-pic').attr('src');
-if (userPic === 'images/'){
+if (userPic == '/images/'){
     $('#user-pic').hide();
 }else{
     $('#placeholder-pic').hide();
