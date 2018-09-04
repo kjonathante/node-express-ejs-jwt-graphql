@@ -7,6 +7,15 @@
         margin-left: 3%;
     } */
 }
+@media screen and (max-width: 1420px){ 
+    #profile-pic {
+        width: 48%;
+    }
+    #user-pic {
+        height: auto;
+        width: 100%;
+    }
+}
 @media screen and (max-width: 1199px){
     /* #edit-container {
         width: 65%;
@@ -107,6 +116,9 @@
         margin-top: 12%;
         margin-bottom: 8%;
     }
+    #profile-container {
+        margin-bottom: 0;
+    }
 }
 @media screen and (max-width: 790px){
     /* #search-bar {
@@ -142,6 +154,10 @@
     #signup-container {
         margin-top: 12%;
         margin-bottom: 8%;
+    }
+    #user-repos {
+        width: 100%;
+        margin-left: 0;
     }
 }
 @media screen and (max-width: 700px){

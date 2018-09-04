@@ -9,7 +9,7 @@ html, body, main {
     overflow: scroll;
 }
 .form-inline {
-    width: fit-content;
+    /* width: fit-content; */
     flex: 1;
 }
 #search-bar {
@@ -158,12 +158,13 @@ object {
     border-radius: 10px;
 }
 #left-container {
-    width: 48%;
+    flex: 1;
 }
 #profile-info-container {
+    display: flex;
     background-color: rgba(255, 250, 250, 1);
     /* height: fit-content; */
-    height: 210px;
+    /* height: 43%; */
     width: auto;
     margin: 0;
     padding: 16px;
@@ -172,9 +173,9 @@ object {
     float: left;
 }
 #user-info {
-    float: left;
-    margin-top: 1rem;
-    margin-left: 1rem;
+    font-size: 1vw;
+    margin-top: 1vw;
+    margin-left: 1vw;
 }
 #github-link {
     margin-bottom: 1rem;
@@ -187,14 +188,17 @@ object {
     margin-left: 1rem;
     overflow-y: auto;
 }
+#repo-screenshot {
+    width: 200px;
+}
 #message-board-container {
     background-color: rgba(255, 250, 250, 1);
     width: 100%;
     margin-top: 3%;
     /* padding: 8%; */
-    float: left;
-    clear: both;
-    height: 260px;
+    /* float: left;
+    clear: both; */
+    height: 250px;
 }
 #message-input-container {
     background-color: rgba(255, 250, 250, 1);
@@ -212,7 +216,7 @@ object {
     margin: 2px;
 }
 .list-group > a:hover{
-    background-color: rgb(255, 193, 7);
+    background-color: rgba(255, 193, 7, 1);
 }
 .list-group > a{
     text-align: center;

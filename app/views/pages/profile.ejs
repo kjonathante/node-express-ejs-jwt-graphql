@@ -36,7 +36,7 @@
 					</div>
 					<div class="container" id="user-repos">
 						<% for(var val of userInfo.git_repos){%>
-							<img src=<%='/images/'+val.screenshot%> alt="<%=val.name%>" width="200">
+							<img id="repo-screenshot" src=<%='/images/'+val.screenshot%> alt="<%=val.name%>">
 							<p><%=val.name%></p>
 						<%}%>
 					</div>
