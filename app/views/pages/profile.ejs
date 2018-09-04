@@ -33,12 +33,19 @@
 					</div>
 					<div class="container" id="message-board-container">
 						<div id="read-message">
+							<% if (typeof messages != 'undefined'){
+								var colorCount = 0;
+								for (var key in messages){
+									colorCount++ %>
+									<p id='eachMessage'><%= messages[key].timeEntered+', '+messages[key].sender+': '+messages[key].user_message %></p>
+								<% }
+							} %>
 						</div>
 						<div id="write-message">
 							<form method="POST" action="/message" class="form-inline">
 								<textarea class="form-control" id="textArea" name="user_message" placeholder="Post a message" rows="3"></textarea>
 								<input type="text" name="id" id="hiddenMessageInput">
-								<button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="message-btn">Send</button>
+								<button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="message-btn">Post</button>
 							</form>
 						</div>
 					</div>
