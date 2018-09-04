@@ -226,9 +226,12 @@ object {
     width: 100%;
     height: 60%;
     border: #cfd4da solid 1px;
-    margin-bottom: 5px;
+    margin-bottom: 1.25%;
     border-radius: 5px;
     overflow-y: auto;
+}
+#read-message::-webkit-scrollbar { 
+    display: none;
 }
 #write-message, .form-inline{
     width: 100%;
@@ -239,8 +242,8 @@ object {
 #message-btn{
     width: 10%;
     height: 85px;
-    padding-left: 1px;
-    margin-left: 8px;
+    padding-left: 1%;
+    margin-left: 2%;
 }
 .form-control:focus{
     border-color: #cccccc;
@@ -249,4 +252,7 @@ object {
 }
 #hiddenMessageInput{
     display: none;
+}
+#eachMessage{
+    margin-left: 3%;
 }

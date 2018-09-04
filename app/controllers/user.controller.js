@@ -310,17 +310,24 @@ exports.profile = function(req, res, next) {
         if (error) {
           return next(error)
         } else {
-          results.git_repos = userGitRepos
+
+
+          user.readMessages(req.params.id, function(error, messages){
+            console.log(messages);
+            results.git_repos = userGitRepos
+            console.log('Inside user.controller.profile -> results: ', results)
+            return res.render('pages/profile', {userInfo: userInfo, results: results, messages: messages} );
+          })
+
+          // results.git_repos = userGitRepos
     
-          console.log('Inside user.controller.profile -> results: ', results)
-          return res.render('pages/profile', {userInfo: userInfo, results: results} );    
+          // console.log('Inside user.controller.profile -> results: ', results)
+          // return res.render('pages/profile', {userInfo: userInfo, results: results} );    
         }
       })
 
       //Read messages for message board
-      user.readMessages(req.params.id, function(error, messages){
-        console.log(messages);
-      })
+      
     }
   })
 }
