@@ -11,7 +11,7 @@
     #profile-pic {
         width: 48%;
     }
-    #user-pic {
+    #profile-info-container img {
         height: auto;
         width: 100%;
     }
@@ -101,10 +101,10 @@
         margin-bottom: 8%;
     }
     #confirm-short-text {
-        display: none;
+        display: block;
     }
     #confirm-long-text {
-        display: block;
+        display: none;
     }
     #signup-btn {
         width: 100%;
@@ -116,7 +116,10 @@
         margin-top: 12%;
         margin-bottom: 8%;
     }
-    #profile-container {
+    /* #profile-container {
+        margin-bottom: 0;
+    } */
+    #message-board-container, #user-repos {
         margin-bottom: 0;
     }
 }
@@ -155,9 +158,16 @@
         margin-top: 12%;
         margin-bottom: 8%;
     }
+    #user-info {
+        font-size: 2vw;
+        margin-left: 2vw;
+    }
+    #message-board-container {
+        margin-bottom: 2%;
+    }
     #user-repos {
         width: 100%;
-        margin-left: 0;
+        margin: 0;
     }
 }
 @media screen and (max-width: 700px){
@@ -226,6 +236,18 @@
         margin-top: 19%;
         margin-bottom: 10%;
     }
+    #profile-info-container {
+        display: block;
+    }
+    #profile-pic {
+        width: 100%;
+    }
+    #user-info {
+        font-size: inherit;
+    }
+    /* #message-board-container {
+        margin-top: 13%;
+    } */
 }
 @media screen and (max-width: 482px){
     /* #search-bar {

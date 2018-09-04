@@ -21,7 +21,7 @@
 					<div class="container" id="profile-info-container">
 						<label id="profile-pic">
 							<!-- <img src="<%= ((typeof userInfo != 'undefined') && (typeof userInfo.photourl != 'undefined')) ? '/images/'+userInfo.photourl : '' %>" alt="User Pic" class="rounded" id="user-pic"> -->
-							<img src="/assets/imgs/image_placeholder.jpg" alt="Placeholder Pic" class="rounded" id="placeholder-pic">
+							<img src="/assets/imgs/profilepic.png" alt="Placeholder Pic" class="rounded" id="placeholder-pic">
 							<img src="<%= '/images/'+userInfo.photourl %>" alt="User Pic" class="rounded" id="user-pic">
 						</label>
 						<div id="user-info">
@@ -31,11 +31,18 @@
 							<a href="https://www.linkedin.com/in/<%= userInfo.linkedin %>" target="_blank">LinkedIn</a>
 						</div>
 					</div>
-					<div class="container" id="message-board-container"></div>
+					<div class="container" id="message-board-container">
+						<!-- <form action="" method="get">
+							<div id="messages"></div>
+						</form>
+						<form action="" method="post">
+							<input type="text" id="message-input">
+						</form> -->
+					</div>
 					</div>
 					<div class="container" id="user-repos">
 						<% for(var val of userInfo.git_repos){%>
-							<img src=<%='/images/'+val.screenshot%> alt="<%=val.name%>" width="200">
+							<img src=<%='/images/'+val.screenshot%> alt="<%=val.name%>">
 							<p><%=val.name%></p>
 						<%}%>
 					</div>
