@@ -37,7 +37,9 @@
 								var colorCount = 0;
 								for (var key in messages){
 									colorCount++ %>
-									<p id='eachMessage'><%= messages[key].timeEntered+', '+messages[key].sender+': '+messages[key].user_message %></p>
+									<p id='eachMessage' style="background-color:<% if ((colorCount%2)!=0){ %>
+										<%= '#e3e4e7' %> <% } else{ %> <%= 'white' %> <% } %>">
+									<%= messages[key].timeEntered+', '+messages[key].sender+': '+messages[key].user_message %></p>
 								<% }
 							} %>
 						</div>
