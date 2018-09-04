@@ -12,11 +12,11 @@
 	<main id="profile-main">
 		<!-- Page body -->
 		<div class="container" id="profile-container">
-            <div class="form-row">
+      		<div class="form-row">
 				<% if (typeof error != 'undefined') {%>
 					<p><%= error %></p>
 				<%}%>
-				<% if (typeof userInfo != 'undefined') {%>
+				<% if (typeof results != 'undefined') {%>
 					<div id="left-container">
 					<div class="container" id="profile-info-container">
 						<label id="profile-pic">
@@ -25,21 +25,24 @@
 							<img src="<%= '/images/'+userInfo.photourl %>" alt="User Pic" class="rounded" id="user-pic">
 						</label>
 						<div id="user-info">
-							<p><%= userInfo.first_name %> <%= userInfo.last_name %></p>
-							<p><%= userInfo.email_address %></p>
-							<div id="github-link"><a href="https://github.com/<%= userInfo.gitlink %>" target="_blank">GitHub</a></div>
-							<a href="https://www.linkedin.com/in/<%= userInfo.linkedin %>" target="_blank">LinkedIn</a>
+							<p><%= results.first_name %> <%= results.last_name %></p>
+							<p><%= results.email_address %></p>
+							<div id="github-link"><a href="https://github.com/<%= results.gitlink %>" target="_blank">GitHub</a></div>
+							<a href="https://www.linkedin.com/in/<%= results.linkedin %>" target="_blank">LinkedIn</a>
 						</div>
 					</div>
 					<div class="container" id="message-board-container">
-						<!-- <form action="" method="get">
-							<div id="messages"></div>
-						</form>
-						<form action="" method="post">
-							<input type="text" id="message-input">
-						</form> -->
+						<div id="read-message">
+						</div>
+						<div id="write-message">
+							<form method="POST" action="/message" class="form-inline">
+								<textarea class="form-control" id="textArea" name="user_message" placeholder="Post a message" rows="3"></textarea>
+								<input type="text" name="id" id="hiddenMessageInput">
+								<button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="message-btn">Send</button>
+							</form>
+						</div>
 					</div>
-					</div>
+				</div>
 					<div class="container" id="user-repos">
 						<% for(var val of userInfo.git_repos){%>
 							<img src=<%='/images/'+val.screenshot%> alt="<%=val.name%>">
@@ -47,16 +50,22 @@
 						<%}%>
 					</div>
 				<%}%>
-			</div>
-		<!-- <div class="container" id="message-board-container"></div> -->
-		<!-- <div class="container" id="message-input-container"></div> -->
+			
+		</div>
+	</main>
 
-	</div>
-</main>
-
-<footer>
-	<% include ../partials/profile-footer %>
-</footer>
-
+	<footer>
+		<% include ../partials/profile-footer %>
+	</footer>
+	<script type="text/javascript">
+		$(document).ready ( function(){
+		var path = window.location.href.split('/');
+		var length = path.length;
+		path = path[length-1];
+			
+		console.log(path);
+		$("#hiddenMessageInput").val(path);
+ 		})
+	</script>
 </body>
 </html>
