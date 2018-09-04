@@ -39,7 +39,7 @@ router.get('/profile/:id', userController.profile);
 
 router.get('/github/repos/:username', githubController.getRepos);
 
-router.post('/message/:id', userController.writeMessage);
+router.post('/message', userController.writeMessage);
 
 // router.get('/search', function(req, res) {
 //   res.render('search')

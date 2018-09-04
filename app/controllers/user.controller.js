@@ -312,7 +312,7 @@ exports.editProfile = function (req, res, next){
 }
 
 exports.profile = function(req, res, next) {
-  console.log('Inside user.controller.profile ==> param.id: ', req.params.id)
+  // console.log('Inside user.controller.profile ==> param.id: ', req.params.id)
   user.findById( req.params.id, function(error,userInfo) {
     if (error) {
       return res.render('pages/profile', {error: error})
@@ -324,7 +324,7 @@ exports.profile = function(req, res, next) {
         } else {
           userInfo.git_repos = userGitRepos
     
-          console.log('Inside user.controller.profile -> userInfo: ', userInfo)
+          // console.log('Inside user.controller.profile -> userInfo: ', userInfo)
           return res.render('pages/profile', {userInfo: userInfo} );    
         }
       })
@@ -370,9 +370,12 @@ exports.search = function(req,res){
 }
 
 exports.writeMessage = function(req, res){
-  console.log(req.body.user_message, req.params);
-  // user.writeMessage(req.body.message, function(error, results){
-  //   console.log("message written");
-    // res.render('/profile/'+req.session.user.userInfo.id);
-  // });
+  console.log(req.body);
+  user.writeMessages(req.body.user_message,req.body.id, function(error, results){
+    if (error){
+      throw(error);
+    }
+    console.log("message written", req.session.user);
+    return res.redirect('/profile/'+req.body.id);
+  });
 }
