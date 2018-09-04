@@ -2,7 +2,7 @@ html, body, main {
     height: 100%;
     width: 100%;
     background-image: url(../imgs/topography.png);
-    overflow: hidden;
+    /* overflow: hidden; */
     /* background-size: cover; */
 }
 #profile-main {
@@ -268,4 +268,23 @@ object {
 }
 #eachMessage{
     padding-left: 3%;
+}
+
+
+#user-repos::-webkit-scrollbar-track
+{
+    border: 1px solid #b2b2b2;
+	background-color: #b2b2b2;
+}
+
+#user-repos::-webkit-scrollbar
+{
+	width: 5px;
+    background-color: #b2b2b2;
+    border-radius: 10px;
+}
+
+#user-repos::-webkit-scrollbar-thumb
+{
+    background-color: #cccccc;	
 }
