@@ -30,19 +30,20 @@
 							<div id="github-link"><a href="https://github.com/<%= userInfo.gitlink %>" target="_blank">GitHub</a></div>
 							<a href="https://www.linkedin.com/in/<%= userInfo.linkedin %>" target="_blank">LinkedIn</a>
 						</div>
-						<div class="container" id="message-board-container">
-							<div id="read-message">
-	
-							</div>
-							<div id="write-message">
-								<form method="POST" action="/message" class="form-inline">
-									<textarea class="form-control" id="textArea" name="user_message" placeholder="Post a message" rows="3"></textarea>
-									<input type="text" name="id" id="hiddenMessageInput">
-									<button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="message-btn">Send</button>
-								</form>
-							</div>
+					</div>
+					<div class="container" id="message-board-container">
+						<div id="read-message">
+
+						</div>
+						<div id="write-message">
+							<form method="POST" action="/message" class="form-inline">
+								<textarea class="form-control" id="textArea" name="user_message" placeholder="Post a message" rows="3"></textarea>
+								<input type="text" name="id" id="hiddenMessageInput">
+								<button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="message-btn">Send</button>
+							</form>
 						</div>
 					</div>
+				</div>
 					<div class="container" id="user-repos">
 						<% for(var val of userInfo.git_repos){%>
 							<img src=<%='/images/'+val.screenshot%> alt="<%= val.name %>" width="200">
@@ -50,7 +51,7 @@
 						<%}%>
 					</div>
 				<%}%>
-			</div>
+			
 		</div>
 	</main>
 
