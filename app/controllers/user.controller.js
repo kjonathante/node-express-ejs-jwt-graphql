@@ -393,3 +393,20 @@ exports.search = function(req,res){
     });
   }
 }
+
+exports.writeMessage = function(req, res){
+  console.log(req.body);
+  var sender = 'Anonymous';
+  if(typeof req.session.user == 'undefined'){
+    sender = 'Anonymous'
+  }else{
+    sender = req.session.user.userInfo.first_name;
+  }
+  user.writeMessages(req.body.user_message,req.body.id, sender, function(error, results){
+    if (error){
+      throw(error);
+    }
+    console.log("message written", req.session.user);
+    return res.redirect('/profile/'+req.body.id);
+  });
+}

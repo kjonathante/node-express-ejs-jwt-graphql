@@ -25,9 +25,9 @@ router.get('/signup', userController.signUpPage);
 
 router.post('/signup',userController.signUp);
 
-router.post('/login', userController.login)
+router.post('/login', userController.login);
 
-router.get('/logout', userController.logout)
+router.get('/logout', userController.logout);
 
 router.get('/edit-profile', userController.authorize, userController.editProfilePage);
 
@@ -35,24 +35,17 @@ router.post('/edit-profile', userController.authorize, userController.editProfil
 
 router.get('/search', userController.search);
 
-// router.get('/', function(req, res) {
-//   res.render('index')
+router.get('/profile/:id', userController.profile);
+
+router.get('/github/repos/:username', githubController.getRepos);
+
+router.post('/message', userController.writeMessage);
+
+// router.get('/search', function(req, res) {
+//   res.render('search')
 // });
 
-// router.get('/signup', function(req, res) {
-//   res.render('signup')
-// });
 
-router.get('/profile/:id', userController.profile)
-
-
-
-router.get('/search', function(req, res) {
-  res.render('search')
-});
-
-
-router.get('/github/repos/:username', githubController.getRepos)
 
 // router.post('/signin', urlencodedParser, function(req, res){
 //   console.log(req.body);
