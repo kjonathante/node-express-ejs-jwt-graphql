@@ -137,3 +137,16 @@ exports.writeMessages = function(text,id, sender, callback){
     }  
   });
 }
+
+exports.readMessages = function(id,callback){
+  db.pool().query({
+    sql: 'SELECT user_message, sender, timeEntered FROM messages WHERE user_id=? ORDER BY timeEntered DESC',
+    values: [id],
+  }, function(error,results,fields){
+    if (error) {
+      return callback(error)
+    }else{
+      return callback(null, results);
+    } 
+  });
+}
