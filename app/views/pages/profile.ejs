@@ -20,9 +20,9 @@
 					<div id="left-container">
 					<div class="container" id="profile-info-container">
 						<label id="profile-pic">
-							<!-- <img src="<%= ((typeof userInfo != 'undefined') && (typeof userInfo.photourl != 'undefined')) ? '/images/'+userInfo.photourl : '' %>" alt="User Pic" class="rounded" id="user-pic"> -->
-							<img src="/assets/imgs/profilepic.png" alt="Placeholder Pic" class="rounded" id="placeholder-pic">
-							<img src="<%= '/images/'+userInfo.photourl %>" alt="User Pic" class="rounded" id="user-pic">
+							<!-- <img src="<%= ((typeof results != 'undefined') && (typeof results.photourl != 'undefined')) ? '/images/'+results.photourl : '' %>" alt="User Pic" class="rounded" id="user-pic"> -->
+							<img src="/assets/imgs/image_placeholder.jpeg" alt="Placeholder Pic" class="rounded" id="placeholder-pic">
+							<img src='/images/<%= results.photourl %>' alt="User Pic" class="rounded" id="user-pic">
 						</label>
 						<div id="user-info">
 							<p><%= results.first_name %> <%= results.last_name %></p>
@@ -37,7 +37,9 @@
 								var colorCount = 0;
 								for (var key in messages){
 									colorCount++ %>
-									<p id='eachMessage'><%= messages[key].timeEntered+', '+messages[key].sender+': '+messages[key].user_message %></p>
+									<p id='eachMessage' style="background-color:<% if ((colorCount%2)!=0){ %>
+										<%= '#e3e4e7' %> <% } else{ %> <%= 'white' %> <% } %>">
+									<%= messages[key].timeEntered+', '+messages[key].sender+': '+messages[key].user_message %></p>
 								<% }
 							} %>
 						</div>
@@ -51,8 +53,8 @@
 					</div>
 				</div>
 					<div class="container" id="user-repos">
-						<% for(var val of userInfo.git_repos){%>
-							<img src=<%='/images/'+val.screenshot%> alt="<%=val.name%>">
+						<% for(var val of results.git_repos){%>
+							<img src=<%='/images/'+val.screenshot%> alt="<%=val.name%>" width="200">
 							<p><%=val.name%></p>
 						<%}%>
 					</div>
