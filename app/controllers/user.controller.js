@@ -105,17 +105,24 @@ exports.signUp = function(req, res) {
   });
 }
 
+exports.loginPage = function( req, res, next ) {
+  return res.render('pages/login')
+}
+
 exports.login = function( req, res, next ) {
+//Oops! It appears you forgot one of the fields.. or maybe you forgot to <a href="signup" class="alert-link">sign up</a>.
+//Oops! It appears you have entered the wrong email or password.. or maybe you forgot to <a href="signup" class="alert-link">sign up</a>.
 
   if (req.body.email_address && req.body.password) {
     user.authenticate(req.body.email_address, req.body.password, function (error, user) {
       if (error || !user) {
-        var err = new Error('Wrong email or password.');
-        err.status = 401;
-        return res.render('pages/login-wrong');
+        return res.render('pages/login', 
+          {
+            error: 'Oops! It appears you have entered the wrong email or password.. ',
+            alertInfo: 'alert-warning'
+          }
+        )
       } else {
-        console.log('inside user.controller.login', user)
-        console.log('inside user.controller.login', req.path)
         req.session.user = { 
           userInfo : {  
             id: user.id,
@@ -124,19 +131,19 @@ exports.login = function( req, res, next ) {
             last_name: user.last_name,
           }
         }
-        //req.session.redirectTo = '/profile/'+user.id;
         var redirectTo = req.session.redirectTo ? req.session.redirectTo : '/profile/'+user.id;
         delete req.session.redirectTo
         return res.redirect(redirectTo)
-        //return res.redirect('/');
       }
     })
   } else {
-    var err = new Error('All fields required.');
-    err.status = 400;
-    return res.render('pages/login-all');
+    return res.render('pages/login', 
+      {
+        error: 'Oops! It appears you forgot one of the fields.. ',
+        alertInfo: 'alert-danger'
+      }
+    )
   }
-
 }
 
 exports.logout = function( req, res, next ) {
@@ -156,8 +163,8 @@ exports.authorize = function( req, res, next ) {
   if (!req.session.user || !req.session.user.userInfo) {
     console.log( 'inside authorize => userInfo is undefined' )
     req.session.redirectTo = req.path;
-    return res.redirect('/');
-    //return res.redirect('/login');
+    // return res.redirect('/');
+    return res.redirect('/login');
   } 
   
   user.findByEmail( req.session.user.userInfo.email_address, function( error, results) {

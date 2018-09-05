@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<% include ../partials/head %>
+</head>
+<body>
+
+	<header>
+		<% include ../partials/login-header %>
+	</header>
+
+	<main>
+        <!-- Page body -->
+        <div class="alert <%= (typeof alertInfo != 'undefined') ? alertInfo: 'alert-info'%>" id="alert-all" role="alert">
+            <% if (typeof error != 'undefined') { %>
+                <%= error %>or maybe you forgot to <a href="signup" class="alert-link">sign up</a>.
+            <% } else { %>
+                Sign in to CodeBook. Don't have an account yet? Please <a href="signup" class="alert-link">sign up</a>.
+            <% } %>
+        </div>
+		<div class="container" id="login-container">
+			<form method="POST" action="/login" class="px-4 py-3 needs-validation" id="login-form" novalidate="">
+                <div class="form-group">
+                    <label for="loginPageEmail">Email</label>
+                    <input type="email" name="email_address" class="form-control" id="loginPageEmail" placeholder="noroads@delorean.com" required="">
+                    <div class="valid-feedback">
+                        Affirmitive!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please provide a valid email.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="loginPagePassword">Password</label>
+                    <input type="password" name="password" class="form-control" id="loginPagePassword" placeholder="Password" required="" autocomplete="current-password">
+                    <div class="valid-feedback">
+                        10-4!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please provide a password.
+                    </div>
+                </div>
+                <!-- <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                    <label class="form-check-label" for="dropdownCheck">
+                        Remember me
+                    </label>
+                </div> -->
+                <button type="submit" class="btn btn-success btn-block" id="login-btn">Sign in</button>
+            </form>
+		</div>
+	</main>
+
+	<footer>
+		<% include ../partials/footer %>
+	</footer>
+	
+</body>
+</html>
