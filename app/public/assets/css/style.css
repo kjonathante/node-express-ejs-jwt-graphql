@@ -188,7 +188,7 @@ object {
     margin-bottom: .5rem;
     border-radius: 5px;
     overflow-y: auto;
-    /* flex: 1; */
+    flex: 1;
 }
 #read-message::-webkit-scrollbar { 
     display: none;
