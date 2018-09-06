@@ -2,13 +2,14 @@
 <div id="load-gif"></div>
 
 <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light" id="login-header">
         <a class="navbar-brand" href="/">CodeBook</a>
-        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+        <button class="mobile-dropdown navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-        </button> -->
-              
-      <!-- <div class="collapse navbar-collapse"></div> -->
+        </button>
+                
+        <div class="mobile-dropdown collapse navbar-collapse" id="navbarSupportedContent">
 
         <form method="GET" action="/search" class="form-inline">
             <input class="form-control mr-sm-2" id="search-bar" name="searchTerm" type="search" placeholder="Search for a User with name, email or Git ID" aria-label="Search">
@@ -18,5 +19,5 @@
         <!-- <div class="btn-group"> -->
             <span id="login-error">Error!</span>
         <!-- </div> -->
-
+        </div>
     </nav>

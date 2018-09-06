@@ -1,15 +1,15 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" id="edit-profile-html">
 <head>
 	<% include ../partials/head %>
 </head>
-<body>
+<body id="edit-profile-body">
 
-	<header>
+	<header id="edit-profile-header">
 		<% include ../partials/header %>
 	</header>
 
-	<main>
+	<main id="edit-profile-main">
 		<!-- Page body -->
 		<div class="container" id="edit-profile-container">
 			<form method="POST" action="/edit-profile" class="needs-validation" encType="multipart/form-data" novalidate="">
@@ -32,7 +32,7 @@
 					<div class="container" id="edit-container">
 						<div class="" id="edit-first-name">
 							<label for="validationCustom01">First name</label>
-							<input type="text" name="first_name" class="form-control" id="validationCustom01" value="<%= userInfo.first_name %>" placeholder="Marty" required="">
+							<input type="text" name="first_name" class="form-control" id="validationCustom01" value="<%= userInfo.first_name %>" placeholder="..." required="">
 							<div class="valid-feedback">
 								Looks good!
 							</div>
@@ -42,7 +42,7 @@
 						</div>
 						<div class="" id="edit-last-name">
 						<label for="validationCustom02">Last name</label>
-							<input type="text" name="last_name" class="form-control" id="validationCustom02" value="<%= userInfo.last_name %>" placeholder="Mcfly" required="">
+							<input type="text" name="last_name" class="form-control" id="validationCustom02" value="<%= userInfo.last_name %>" placeholder="..." required="">
 							<div class="valid-feedback">
 								Great!
 							</div>
@@ -51,8 +51,8 @@
 							</div>
 						</div>
 						<div class="" id="edit-email">
-							<label for="validationCustom03">Email</label>
-							<input type="text" name="email_address" class="form-control" id="validationCustom03" value="<%= userInfo.email_address %>" placeholder="rock@roll.com" required="">
+							<label for="validationCustom03" id="edit-email-label">Email</label>
+							<input type="text" name="email_address" class="form-control" id="validationCustom03" value="<%= userInfo.email_address %>" placeholder="..." required="">
 							<div class="valid-feedback">
 								Affirmitive!
 							</div>
