@@ -293,6 +293,9 @@ object {
     overflow-y: auto;
     border-radius: 10px;
 }
+.form-check {
+    margin-left: 1%;
+}
 #update-btn {
     margin-top: 3%;
 }
@@ -352,9 +355,6 @@ object {
     height: 430px;
     overflow-y: auto;
     border-radius: 10px;
-} */
-/* .form-check {
-    margin-left: 1%;
 } */
 /* .form-group {
     margin-bottom: 1rem;
