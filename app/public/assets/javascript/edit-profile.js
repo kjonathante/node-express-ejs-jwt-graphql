@@ -85,7 +85,7 @@ $('#repo-btn').on('click', function(){
 })
 
 // Shrinks the container for display purposes
-$('#update-btn').on('click', function(){
-    // $('#edit-profile-container').attr('style','line-height: 18px; margin-top: .5rem;');
+// $('#update-btn').on('click', function(){
+//     $('#edit-profile-container').attr('style','font-size: 1vw;');
     // $('#github-selection').attr('style','display: block; line-height: 26px;');
-})
+// })
