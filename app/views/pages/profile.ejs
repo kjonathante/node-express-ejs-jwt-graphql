@@ -38,13 +38,16 @@
 								for (var key in messages){
 									colorCount++ %>
 									<p id='eachMessage' style="background-color:<% if ((colorCount%2)!=0){ %>
-										<%= '#ffd966' %> <% } else{ %> <%= 'white' %> <% } %>">
-									<%= messages[key].timeEntered+', '+messages[key].sender+': '+messages[key].user_message %></p>
+										<%= '#e3e4e7' %> <% } else{ %> <%= 'white' %> <% } %>">
+									<span id="time-posted"> <%= messages[key].timeEntered %> </span>
+									<br>
+									<%= messages[key].sender+': '+messages[key].user_message %></p>
+									<!-- messages[key].timeEntered+', '+ -->
 								<% }
 							} %>
 						</div>
 						<div id="write-message">
-							<form method="POST" action="/message" class="form-inline">
+							<form method="POST" action="/message" id="message-input">
 								<textarea class="form-control" id="textArea" name="user_message" placeholder="Post a message" rows="3"></textarea>
 								<input type="text" name="id" id="hiddenMessageInput">
 								<button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="message-btn">Post</button>

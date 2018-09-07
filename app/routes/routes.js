@@ -25,6 +25,7 @@ router.get('/signup', userController.signUpPage);
 
 router.post('/signup',userController.signUp);
 
+router.get('/login',  userController.loginPage)
 router.post('/login', userController.login);
 
 router.get('/logout', userController.logout);

@@ -1,18 +1,22 @@
 <!doctype html>
-<html lang="en" id="login-html">
+<html lang="en">
 <head>
 	<% include ../partials/head %>
 </head>
-<body id="login-body">
+<body>
 
 	<header>
 		<% include ../partials/login-header %>
 	</header>
 
-	<main id="login-main">
+	<main>
         <!-- Page body -->
-        <div class="alert alert-danger" id="alert-wrong" role="alert">
-            Oops! It appears you have entered the wrong email or password.. or maybe you forgot to <a href="signup" class="alert-link">sign up</a>.
+        <div class="alert <%= (typeof alertInfo != 'undefined') ? alertInfo: 'alert-info'%>" id="alert-all" role="alert">
+            <% if (typeof error != 'undefined') { %>
+                <%= error %>or maybe you forgot to <a href="signup" class="alert-link">sign up</a>.
+            <% } else { %>
+                Sign in to CodeBook. Don't have an account yet? Please <a href="signup" class="alert-link">sign up</a>.
+            <% } %>
         </div>
 		<div class="container" id="login-container">
 			<form method="POST" action="/login" class="px-4 py-3 needs-validation" id="login-form" novalidate="">

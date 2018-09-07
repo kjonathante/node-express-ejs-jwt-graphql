@@ -1,13 +1,44 @@
+/* ------------------------------------------------------------- Main body -------------------------------------------------------------- */
 html, body, main {
     height: 100%;
     width: 100%;
     background-image: url(../imgs/topography.png);
-    /* overflow: hidden; */
+    overflow: hidden;
     /* background-size: cover; */
 }
-#profile-main {
-    overflow: scroll;
+#index-html, #index-body, #index-main {
+    overflow: hidden;
 }
+#index-header {
+    position: static;
+}
+#load-gif {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    background: url(../imgs/Preloader_71.gif) center center no-repeat rgba(255, 255, 255, 1);
+}
+.container {
+    /* background-color: rgba(250, 250, 250, 0.7); */
+    /* background-color: rgba(255, 228, 196, 0.7); */
+    background-color: rgba(148, 148, 148, 0.7);
+    width: 60%;
+    margin-top: 2%;
+    border-radius: 10px;
+    padding: 30px;
+}
+#footer {
+    width: 100%;
+    bottom: 0;
+    background-color: rgba(248, 249, 250, 1);
+    position: fixed;
+}
+#copyright {
+    margin: 2px;
+}
+
+/* -------------------------------------------------------------- Navbar ---------------------------------------------------------------- */
 .form-inline {
     /* width: fit-content; */
     flex: 1;
@@ -18,6 +49,59 @@ html, body, main {
 }
 #search-btn {
     margin-right: 5%;
+}
+.mobile-dropdown {
+    /* display: none; */
+}
+
+/* ------------------------------------------------------------- Home Page -------------------------------------------------------------- */
+object {
+    width: 100%;
+}
+
+/* ------------------------------------------------------------ Signup Page ------------------------------------------------------------- */
+#signup-container {
+    margin-top: 5%;
+}
+#email-taken {
+    margin-bottom: 1rem;
+    color: rgba(193, 0, 0, 1);
+}
+#confirm-short-text {
+    display: none;
+}
+
+/* --------------------------------------------------------------- Login --------------------------------------------------------------- */ 
+#login-html, #login-body, #login-main {
+    overflow: hidden;
+}
+#login-header {
+    position: static;
+}
+#login-container {
+    width: 400px;
+    margin-top: 2%;
+}
+#login-form {
+    margin-left: -20px;
+    margin-right: -20px;
+}
+#login-btn {
+    margin-top: 8%
+}
+#sign-in-btn {
+    margin-top: 5%;
+    margin-bottom: -5%;
+}
+#login-error {
+    color: #fff;
+    background-color: rgba(220, 53, 69, 1);
+    border-color: rgba(220, 53, 69, 1);
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
 }
 .alert {
     margin-left: auto;
@@ -30,147 +114,17 @@ html, body, main {
 #alert-all {
     width: 605px;
 }
-#login-container {
-    width: 400px;
-}
-#login-form {
-    margin-left: -20px;
-    margin-right: -20px;
-}
-#login-btn {
-    margin-top: 8%
-}
-#login-error {
-    color: #fff;
-    background-color: rgba(220, 53, 69, 1);
-    border-color: rgba(220, 53, 69, 1);
-    border: 1px solid transparent;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: .25rem;
+
+/* ------------------------------------------------------------ Profile Page ------------------------------------------------------------ */
+#profile-main {
+    overflow: scroll;
 }
 #profile-link {
     text-decoration: none;
     color: rgba(255, 255, 255, 1);
 }
-#load-gif {
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    z-index: 1;
-    background: url(../imgs/Preloader_71.gif) center center no-repeat rgba(255, 255, 255, 1);
-}
-.form-group {
-    margin-bottom: 1rem;
-}
-#sign-in-btn {
-    margin-top: 5%;
-    margin-bottom: -5%;
-}
-object {
-    width: 100%;
-}
-.container {
-    /* background-color: rgba(250, 250, 250, 0.7); */
-    /* background-color: rgba(255, 228, 196, 0.7); */
-    background-color: rgba(148, 148, 148, 0.7);
-    width: 60%;
-    margin-top: 2%;
-    border-radius: 10px;
-    padding: 30px;
-}
 #profile-container {
     width: 80%;
-}
-#signup-container {
-    margin-top: 5%;
-}
-#email-taken {
-    margin-bottom: 1rem;
-    color: rgba(193, 0, 0, 1);
-}
-#confirm-short-text {
-    display: none;
-}
-#edit-container {
-    background: none;
-    width: 70%;
-    margin: 0;
-    padding: 0;
-    margin-left: 1%;
-    flex: 1;
-}
-/* #edit-container label {
-    margin: 0;
-} */
-/* #edit-profile-pic {
-    height: fit-content;
-} */
-#edit-profile-pic:hover {
-    cursor: pointer;
-    /* box-shadow: 5px 10px 20px rgba(136, 136, 136, 1), 5px 10px 20px rgba(255, 255, 255, 1); */
-    box-shadow: 5px 10px 20px rgba(136, 136, 136, 1);
-}
-#pic-upload {
-    display: none;
-}
-#placeholder-pic, #user-pic {
-    height: 180px;
-    /* width: auto; */
-}
-#repo-btn {
-    padding: 0 1rem 0 1rem;
-    margin-bottom: 1px;
-}
-.form-check {
-    margin-left: 1%;
-}
-#update-btn {
-    margin-top: 3%;
-}
-#update-btn:hover {
-    background-color: rgba(40, 167, 69, 1);
-    border-color: rgba(40, 167, 69, 1);
-}
-#edit-first-name, #edit-last-name {
-    margin-left: 3%;
-    width: 47%;
-    float: left;
-}
-#edit-email {
-    margin-left: 3%;
-    margin-top: 13%;
-}
-#edit-github {
-    margin-left: 3%;
-    margin-top: 1%;
-}
-#pull-success {
-    margin-left: 3%;
-    margin-top: 1%;
-    display: none;
-    color: rgba(40, 167, 69, 1);
-}
-#github-selection {
-    background-color: rgba(255, 250, 250, 1);
-    height: 75px;
-    display: none;
-    margin-left: 3%;
-    margin-top: 1%;
-    overflow-y: auto;
-    border-radius: 10px;
-}
-#results {
-    background-color: rgba(255, 250, 250, 1);
-    height: 430px;
-    overflow-y: auto;
-    border-radius: 10px;
-}
-#left-container {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
 }
 #profile-info-container {
     display: flex;
@@ -183,6 +137,11 @@ object {
 }
 #profile-pic {
     float: left;
+}
+#left-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 #user-info {
     font-size: 1vw;
@@ -212,50 +171,44 @@ object {
     /* float: left;
     clear: both; */
     height: 250px;
-    padding-top: 4.5%;
+    /* padding-top: 4.5%; */
+    display: flex;
+    flex-direction: column;
 }
-#message-input-container {
+/* #message-input-container {
     background-color: rgba(255, 250, 250, 1);
     width: 100%;
     margin-top: 3%;
     padding: 5%;
-}
-#footer {
-    width: 100%;
-    bottom: 0;
-    background-color: rgba(248, 249, 250, 1);
-    position: fixed;
-}
-#copyright {
-    margin: 2px;
-}
-.list-group > a:hover{
-    background-color: rgba(255, 193, 7, 1);
-}
-.list-group > a{
-    text-align: center;
-}
+} */
 #read-message{
-    width: 100%;
-    height: 60%;
+    /* width: 100%; */
+    /* height: 60%; */
     border: #cfd4da solid 1px;
-    margin-bottom: 1.25%;
+    margin-bottom: .5rem;
     border-radius: 5px;
     overflow-y: auto;
+    flex: 1;
 }
 #read-message::-webkit-scrollbar { 
     display: none;
 }
-#write-message, .form-inline{
+/* #write-message, .form-inline{
     width: 100%;
-}
+} */
 #textArea{
-    width: 87.97%;
+    height: 60px;
+    /* width: 87.97%; */
+}
+#message-input {
+    display: flex;
 }
 #message-btn{
-    width: 10%;
+    /* width: 10%;
     height: 85px;
-    padding-left: 1%;
+    padding-left: 1%; */
+    margin-top: .5rem!important;
+    margin-bottom: .5rem!important;
     margin-left: 2%;
 }
 .form-control:focus{
@@ -267,22 +220,142 @@ object {
     display: none;
 }
 #eachMessage{
-    padding-left: 3%;
+    padding: 3%;
+    margin-bottom: 0;
 }
+/* #eachMessage:hover #timeposted {
+    display: block;
+} */
+/* #time-posted {
+    display: none;
+} */
+
+/* --------------------------------------------------------- Edit Profile Page ---------------------------------------------------------- */
+#edit-container {
+    background: none;
+    /* width: 70%; */
+    margin: 0;
+    padding: 0;
+    /* margin-left: 1%; */
+    flex: 1;
+    /* font-size: 1vw; */
+}
+/* #edit-container label {
+    margin: 0;
+} */
+/* #edit-profile-pic {
+    height: fit-content;
+} */
+#edit-profile-pic:hover {
+    cursor: pointer;
+    /* box-shadow: 5px 10px 20px rgba(136, 136, 136, 1), 5px 10px 20px rgba(255, 255, 255, 1); */
+    box-shadow: 5px 10px 20px rgba(136, 136, 136, 1);
+}
+#pic-upload {
+    display: none;
+}
+#placeholder-pic, #user-pic {
+    height: 180px;
+    /* width: auto; */
+}
+#edit-first-name, #edit-last-name {
+    margin-left: 3%;
+    width: 47%;
+    float: left;
+}
+#edit-email {
+    margin-left: 3%;
+    /* margin-top: 10%; */
+}
+#edit-email-label {
+    margin-top: 1%;
+}
+#edit-github {
+    margin-left: 3%;
+    margin-top: 1%;
+}
+#repo-btn {
+    padding: 0 1rem 0 1rem;
+    margin-bottom: 1px;
+}
+#pull-success {
+    margin-left: 3%;
+    margin-top: 1%;
+    display: none;
+    color: rgba(40, 167, 69, 1);
+}
+#github-selection {
+    background-color: rgba(255, 250, 250, 1);
+    height: 75px;
+    display: none;
+    margin-left: 3%;
+    margin-top: 1%;
+    overflow-y: auto;
+    border-radius: 10px;
+}
+.form-check {
+    margin-left: 1%;
+}
+#update-btn {
+    margin-top: 3%;
+}
+#update-btn:hover {
+    background-color: rgba(40, 167, 69, 1);
+    border-color: rgba(40, 167, 69, 1);
+}
+
+/* ------------------------------------------------------------ Search Page ------------------------------------------------------------- */
+.list-group {
+    max-height: 450px;
+    overflow-y: auto;
+}
+.list-group > a:hover{
+    background-color: rgba(255, 193, 7, 1);
+}
+.list-group > a{
+    text-align: center;
+}
+
+
+/* ----------------------------------------------- User repos and search results scrollbars --------------------------------------------- */
 #user-repos::-webkit-scrollbar-track
 {
     border: 1px solid #b2b2b2;
 	background-color: #b2b2b2;
 }
-
 #user-repos::-webkit-scrollbar
 {
 	width: 5px;
     background-color: #b2b2b2;
     border-radius: 10px;
 }
-
 #user-repos::-webkit-scrollbar-thumb
 {
     background-color: #cccccc;	
 }
+.list-group::-webkit-scrollbar-track
+{
+    border: 1px solid #b2b2b2;
+	background-color: #b2b2b2;
+}
+.list-group::-webkit-scrollbar
+{
+	width: 5px;
+    background-color: #b2b2b2;
+    border-radius: 10px;
+}
+.list-group::-webkit-scrollbar-thumb
+{
+    background-color: #cccccc;	
+}
+
+/* --------------------------------------------------------------- Misc ----------------------------------------------------------------- */
+/* #results {
+    background-color: rgba(255, 250, 250, 1);
+    height: 430px;
+    overflow-y: auto;
+    border-radius: 10px;
+} */
+/* .form-group {
+    margin-bottom: 1rem;
+} */

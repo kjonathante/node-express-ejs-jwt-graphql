@@ -1,13 +1,31 @@
-/* -------------------------------------------------------------------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
                                                     /* Responsivness for various widths */
-/* -------------------------------------------------------------------------------------------------------------------------------------- */
-@media screen and (max-width: 2560px){
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
+@media (max-width: 2725px){
     /* #search-bar {
         width: 85%;
         margin-left: 3%;
     } */
+    /* #user-pic {
+        height: 230px;
+    } */
+    /* #edit-containter {
+        font-size: .6vw
+    } */
 }
-@media screen and (max-width: 1420px){ 
+@media (max-width: 2560px){
+    /* #search-bar {
+        width: 85%;
+        margin-left: 3%;
+    } */
+    /* #user-pic {
+        height: 230px;
+    } */
+    /* #edit-containter {
+        font-size: .6vw
+    } */
+}
+@media (max-width: 1420px){ 
     #profile-pic {
         width: 48%;
     }
@@ -16,25 +34,25 @@
         width: 100%;
     }
 }
-@media screen and (max-width: 1199px){
-    /* #edit-container {
-        width: 65%;
-    } */
+@media (max-width: 1199px){
+    #edit-container {
+        font-size: 1.2vw;
+    }
     /* #search-bar {
         margin-left: 2%;
     } */
 }
-/* @media screen and (max-width: 1186px){
+/* @media (max-width: 1186px){
     #edit-container {
         width: 64%;
     }
 }
-@media screen and (max-width: 1154px){
+@media (max-width: 1154px){
     #edit-container {
         width: 63%;
     }
 } */
-@media screen and (max-width: 1029px){
+@media (max-width: 1029px){
     #confirm-long-text {
         display: none;
     }
@@ -42,7 +60,7 @@
         display: block;
     }
 }
-@media screen and (max-width: 991px){
+@media (max-width: 991px){
     /* #edit-container {
         width: 63%;
     } */
@@ -53,27 +71,43 @@
         margin-left: 1%;
     } */
 }
-@media screen and (max-width: 970px){
+@media (max-width: 880px){
     /* #search-bar {
         width: 75%;
     } */
+    #edit-profile-html, #edit-profile-body, #edit-profile-main {
+        overflow: scroll;
+    }
+    #edit-profile-header {
+        position: fixed;
+        top: 0;
+        z-index: 1;
+        width: 100%;
+    }
+    #edit-profile-container {
+        margin-top: 8%;
+        margin-bottom: 6%;
+    }
     #edit-profile-pic img {
         height: auto;
         width: 100%;
     }
+    #edit-container {
+        font-size: 1.5vw;
+    }
 }
-@media screen and (max-width: 930px){
+@media (max-width: 930px){
     /* #search-bar {
         margin-left: 0;
     } */
 }
-@media screen and (max-width: 855px){
+@media (max-width: 855px){
     /* #search-bar {
         width: 80%;
         margin-left: 2%;
     } */
 }
-@media screen and (max-width: 802px){
+@media (max-width: 802px){
     html, body, main {
         overflow: scroll;
     }
@@ -83,9 +117,9 @@
         z-index: 1;
         width: 100%;
     }
-    .alert {
+    /* .alert {
         margin-top: 10%;
-    }
+    } */
     #alert-wrong {
         width: 94%;
     }
@@ -100,18 +134,21 @@
         margin-top: 12%;
         margin-bottom: 8%;
     }
+    #edit-profile-container {
+        margin-top: 10%;
+    }
+    #edit-container {
+        font-size: 1.8vw;
+    }
     #confirm-short-text {
         display: block;
     }
     #confirm-long-text {
         display: none;
     }
-    #signup-btn {
-        width: 100%;
-    }
-    object {
+    /* object {
         margin-top: 7%;
-    }
+    } */
     #signup-container {
         margin-top: 12%;
         margin-bottom: 8%;
@@ -123,12 +160,12 @@
         margin-bottom: 0;
     }
 }
-@media screen and (max-width: 790px){
+@media (max-width: 790px){
     /* #search-bar {
         margin-left: 1%;
     } */
 }
-@media screen and (max-width: 767px){
+@media (max-width: 767px){
     html, body, main {
         overflow: scroll;
     }
@@ -151,12 +188,15 @@
     #signup-btn {
         width: 100%;
     }
-    object {
+    /* object {
         margin-top: 7%;
-    }
+    } */
     #signup-container {
         margin-top: 12%;
         margin-bottom: 8%;
+    }
+    #signup-btn {
+        width: 100%;
     }
     #user-info {
         font-size: 2vw;
@@ -170,20 +210,27 @@
         margin: 0;
     }
 }
-@media screen and (max-width: 700px){
+@media (max-width: 700px){
     /* #search-bar {
         margin-left: 0;
     } */
-    object {
+    /* object {
         margin-top: 8%;
+    } */
+    #edit-container {
+        font-size: 2vw;
     }
 }
-@media screen and (max-width: 685px){
-    .alert {
+@media (max-width: 685px){
+    /* .alert {
         margin-top: 12%;
+    } */
+    #edit-profile-container {
+        margin-top: 12%;
+        margin-bottom: 7%;
     }
 }
-@media screen and (max-width: 650px){
+@media (max-width: 650px){
     /* #search-bar {
         width: 75%;
     } */
@@ -192,46 +239,72 @@
         width: 100%;
     } */
 }
-@media screen and (max-width: 620px){
+@media (max-width: 640px){
     #search-bar {
         width: 100%;
     }
-    object {
+    /* object {
         margin-top: 9%;
-    }
+    } */
 }
-@media screen and (max-width: 575px){
+@media (max-width: 576px){
+    .navbar {
+        flex-wrap: wrap;
+    }
+    .mobile-dropdown {
+        display: flex;
+    }
     #search-bar {
         /* width: 72%; */
         margin-right: 2%;
+        margin-left: 0;
     }
-    object {
+    /* object {
         margin-top: 12%;
+    } */
+    .container {
+        margin-top: 15%;
+        margin-bottom: 8%;
+        width: 80%;
     }
     #signup-container {
         margin-top: 16%;
     }
-    .alert {
-        margin-top: 17%;
+    #edit-profile-container {
+        margin-top: 15%;
+        margin-bottom: 8%;
     }
+    /* .alert {
+        margin-top: 17%;
+    } */
     #login-container {
         width: 60%; 
     }
-}
-@media screen and (max-width: 560px){
-    object {
-        margin-top: 13%;
+    #edit-container {
+        font-size: 2.5vw;
     }
 }
-@media screen and (max-width: 534px){
+@media (max-width: 560px){
+    /* object {
+        margin-top: 13%;
+    } */
+}
+@media (max-width: 534px){
     /* #search-bar {
         width: 70%;
     } */
-}
-@media screen and (max-width: 496px){
-    object {
-        margin-top: 14%;
+    .container {
+        margin-top: 17%;
+        margin-bottom: 8%;
     }
+}
+@media (max-width: 496px){
+    /* object {
+        margin-top: 14%;
+    } */
+    /* .mobile-dropdown {
+        display: block;
+    } */
     #signup-container {
         margin-top: 19%;
         margin-bottom: 10%;
@@ -245,26 +318,33 @@
     #user-info {
         font-size: inherit;
     }
+    #edit-container {
+        font-size: 3vw;
+    }
     /* #message-board-container {
         margin-top: 13%;
     } */
 }
-@media screen and (max-width: 482px){
+@media (max-width: 482px){
     /* #search-bar {
         width: 65%;
     } */
-}
-@media screen and (max-width: 460px){
-    object {
-        margin-top: 15%;
+    #edit-profile-container {
+        margin-top: 18%;
+        margin-bottom: 10%;
     }
+}
+@media (max-width: 460px){
+    /* object {
+        margin-top: 15%;
+    } */
     .container {
         margin-top: 20%;
         margin-bottom: 12%;
     }
-    .alert {
+    /* .alert {
         margin-top: 19%;
-    }
+    } */
     #login-container {
         width: 70%; 
     }
@@ -272,17 +352,26 @@
         width: 100%;
     }
 }
-@media screen and (max-width: 446px){
+@media (max-width: 446px){
     /* #search-bar {
         width: 60%;
     } */
 }
-@media screen and (max-width: 430px){
-    object {
+@media (max-width: 430px){
+    /* object {
         margin-top: 16%;
+    } */
+    .mobile-dropdown {
+        margin-top: 2%;
+    }
+    #search-btn {
+        display: none;
+    }
+    #edit-container {
+        font-size: 3.5vw;
     }
 }
-@media screen and (max-width: 419px){
+@media (max-width: 419px){
     html, body, main {
         overflow: scroll;
     }
@@ -293,166 +382,251 @@
     }
     #search-bar {
         /* width: 85%; */
-        margin-right: 10%;
+        /* margin-right: 10%; */
     }
-    #search-btn {
+    /* #search-btn {
         display: none;
-    }
-    object {
+    } */
+    /* object {
         margin-top: 13%;
-    }
+    } */
     #signup-container {
         margin-top: 20%;
         margin-bottom: 13%;
     }
 }
-@media screen and (max-width: 375px){
-    object {
+@media (max-width: 375px){
+    /* object {
         margin-top: 15%;
-    }
+    } */
 }
-@media screen and (max-width: 360px){
+@media (max-width: 360px){
     #signup-container {
         margin-bottom: 12%;
     }
-    .alert {
+    /* .alert {
         margin-top: 21%;
+    } */
+    #user-info, #user-repos {
+        font-size: 4vw;
     }
 }
-@media screen and (max-width: 320px){
-    object {
+@media (max-width: 320px){
+    /* object {
         margin-top: 17%;
-    }
+    } */
 }
-/* -------------------------------------------------------------------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
                                                     /* Responsivness for various heights */
-/* -------------------------------------------------------------------------------------------------------------------------------------- */
-@media screen and (min-height: 1400px){
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
+@media (min-height: 1400px){
     object {
         height: 95%;
     }
 }
-@media screen and (max-height: 1400px) and (min-height: 1200px){
+@media (max-height: 1400px) and (min-height: 1200px){
     object {
         height: 94%;
     }
 }
-@media screen and (max-height: 1200px) and (min-height: 1055px){
+@media (max-height: 1200px) and (min-height: 1055px){
     object {
         height: 93%;
     }
 }
-@media screen and (max-height: 1055px) and (min-height: 920px){
+@media (max-height: 1055px) and (min-height: 920px){
     object {
         height: 92%;
     }
 }
-@media screen and (max-height: 920px) and (min-height: 780px){
+@media (max-height: 920px) and (min-height: 780px){
     object {
         height: 91%;
     }
 }
-@media screen and (max-height: 780px) and (min-height: 700px){
+@media (max-height: 780px) and (min-height: 700px){
     object {
         height: 90%;
     }
 }
-@media screen and (max-height: 700px) and (min-height: 655px){
+@media (max-height: 700px) and (min-height: 655px){
     object {
         height: 89%;
     }
 }
-@media screen and (max-height: 655px) and (min-height: 630px){
+/* @media (max-height: 670px){
+    body {
+        overflow: scroll;
+    }
+    .navbar {
+        position: fixed;
+        top: 0;
+        z-index: 1;
+        width: 100%;
+    }
+    .container {
+        margin-top: 12%;
+        margin-bottom: 8%;
+    }
+} */
+@media (max-height: 655px) and (min-height: 630px){
     object {
         height: 88%;
     }
 }
-@media screen and (max-height: 630px) and (min-height: 585px){
+@media (max-height: 630px) and (min-height: 585px){
     object {
         height: 87%;
     }
 }
-@media screen and (max-height: 585px) and (min-height: 500px){
+@media (max-height: 585px) and (min-height: 500px){
     object {
         height: 86%;
     }
 }
-@media screen and (max-height: 500px) and (min-height: 480px){
+@media (max-height: 500px) and (min-height: 480px){
     object {
         height: 84%;
     }
 }
-@media screen and (max-height: 480px) and (min-height: 420px){
+@media (max-height: 480px) and (min-height: 420px){
     object {
         height: 83%;
     }
 }
-@media screen and (max-height: 420px) and (min-height: 370px){
+@media (max-height: 420px) and (min-height: 370px){
     object {
         height: 81%;
     }
 }
-@media screen and (max-height: 370px) and (min-height: 340px){
+@media (max-height: 370px) and (min-height: 340px){
     object {
         height: 78%;
     }
 }
-@media screen and (max-height: 340px) and (min-height: 300px){
+@media (max-height: 340px) and (min-height: 300px){
     object {
         height: 76%;
     }
 }
-@media screen and (max-height: 300px) and (min-height: 275px){
+@media (max-height: 300px) and (min-height: 275px){
     object {
         height: 73%;
     }
 }
-@media screen and (max-height: 275px) and (min-height: 240px){
+@media (max-height: 275px) and (min-height: 240px){
     object {
         height: 70%;
     }
 }
-@media screen and (max-height: 240px){
+@media (max-height: 240px){
     object {
         height: 66%;
     }
 }
-/* -------------------------------------------------------------------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
+                                            /* Responsivness for containers below 700px */
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
+@media (max-height: 700px){
+    html, body, main {
+        overflow: scroll;
+    }
+    .navbar {
+        position: fixed;
+        top: 0;
+        z-index: 1;
+        width: 100%;
+    }
+    .container {
+        margin-top: 5%;
+        margin-bottom: 6%;
+    }
+    #message-board-container, #user-repos {
+        margin-bottom: 0;
+    }
+    @media (max-width: 1420px){ 
+        .container {
+            margin-top: 6%;
+        }
+    }
+    @media (max-width: 1199px){
+        .container {
+            margin-top: 7%;
+        }
+    }
+    @media (max-width: 1029px){
+        .container {
+            margin-top: 8%;
+        }
+    }
+    @media (max-width: 802px){
+        .container {
+            margin-top: 10%;
+        }
+    }
+    @media (max-width: 685px){
+        .container {
+            margin-top: 12%;
+            margin-bottom: 7%;
+        }
+    }
+    @media (max-width: 575px){
+        .container {
+            margin-top: 15%;
+            margin-bottom: 8%;
+        }
+    }
+    @media (max-width: 482px){
+        .container {
+            margin-top: 18%;
+            margin-bottom: 10%;
+        }
+    }
+    @media (max-width: 320px){
+        .container {
+            margin-top: 23%;
+        }
+        #user-info, #user-repos {
+            font-size: 4vw;
+        }
+    }
+}
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
                                         /* Responsivness for various heights between widths 575-420 */
-/* -------------------------------------------------------------------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
 
 /* Heights 920-780 */
-@media screen and (max-height: 920px) and (min-height: 780px) and (max-width: 575px) and (min-width: 513px){
+@media (max-height: 920px) and (min-height: 780px) and (max-width: 575px) and (min-width: 513px){
     object {
         height: 89%;
     }
 }
-@media screen and (max-height: 920px) and (min-height: 780px) and (max-width: 513px) and (min-width: 496px){
+@media (max-height: 920px) and (min-height: 780px) and (max-width: 513px) and (min-width: 496px){
     object {
         height: 90%;
     }
 }
-@media screen and (max-height: 920px) and (min-height: 780px) and (max-width: 496px) and (min-width: 474px){
+@media (max-height: 920px) and (min-height: 780px) and (max-width: 496px) and (min-width: 474px){
     object {
         height: 89%;
     }
 }
-@media screen and (max-height: 920px) and (min-height: 780px) and (max-width: 474px) and (min-width: 460px){
+@media (max-height: 920px) and (min-height: 780px) and (max-width: 474px) and (min-width: 460px){
     object {
         height: 90%;
     }
 }
-@media screen and (max-height: 920px) and (min-height: 780px) and (max-width: 460px) and (min-width: 443px){
+@media (max-height: 920px) and (min-height: 780px) and (max-width: 460px) and (min-width: 443px){
     object {
         height: 89%;
     }
 }
-@media screen and (max-height: 920px) and (min-height: 780px) and (max-width: 443px) and (min-width: 430px){
+@media (max-height: 920px) and (min-height: 780px) and (max-width: 443px) and (min-width: 430px){
     object {
         height: 90%;
     }
 }
-@media screen and (max-height: 920px) and (min-height: 780px) and (max-width: 430px) and (min-width: 420px){
+@media (max-height: 920px) and (min-height: 780px) and (max-width: 430px) and (min-width: 420px){
     object {
         height: 89%;
     }
@@ -461,38 +635,38 @@
 
 
 /* Heights 780-700 */
-@media screen and (max-height: 780px) and (min-height: 700px) and (max-width: 575px) and (min-width: 540px){
+@media (max-height: 780px) and (min-height: 700px) and (max-width: 575px) and (min-width: 540px){
     object {
         height: 88%;
-        margin-top: 12%;
+        /* margin-top: 12%; */
     }
 }
-@media screen and (max-height: 780px) and (min-height: 700px) and (max-width: 540px) and (min-width: 513px){
+@media (max-height: 780px) and (min-height: 700px) and (max-width: 540px) and (min-width: 513px){
     object {
         height: 89%;
     }
 }
-@media screen and (max-height: 780px) and (min-height: 700px) and (max-width: 513px) and (min-width: 496px){
+@media (max-height: 780px) and (min-height: 700px) and (max-width: 513px) and (min-width: 496px){
     object {
         height: 89%;
     }
 }
-@media screen and (max-height: 780px) and (min-height: 700px) and (max-width: 496px) and (min-width: 460px){
+@media (max-height: 780px) and (min-height: 700px) and (max-width: 496px) and (min-width: 460px){
     object {
         height: 89%;
     }
 }
-@media screen and (max-height: 780px) and (min-height: 700px) and (max-width: 460px) and (min-width: 443px){
+@media (max-height: 780px) and (min-height: 700px) and (max-width: 460px) and (min-width: 443px){
     object {
         height: 89%;
     }
 }
-@media screen and (max-height: 780px) and (min-height: 700px) and (max-width: 443px) and (min-width: 430px){
+@media (max-height: 780px) and (min-height: 700px) and (max-width: 443px) and (min-width: 430px){
     object {
         height: 89%;
     }
 }
-@media screen and (max-height: 780px) and (min-height: 700px) and (max-width: 430px) and (min-width: 420px){
+@media (max-height: 780px) and (min-height: 700px) and (max-width: 430px) and (min-width: 420px){
     object {
         height: 89%;
     }
@@ -500,7 +674,7 @@
 
 
 /* Heights 700-655 */
-@media screen and (max-height: 700px) and (min-height: 655px) and (max-width: 575px) and (min-width: 420px){
+@media (max-height: 700px) and (min-height: 655px) and (max-width: 575px) and (min-width: 420px){
     object {
         height: 87%;
     }
@@ -508,56 +682,56 @@
 
 
 /* Heights 655-630 */
-@media screen and (max-height: 655px) and (min-height: 630px) and (max-width: 575px) and (min-width: 420px){
+@media (max-height: 655px) and (min-height: 630px) and (max-width: 575px) and (min-width: 420px){
     object {
         height: 86%;
     }
 }
 
 /* Heights 630-585 */
-@media screen and (max-height: 630px) and (min-height: 585px) and (max-width: 575px) and (min-width: 420px){
+@media (max-height: 630px) and (min-height: 585px) and (max-width: 575px) and (min-width: 420px){
     object {
         height: 85%;
     }
 }
 
 /* Heights 585-540 */
-@media screen and (max-height: 585px) and (min-height: 540px) and (max-width: 575px) and (min-width: 420px){
+@media (max-height: 585px) and (min-height: 540px) and (max-width: 575px) and (min-width: 420px){
     object {
         height: 84%;
     }
 }
 
 /* Heights 540-500 */
-@media screen and (max-height: 540px) and (min-height: 500px) and (max-width: 575px) and (min-width: 420px){
+@media (max-height: 540px) and (min-height: 500px) and (max-width: 575px) and (min-width: 420px){
     object {
         height: 82%;
     }
 }
 
 /* Heights 500-450 */
-@media screen and (max-height: 500px) and (min-height: 450px) and (max-width: 575px) and (min-width: 420px){
+@media (max-height: 500px) and (min-height: 450px) and (max-width: 575px) and (min-width: 420px){
     object {
         height: 81%;
     }
 }
 
 /* Heights 450-420 */
-@media screen and (max-height: 450px) and (min-height: 420px) and (max-width: 575px) and (min-width: 420px){
+@media (max-height: 450px) and (min-height: 420px) and (max-width: 575px) and (min-width: 420px){
     object {
         height: 79%;
     }
 }
 
 /* Heights 420-370 */
-@media screen and (max-height: 420px) and (min-height: 370px) and (max-width: 575px) and (min-width: 420px){
+@media (max-height: 420px) and (min-height: 370px) and (max-width: 575px) and (min-width: 420px){
     object {
         height: 77%;
     }
 }
 
 /* For landscape view on iPhone 5/SE */
-@media screen and (orientation: landscape) and (max-height: 320px) and (max-width: 568px){
+@media (orientation: landscape) and (max-height: 320px) and (max-width: 568px){
     object {
         height: 70%;
     }
