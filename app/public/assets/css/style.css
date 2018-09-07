@@ -318,6 +318,12 @@ object {
 
 
 /* ----------------------------------------------- User repos and search results scrollbars --------------------------------------------- */
+body::-webkit-scrollbar { 
+    display: none; 
+}
+#profile-main::-webkit-scrollbar { 
+    display: none; 
+}
 #user-repos::-webkit-scrollbar-track
 {
     border: 1px solid #b2b2b2;
