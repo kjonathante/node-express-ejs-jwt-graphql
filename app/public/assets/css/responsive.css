@@ -25,12 +25,18 @@
         font-size: .6vw
     } */
 }
-@media (max-width: 1420px){ 
-    #profile-pic {
-        width: 48%;
+@media (min-width: 1420px){ 
+    #user-info {
+        font-size: inherit;
     }
+}
+@media (max-width: 1420px){ 
+    /* #profile-pic {
+        width: auto;
+    } */
     #profile-info-container img {
         height: auto;
+        max-height: 185px;
         width: 100%;
     }
 }
@@ -198,8 +204,11 @@
     #signup-btn {
         width: 100%;
     }
+    #profile-info-container img {
+        max-height: fit-content;
+    }
     #user-info {
-        font-size: 2vw;
+        font-size: 2.5vw;
         margin-left: 2vw;
     }
     #message-board-container {
@@ -312,9 +321,9 @@
     #profile-info-container {
         display: block;
     }
-    #profile-pic {
+    /* #profile-pic {
         width: 100%;
-    }
+    } */
     #user-info {
         font-size: inherit;
     }
@@ -525,7 +534,7 @@
     }
 }
 /* ------------------------------------------------------------------------------------------------------------------------------------- */
-                                            /* Responsivness for containers below 700px */
+                                         /* Responsivness for containers below 700px screen height*/
 /* ------------------------------------------------------------------------------------------------------------------------------------- */
 @media (max-height: 700px){
     html, body, main {
@@ -562,6 +571,11 @@
     @media (max-width: 802px){
         .container {
             margin-top: 10%;
+        }
+    }
+    @media (max-width: 767px){
+        #message-board-container {
+            margin-bottom: 2%;
         }
     }
     @media (max-width: 685px){
