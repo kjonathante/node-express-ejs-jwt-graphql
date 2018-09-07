@@ -27,7 +27,7 @@ exports.screenshot2 = async function(data, callback) {
       await page.screenshot({path: path.join(__dirname, '../public/images/')+data[i][5]})
       data[i][6] = 200
     } else {
-      data[i][5] = '404.png'
+      data[i][5] = '404/404.png'
     }
   }
   await browser.close();
