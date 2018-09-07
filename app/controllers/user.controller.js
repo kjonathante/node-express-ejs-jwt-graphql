@@ -1,6 +1,7 @@
 //--------------------------------------------------------EXPORTS & REQUIRES---------------------------------------
 // native
 var path = require('path')
+var fs = require('fs')
 // npm
 // including bcrypt for password encryption
 var bcrypt = require('bcryptjs');
@@ -260,7 +261,7 @@ exports.editProfile = function (req, res, next){
       var obj = JSON.parse( val )
       var selected = false
       var githubpage = `https://${req.body.gitlink}.github.io/${obj.name}`
-      var screenshot = `${id}_${obj.name}.png`
+      var screenshot = `${id}-ss_${obj.name}.png`
 
       for( var repoId of selectedRepos ) {
         console.log('Inside editProfile -->> obj.id, repoId :', obj.id, repoId)
@@ -276,23 +277,38 @@ exports.editProfile = function (req, res, next){
     console.log('Inside editProfile -->> selectedRepos', selectedRepos)
     console.log('Inside editProfile -->> userData', userData)
 
+    // no github repo
     if (userData.length < 1) {
       return res.redirect('/profile/' + id )
     }
 
-
-    gitrepo.insertBulk(userData, function(err, result) {
-      if (err) {
+    gitrepo.deleteAllByUserId( id, function(error, results) {
+      if (error) {
         return next(err)
       }
 
-      var puppetArr = userData.map( function(val) {
-        return {url: val[4], filename: val[5]} // githubpage
+      gitrepo.insertBulk(userData, function(error, result) {
+        if (error) {
+          return next(error)
+        }
+  
+        require('../utils/erase_screenshots').deleteScreenshotByUserId(id, function(error) {
+          if (error) {
+            return next(error)
+          }
+
+          var puppetArr = userData.map( function(val) {
+            return {url: val[4], filename: val[5]} // githubpage
+          })
+
+          console.log('Inside editProfile -->> puppetArr', puppetArr)
+          puppet.screenshot( puppetArr, function(){
+            return res.redirect('/profile/' + id )
+          })
+  
+        })
       })
-      console.log('Inside editProfile -->> puppetArr', puppetArr)
-      puppet.screenshot( puppetArr, function(){
-        return res.redirect('/profile/' + id )
-      })
+  
     })
   })
 }
