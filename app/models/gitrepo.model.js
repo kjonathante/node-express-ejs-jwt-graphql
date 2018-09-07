@@ -13,6 +13,19 @@ exports.insertBulk = function( data, callback ) {
   })
 }
 
+exports.deleteAllByUserId = function( id, callback ) {
+  db.pool().query({
+    sql: 'DELETE FROM gitrepos WHERE user_id=?',
+    values: [id]
+  }, function(error,results,fields){
+    if (error) {
+      return callback(error)
+    } else {
+      return callback(null, results.affectedRows)
+    }
+  })
+}
+
 exports.findByUserId = function( id, callback ) {
   db.pool().query({
     sql: 'SELECT name, screenshot FROM gitrepos WHERE user_id=?',
