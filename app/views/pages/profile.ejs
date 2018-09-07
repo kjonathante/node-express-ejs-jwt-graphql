@@ -57,8 +57,10 @@
 				</div>
 					<div class="container" id="user-repos">
 						<% for(var val of results.git_repos){%>
-							<img src=<%='/images/'+val.screenshot%> alt="<%=val.name%>" width="200">
-							<!-- <p><%=val.name%></p> -->
+							<!-- <div> -->
+								<img src=<%='/images/'+val.screenshot%> alt="<%=val.name%>" width="200">
+								<!-- <p><%=val.name%></p> -->
+							<!-- </div> -->
 						<%}%>
 					</div>
 				<%}%>

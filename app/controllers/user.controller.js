@@ -286,8 +286,8 @@ exports.editProfile = function (req, res, next){
           selected = true
         }
       }
-      //'INSERT INTO gitrepos(repo_id, name, url, selected, githubpage, screenshot, user_id)      
-      return [ obj.id, obj.name, obj.url, selected, githubpage, screenshot, id ]
+      //'INSERT INTO gitrepos(repo_id, name, url, selected, githubpage, screenshot, ghpagestatus, user_id)      
+      return [ obj.id, obj.name, obj.url, selected, githubpage, screenshot, 404, id ]
     })
 
     console.log('Inside editProfile -->> userRepors', userRepos)
@@ -299,33 +299,31 @@ exports.editProfile = function (req, res, next){
       return res.redirect('/profile/' + id )
     }
 
-    gitrepo.deleteAllByUserId( id, function(error, results) {
+
+    require('../utils/erase_screenshots').deleteScreenshotByUserId(id, function(error) {
       if (error) {
-        return next(err)
+        return next(error)
       }
 
-      gitrepo.insertBulk(userData, function(error, result) {
+      puppet.screenshot2( userData, function(error, userData){
         if (error) {
           return next(error)
         }
-  
-        require('../utils/erase_screenshots').deleteScreenshotByUserId(id, function(error) {
+
+        gitrepo.deleteAllByUserId( id, function(error, results) {
           if (error) {
-            return next(error)
+            return next(err)
           }
-
-          var puppetArr = userData.map( function(val) {
-            return {url: val[4], filename: val[5]} // githubpage
-          })
-
-          console.log('Inside editProfile -->> puppetArr', puppetArr)
-          puppet.screenshot( puppetArr, function(){
+    
+          gitrepo.insertBulk(userData, function(error, result) {
+            if (error) {
+              return next(error)
+            }
+    
             return res.redirect('/profile/' + id )
           })
-  
         })
       })
-  
     })
   })
 }

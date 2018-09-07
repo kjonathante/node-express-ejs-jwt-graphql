@@ -2,7 +2,7 @@ const db = require('../db/db.js')
 
 exports.insertBulk = function( data, callback ) {
   db.pool().query({
-    sql: 'INSERT INTO gitrepos(repo_id, name, url, selected, githubpage, screenshot, user_id) VALUES ?',
+    sql: 'INSERT INTO gitrepos(repo_id, name, url, selected, githubpage, screenshot, ghpagestatus, user_id) VALUES ?',
     values: [data],
   },function(error,results,fields){
     if (error) {
