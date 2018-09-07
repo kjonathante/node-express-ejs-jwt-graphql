@@ -116,9 +116,9 @@ object {
 }
 
 /* ------------------------------------------------------------ Profile Page ------------------------------------------------------------ */
-#profile-main {
+/* #profile-main {
     overflow: scroll;
-}
+} */
 #profile-link {
     text-decoration: none;
     color: rgba(255, 255, 255, 1);
@@ -135,9 +135,9 @@ object {
     margin: 0;
     padding: 16px;
 }
-#profile-pic {
+/* #profile-pic {
     float: left;
-}
+} */
 #left-container {
     display: flex;
     flex-direction: column;
@@ -188,7 +188,7 @@ object {
     margin-bottom: .5rem;
     border-radius: 5px;
     overflow-y: auto;
-    /* flex: 1; */
+    flex: 1;
 }
 #read-message::-webkit-scrollbar { 
     display: none;
@@ -255,7 +255,7 @@ object {
     display: none;
 }
 #placeholder-pic, #user-pic {
-    height: 180px;
+    height: 185px;
     /* width: auto; */
 }
 #edit-first-name, #edit-last-name {
@@ -292,6 +292,9 @@ object {
     margin-top: 1%;
     overflow-y: auto;
     border-radius: 10px;
+}
+.form-check {
+    margin-left: 1%;
 }
 #update-btn {
     margin-top: 3%;
@@ -352,9 +355,6 @@ object {
     height: 430px;
     overflow-y: auto;
     border-radius: 10px;
-} */
-/* .form-check {
-    margin-left: 1%;
 } */
 /* .form-group {
     margin-bottom: 1rem;
