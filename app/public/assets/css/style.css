@@ -58,6 +58,9 @@ html, body, main {
 object {
     width: 100%;
 }
+#particleCount{
+    color: #cccccc
+}
 
 /* ------------------------------------------------------------ Signup Page ------------------------------------------------------------- */
 #signup-container {
@@ -230,6 +233,10 @@ object {
 /* #time-posted {
     display: none;
 } */
+#sender-posted{
+    color: #15a2b8;
+    font-weight: 500;
+}
 
 /* --------------------------------------------------------- Edit Profile Page ---------------------------------------------------------- */
 #edit-container {

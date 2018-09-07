@@ -41,7 +41,7 @@
 										<%= '#e3e4e7' %> <% } else{ %> <%= 'white' %> <% } %>">
 									<span id="time-posted"> <%= messages[key].timeEntered %> </span>
 									<br>
-									<%= messages[key].sender+': '+messages[key].user_message %></p>
+									<span id="sender-posted"><%= messages[key].sender %></span><%= ': '+messages[key].user_message %></p>
 									<!-- messages[key].timeEntered+', '+ -->
 								<% }
 							} %>

@@ -42,6 +42,8 @@ router.get('/github/repos/:username', githubController.getRepos);
 
 router.post('/message', userController.writeMessage);
 
+router.get('/particle/:count', userController.getParticles);
+
 // router.get('/search', function(req, res) {
 //   res.render('search')
 // });
