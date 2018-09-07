@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+    <canvas class="background"></canvas>
+</body>
+<footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>	
+</footer>
+<script type="text/javascript">
+	window.onload = function() {
+        var path = window.location.href.split('/');
+		var length = path.length;
+        var	count = path[length-1];
+        if(count<50){
+            count = 50;
+        }
+  		Particles.init({
+			selector: '.background',
+			maxParticles: count,
+            connectParticles: true,
+            speed:1
+  		});
+	};
+</script>
+</html>

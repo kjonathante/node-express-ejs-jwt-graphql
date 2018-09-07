@@ -40,7 +40,17 @@ exports.findByUserId = function( id, callback ) {
 }
 
 exports.findRandomRepo = function(callback){
-  db.pool().query('SELECT * from gitrepos WHERE selected = 1', function(err, results,fields){
+  db.pool().query('SELECT * from gitrepos WHERE selected = 1 AND ghpagestatus = 200', function(err, results,fields){
+    if (err) {
+      return callback(err)
+    } else {
+      return callback(null, results)
+    }
+  });
+}
+
+exports.getRepoCount = function(callback){
+  db.pool().query('SELECT COUNT(id) id FROM gitrepos', function(err, results, fields){
     if (err) {
       return callback(err)
     } else {

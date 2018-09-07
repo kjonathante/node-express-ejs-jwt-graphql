@@ -28,19 +28,36 @@ email = nodemailer.createTransport({
 exports.homePage = async function(req, res) {
   gitrepo.findRandomRepo(function(error, results){
     if(error){
-      return res.render('pages/index',req.session.user);
+      if(typeof req.session.user == 'undefined'){
+        return res.render('pages/index');
+      }else{
+        return res.render('pages/index',{userInfo: req.session.user.userInfo});
+      }
     }
     var randomNum = Math.floor(Math.random()*results.length);
-    console.log(results[randomNum].url);
-    if(typeof req.session.user == 'undefined'){
-      console.log('came in here');
-      return res.render('pages/index',{url: results[randomNum].githubpage});
+    console.log(results.length);
+    if (results.length != 0){
+      if(typeof req.session.user == 'undefined'){
+        console.log('came in here');
+        return res.render('pages/index',{url: results[randomNum].githubpage});
+      }else{
+        return res.render('pages/index',{url: results[randomNum].githubpage,
+                                          userInfo: req.session.user.userInfo});
+      }
     }else{
-      return res.render('pages/index',{url: results[randomNum].githubpage,
-                                        userInfo: req.session.user.userInfo});
+      gitrepo.getRepoCount(function(error, results){
+        console.log(results[0].id);
+        if(typeof req.session.user == 'undefined'){
+          return res.render('pages/index',{repoCount: results[0].id});
+        }else{
+          return res.render('pages/index',{userInfo: req.session.user.userInfo,
+                                            repoCount: results[0].id});
+        }
+      })
+      
     }
+    
   });
-  // res.render('pages/index',req.session.user)
 }
 
 // load the signup 
@@ -405,4 +422,8 @@ exports.writeMessage = function(req, res){
     console.log("message written", req.session.user);
     return res.redirect('/profile/'+req.body.id);
   });
+}
+
+exports.getParticles = function(req, res){
+  res.render('pages/particle');
 }
