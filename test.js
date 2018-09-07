@@ -40,6 +40,7 @@ async function test() {
 
   await page.waitForSelector('#github-selection > div:nth-child(8) > input')
   await page.click('#github-selection > div:nth-child(8) > input')
+  await page.click('#github-selection > div:nth-child(11) > input')
   
 
   var fileupload = await page.$('#pic-upload')
