@@ -269,8 +269,6 @@ object {
 #eachMessage{
     padding-left: 3%;
 }
-
-
 #user-repos::-webkit-scrollbar-track
 {
     border: 1px solid #b2b2b2;
