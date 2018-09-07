@@ -104,16 +104,17 @@ object {
     border-radius: .25rem;
 }
 .alert {
+    width: fit-content;
     margin-left: auto;
     margin-right: auto;
     margin-top: 2%;
 }
-#alert-wrong {
+/* #alert-wrong {
     width: 747px;
 }
 #alert-all {
     width: 605px;
-}
+} */
 
 /* ------------------------------------------------------------ Profile Page ------------------------------------------------------------ */
 /* #profile-main {
