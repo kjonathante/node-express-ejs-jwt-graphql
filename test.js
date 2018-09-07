@@ -12,11 +12,11 @@ async function test() {
   )
   var page = await browser.newPage();
   await page.goto("http://localhost:3000");
-  await page.click('body > header > nav > div > button');
+  await page.click('#navbarSupportedContent > div > button');
 
   await Promise.all([
     page.waitForNavigation({ waitUntil: 'networkidle2' }),
-    page.click('body > header > nav > div > div > a:nth-child(3)')
+    page.click('#navbarSupportedContent > div > div > a')
   ])
 
   await page.$eval('input[name=first_name]', el => el.value = 'Kit Jonathan');
@@ -43,7 +43,7 @@ async function test() {
   
 
   var fileupload = await page.$('#pic-upload')
-  fileupload.uploadFile('./profilepic.png')
+  fileupload.uploadFile('app/public/assets/imgs/profilepic.png')
   
   await Promise.all([
     page.waitForNavigation({ waitUntil: 'networkidle2' }),
