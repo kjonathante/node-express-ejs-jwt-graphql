@@ -116,9 +116,9 @@ object {
 }
 
 /* ------------------------------------------------------------ Profile Page ------------------------------------------------------------ */
-#profile-main {
+/* #profile-main {
     overflow: scroll;
-}
+} */
 #profile-link {
     text-decoration: none;
     color: rgba(255, 255, 255, 1);
@@ -135,9 +135,9 @@ object {
     margin: 0;
     padding: 16px;
 }
-#profile-pic {
+/* #profile-pic {
     float: left;
-}
+} */
 #left-container {
     display: flex;
     flex-direction: column;
@@ -255,7 +255,7 @@ object {
     display: none;
 }
 #placeholder-pic, #user-pic {
-    height: 180px;
+    height: 185px;
     /* width: auto; */
 }
 #edit-first-name, #edit-last-name {
