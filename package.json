@@ -17,5 +17,12 @@
     "mysql": "^2.16.0",
     "nodemailer": "^4.6.8",
     "puppeteer": "^1.7.0"
+  },
+  "scripts": {
+    "restart": "pm2 startOrRestart ecosystem.config.js",
+    "deploy": "pm2 deploy ecosystem.config.js production"
+  },
+  "devDependencies": {
+    "pm2": "^3.0.4"
   }
 }
