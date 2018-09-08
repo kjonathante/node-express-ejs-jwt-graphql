@@ -28,12 +28,12 @@
 							<p><%= results.first_name %> <%= results.last_name %></p>
 							<p><%= results.email_address %></p>
 							<% if(results.gitlink == null || results.gitlink == ""){ %>
-								<div id="github-link"><a href="/edit-profile" target="_blank">Add a Github link</a></div>
+								<div id="github-link"><a href="/edit-profile">Add a Github link</a></div>
 							<% }else { %>
 								<div id="github-link"><a href="https://github.com/<%= results.gitlink %>" target="_blank">GitHub</a></div>
 							<% } %>
 							<% if(results.linkedin == null || results.linkedin == ""){ %>
-								<a href="/edit-profile" target="_blank">Add a LinkedIn link</a>
+								<a href="/edit-profile">Add a LinkedIn link</a>
 							<% }else { %>
 								<a href="https://www.linkedin.com/in/<%= results.linkedin %>" target="_blank">LinkedIn</a>
 							<% } %>
