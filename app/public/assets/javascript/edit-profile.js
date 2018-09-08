@@ -85,7 +85,10 @@ $('#repo-btn').on('click', function(){
 })
 
 // Shrinks the container for display purposes
-// $('#update-btn').on('click', function(){
-//     $('#edit-profile-container').attr('style','font-size: 1vw;');
+$('#edit-profile-container').submit(function(){
+    $('#edit-profile-container').fadeOut('slow');
+    $('#profile-generator').fadeIn('slow');
+    $('#update-gif').show();
+    // $('#edit-profile-container').attr('style','font-size: 1vw;');
     // $('#github-selection').attr('style','display: block; line-height: 26px;');
-// })
+});

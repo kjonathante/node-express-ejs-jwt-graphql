@@ -28,7 +28,7 @@ exports.deleteAllByUserId = function( id, callback ) {
 
 exports.findByUserId = function( id, callback ) {
   db.pool().query({
-    sql: 'SELECT name, screenshot FROM gitrepos WHERE user_id=?',
+    sql: 'SELECT name, screenshot, githubpage FROM gitrepos WHERE user_id=?',
     values: [id],
   },function(error,results,fields){
     if (error) {
