@@ -6,7 +6,7 @@ module.exports = {
   deploy: {
     production: {
       user: 'ubuntu',
-      host: 'ec2-54-219-172-202.us-west-1.compute.amazonaws.com',
+      host: 'ec2-54-153-58-189.us-west-1.compute.amazonaws.com',
       key: '~/ec2key.pem',
       ref: 'origin/kt-deploy',
       repo: 'git@deployment:kjonathante/PRJ2-Express-Mysql.git',
