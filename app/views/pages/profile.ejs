@@ -57,10 +57,7 @@
 				</div>
 					<div class="container" id="user-repos">
 						<% for(var val of results.git_repos){%>
-							<!-- <div> -->
-								<img src=<%='/images/'+val.screenshot%> alt="<%=val.name%>" width="200">
-								<!-- <p><%=val.name%></p> -->
-							<!-- </div> -->
+							<a href="<%=val.githubpage%>" target="_blank" id="link"><img src=<%='/images/'+val.screenshot%> alt="<%=val.name%>" class="repo-screenshots" data-toggle="tooltip" title="<%=val.name%>"></a>
 						<%}%>
 					</div>
 				<%}%>
@@ -79,7 +76,7 @@
 			
 		console.log(path);
 		$("#hiddenMessageInput").val(path);
- 		})
+		 })
 	</script>
 </body>
 </html>

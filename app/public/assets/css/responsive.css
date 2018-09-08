@@ -373,6 +373,9 @@
     .mobile-dropdown {
         margin-top: 2%;
     }
+    #search-bar {
+        margin-right: 5%;
+    }
     #search-btn {
         display: none;
     }
