@@ -27,8 +27,18 @@
 						<div id="user-info">
 							<p><%= results.first_name %> <%= results.last_name %></p>
 							<p><%= results.email_address %></p>
-							<div id="github-link"><a href="https://github.com/<%= results.gitlink %>" target="_blank">GitHub</a></div>
-							<a href="https://www.linkedin.com/in/<%= results.linkedin %>" target="_blank">LinkedIn</a>
+							<% if(results.gitlink == null || results.gitlink == ""){ %>
+								<div id="github-link"><a href="/edit-profile" target="_blank">Add a Github link</a></div>
+							<% }else { %>
+								<div id="github-link"><a href="https://github.com/<%= results.gitlink %>" target="_blank">GitHub</a></div>
+							<% } %>
+							<% if(results.linkedin == null || results.linkedin == ""){ %>
+								<a href="/edit-profile" target="_blank">Add a LinkedIn link</a>
+							<% }else { %>
+								<a href="https://www.linkedin.com/in/<%= results.linkedin %>" target="_blank">LinkedIn</a>
+							<% } %>
+							
+							
 						</div>
 					</div>
 					<div class="container" id="message-board-container">
